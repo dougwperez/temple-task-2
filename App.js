@@ -25,9 +25,10 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import {WebView} from 'react-native-webview';
+
 import TaskToolbar from './components/TaskToolbar';
 import BuilderToolbar from './components/BuilderToolbar';
+import Playground from './components/Playground';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -66,22 +67,7 @@ const App: () => Node = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <BuilderToolbar />
-      {/* <WebView source={{uri: 'https://reactnative.dev/'}} /> */}
-
-      {/* <Scene
-          // store={setupStore}
-          brickColor={color}
-          objects={bricks}
-          mode={mode}
-          grid={gridVisible}
-          dimensions={dimensions}
-          // shifted={utilsOpen}
-          removeObject={removeBrick}
-          addObject={addBrick}
-          updateObject={updateBrick}
-          credits={this.state.credits}
-          patchDownTotalCredits={this.patchDownTotalCredits}
-        /> */}
+      <Playground />
 
       <TaskToolbar />
     </SafeAreaView>
