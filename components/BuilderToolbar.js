@@ -1,5 +1,5 @@
-import React from 'react';
-import {Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {View} from 'react-native';
 import {Button, AppBar, IconButton, HStack} from '@react-native-material/core';
 // import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 // import Icon from 'react-native-vector-icons/FontAwesome';
@@ -9,7 +9,17 @@ import IconIon from 'react-native-vector-icons/Ionicons';
 import IconFoundation from 'react-native-vector-icons/Foundation';
 import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import {
+  Provider,
+  Dialog,
+  DialogHeader,
+  DialogContent,
+  DialogActions,
+  Text,
+} from '@react-native-material/core';
+
 const BuilderToolbar = () => {
+  const [visible, setVisible] = useState(false);
   return (
     <AppBar
       title="TempleTask"
