@@ -60,11 +60,12 @@ const App: () => Node = () => {
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    flex: 1,
   };
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      {/* <BuilderToolbar /> */}
+      <BuilderToolbar />
       {/* <WebView source={{uri: 'https://reactnative.dev/'}} /> */}
 
       {/* <Scene
