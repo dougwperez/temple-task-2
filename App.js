@@ -26,6 +26,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import {WebView} from 'react-native-webview';
+import TaskToolbar from './components/TaskToolbar';
+import BuilderToolbar from './components/BuilderToolbar';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -62,30 +64,25 @@ const App: () => Node = () => {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="TempleTask2">
-            <WebView source={{uri: 'https://reactnative.dev/'}} />
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+      {/* <BuilderToolbar /> */}
+      {/* <WebView source={{uri: 'https://reactnative.dev/'}} /> */}
+
+      {/* <Scene
+          // store={setupStore}
+          brickColor={color}
+          objects={bricks}
+          mode={mode}
+          grid={gridVisible}
+          dimensions={dimensions}
+          // shifted={utilsOpen}
+          removeObject={removeBrick}
+          addObject={addBrick}
+          updateObject={updateBrick}
+          credits={this.state.credits}
+          patchDownTotalCredits={this.patchDownTotalCredits}
+        /> */}
+
+      <TaskToolbar />
     </SafeAreaView>
   );
 };
