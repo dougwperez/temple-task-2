@@ -14,9 +14,11 @@ import IconFont from 'react-native-vector-icons/FontAwesome';
 // } from '@react-native-material/core';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 import GoalsModal from './GoalsModal';
+import CompletionModal from './CompletionModal';
 
 const TaskToolbar = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [goalModalVisible, setGoalModalVisible] = useState(false);
+  const [completionModalVisible, setCompletionModalVisible] = useState(false);
 
   return (
     <>
@@ -44,7 +46,7 @@ const TaskToolbar = () => {
               tintColor="#EEBC1D"
               backgroundColor="white"
               leading={props => <IconFont name="trophy" {...props} />}
-              onPress={() => setModalVisible(true)}
+              onPress={() => setGoalModalVisible(true)}
             />
             <Button
               // variant="outlined"
@@ -53,14 +55,21 @@ const TaskToolbar = () => {
               tintColor="green"
               backgroundColor="white"
               leading={props => <IconIon name="checkmark-circle" {...props} />}
+              onPress={() => setCompletionModalVisible(true)}
             />
           </HStack>
         )}
       />
-      {modalVisible ? (
+      {goalModalVisible ? (
         <GoalsModal
-          setModalVisible={setModalVisible}
-          modalVisible={modalVisible}
+          setGoalModalVisible={setGoalModalVisible}
+          goalModalVisible={goalModalVisible}
+        />
+      ) : null}
+      {completionModalVisible ? (
+        <CompletionModal
+          setCompletionModalVisible={setCompletionModalVisible}
+          completionModalVisible={completionModalVisible}
         />
       ) : null}
     </>

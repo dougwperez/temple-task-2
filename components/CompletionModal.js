@@ -1,8 +1,8 @@
 import React from 'react';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 
-const GoalsModal = props => {
-  const {setGoalModalVisible, goalModalVisible} = props;
+const CompletionModal = props => {
+  const {setCompletionModalVisible, completionModalVisible} = props;
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -11,14 +11,16 @@ const GoalsModal = props => {
         visible={true}
         onRequestClose={() => {
           Alert.alert('Modal has been closed.');
-          setGoalModalVisible(!goalModalVisible);
+          setCompletionModalVisible(!completionModalVisible);
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Goals Modal</Text>
+            <Text style={styles.modalText}>Completion Modal</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={() => setGoalModalVisible(!goalModalVisible)}>
+              onPress={() =>
+                setCompletionModalVisible(!completionModalVisible)
+              }>
               <Text style={styles.textStyle}>Hide Modal</Text>
             </Pressable>
           </View>
@@ -71,4 +73,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-export default GoalsModal;
+export default CompletionModal;
