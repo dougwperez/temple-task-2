@@ -1,8 +1,48 @@
 import React from 'react';
-import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
+import {
+  Alert,
+  Modal,
+  StyleSheet,
+  Text,
+  Pressable,
+  View,
+  FlatList,
+  StatusBar,
+  SafeAreaView,
+} from 'react-native';
+
+const DATA = [
+  {
+    id: 'bd7acbea',
+    title: 'Food Journal',
+  },
+  {
+    id: '3ac68afc',
+    title: 'Go to Gym',
+  },
+  {
+    id: '58694a0f',
+    title: 'Do Toy Problem',
+  },
+];
 
 const GoalsModal = props => {
   const {setGoalModalVisible, goalModalVisible} = props;
+
+  const renderItem = ({item}) => {
+    const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
+    const color = item.id === selectedId ? 'white' : 'black';
+
+    return (
+      <Item
+        item={item}
+        onPress={() => setSelectedId(item.id)}
+        backgroundColor={{backgroundColor}}
+        textColor={{color}}
+      />
+    );
+  };
+
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -16,6 +56,14 @@ const GoalsModal = props => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Goals Modal</Text>
+            <SafeAreaView style={styles.container}>
+              <FlatList
+                data={DATA}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+                extraData={selectedId}
+              />
+            </SafeAreaView>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setGoalModalVisible(!goalModalVisible)}>
@@ -69,6 +117,18 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
+  },
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  item: {
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
   },
 });
 export default GoalsModal;
