@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Alert,
   Modal,
@@ -9,6 +9,7 @@ import {
   FlatList,
   StatusBar,
   SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
 
 const DATA = [
@@ -26,8 +27,15 @@ const DATA = [
   },
 ];
 
+const Item = ({item, onPress, backgroundColor, textColor}) => (
+  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
+    <Text style={[styles.title, textColor]}>{item.title}</Text>
+  </TouchableOpacity>
+);
+
 const GoalsModal = props => {
   const {setGoalModalVisible, goalModalVisible} = props;
+  const [selectedId, setSelectedId] = useState(null);
 
   const renderItem = ({item}) => {
     const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
