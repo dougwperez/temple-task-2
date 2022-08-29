@@ -10,6 +10,7 @@ import {
   StatusBar,
   SafeAreaView,
   TouchableOpacity,
+  TextInput,
 } from 'react-native';
 
 const DATA = [
@@ -36,6 +37,7 @@ const Item = ({item, onPress, backgroundColor, textColor}) => (
 const GoalsModal = props => {
   const {setGoalModalVisible, goalModalVisible} = props;
   const [selectedId, setSelectedId] = useState(null);
+  const [text, onChangeText] = React.useState('Useless Text');
 
   const renderItem = ({item}) => {
     const backgroundColor = item.id === selectedId ? '#6e3b6e' : 'white';
@@ -65,6 +67,11 @@ const GoalsModal = props => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Goals Modal</Text>
             <SafeAreaView style={styles.container}>
+              <TextInput
+                style={styles.input}
+                onChangeText={onChangeText}
+                value={text}
+              />
               <FlatList
                 data={DATA}
                 renderItem={renderItem}
@@ -135,9 +142,19 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     marginHorizontal: 10,
     borderWidth: 2,
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
   title: {
     fontSize: 15,
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 });
 export default GoalsModal;
