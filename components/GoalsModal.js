@@ -12,6 +12,8 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
+import {IconButton, HStack} from '@react-native-material/core';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const DATA = [
   {
@@ -44,12 +46,18 @@ const GoalsModal = props => {
     const color = item.id === selectedId ? 'white' : 'black';
 
     return (
-      <Item
-        item={item}
-        onPress={() => setSelectedId(item.id)}
-        backgroundColor={{backgroundColor}}
-        textColor={{color}}
-      />
+      <HStack>
+        <Item
+          item={item}
+          onPress={() => setSelectedId(item.id)}
+          backgroundColor={{backgroundColor}}
+          textColor={{color}}
+        />
+        <IconButton
+          icon={props => <Icon name="delete" {...props} />}
+          color="primary"
+        />
+      </HStack>
     );
   };
 
@@ -65,13 +73,20 @@ const GoalsModal = props => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Goals Modal</Text>
+            <Text style={styles.modalText}>Add Goal</Text>
             <SafeAreaView style={styles.container}>
-              <TextInput
-                style={styles.input}
-                onChangeText={onChangeText}
-                value={text}
-              />
+              <HStack>
+                <TextInput
+                  style={styles.input}
+                  onChangeText={onChangeText}
+                  value={text}
+                />
+                <IconButton
+                  icon={props => <Icon name="plus" {...props} />}
+                  color="primary"
+                />
+              </HStack>
+              <Text style={styles.modalText}>All Goals</Text>
               <FlatList
                 data={DATA}
                 renderItem={renderItem}
@@ -132,6 +147,8 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   container: {
     flex: 1,
@@ -146,6 +163,7 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
+    width: 150,
   },
   title: {
     fontSize: 15,
@@ -155,6 +173,10 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
+    width: 150,
+  },
+  todoWrapper: {
+    display: 'flex',
   },
 });
 export default GoalsModal;
