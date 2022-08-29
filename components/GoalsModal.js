@@ -38,7 +38,7 @@ const GoalsModal = props => {
   const [selectedId, setSelectedId] = useState(null);
 
   const renderItem = ({item}) => {
-    const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
+    const backgroundColor = item.id === selectedId ? '#6e3b6e' : 'white';
     const color = item.id === selectedId ? 'white' : 'black';
 
     return (
@@ -132,11 +132,12 @@ const styles = StyleSheet.create({
   },
   item: {
     padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    marginVertical: 5,
+    marginHorizontal: 10,
+    borderWidth: 2,
   },
   title: {
-    fontSize: 32,
+    fontSize: 15,
   },
 });
 export default GoalsModal;
