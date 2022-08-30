@@ -1,5 +1,6 @@
 import React from 'react';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 const CompletionModal = props => {
   const {setCompletionModalVisible, completionModalVisible} = props;
@@ -16,6 +17,17 @@ const CompletionModal = props => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Completion Modal</Text>
+            <Text style={styles.modalText}>X Coins Earned Today</Text>
+            <BouncyCheckbox
+              size={25}
+              fillColor="green"
+              unfillColor="#FFFFFF"
+              text="Custom Checkbox"
+              iconStyle={{borderColor: 'red'}}
+              innerIconStyle={{borderWidth: 2}}
+              // textStyle={{fontFamily: 'JosefinSans-Regular'}}
+              onPress={(isChecked: boolean) => {}}
+            />
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() =>
