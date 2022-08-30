@@ -1,9 +1,49 @@
 import React from 'react';
-import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
+import {
+  Alert,
+  Modal,
+  StyleSheet,
+  Text,
+  Pressable,
+  View,
+  FlatList,
+} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+
+const DATA = [
+  {
+    id: 'bd7acbea',
+    title: 'Food Journal',
+  },
+  {
+    id: '3ac68afc',
+    title: 'Go to Gym',
+  },
+  {
+    id: '58694a0f',
+    title: 'Do Toy Problem',
+  },
+];
+
+const Item = ({title}) => (
+  <BouncyCheckbox
+    size={25}
+    fillColor="green"
+    unfillColor="#FFFFFF"
+    text="Custom Checkbox"
+    iconStyle={{borderColor: 'red'}}
+    innerIconStyle={{borderWidth: 2}}
+    // textStyle={{fontFamily: 'JosefinSans-Regular'}}
+    onPress={(isChecked: boolean) => {}}
+    style={{marginBottom: 10}}
+  />
+);
 
 const CompletionModal = props => {
   const {setCompletionModalVisible, completionModalVisible} = props;
+
+  const renderItem = ({item}) => <Item title={item.title} />;
+
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -17,17 +57,13 @@ const CompletionModal = props => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Completion Modal</Text>
-            <Text style={styles.modalText}>X Coins Earned Today</Text>
-            <BouncyCheckbox
-              size={25}
-              fillColor="green"
-              unfillColor="#FFFFFF"
-              text="Custom Checkbox"
-              iconStyle={{borderColor: 'red'}}
-              innerIconStyle={{borderWidth: 2}}
-              // textStyle={{fontFamily: 'JosefinSans-Regular'}}
-              onPress={(isChecked: boolean) => {}}
+
+            <FlatList
+              data={DATA}
+              renderItem={renderItem}
+              keyExtractor={item => item.id}
             />
+            <Text style={styles.modalText}>X Coins Earned Today</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() =>
@@ -50,7 +86,8 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   modalView: {
-    margin: 20,
+    marginHorizontal: 10,
+    marginVertical: 100,
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
@@ -83,6 +120,8 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 18,
   },
 });
 export default CompletionModal;

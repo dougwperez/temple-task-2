@@ -161,9 +161,12 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     height: 40,
     margin: 12,
-    borderWidth: 1,
+    borderWidth: 0,
     padding: 10,
     width: 150,
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
   title: {
     fontSize: 15,
@@ -171,9 +174,12 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     margin: 12,
-    borderWidth: 1,
+    borderWidth: 0.2,
     padding: 10,
     width: 150,
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
   todoWrapper: {
     display: 'flex',
