@@ -111,10 +111,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 22,
+    marginTop: 10,
   },
   modalView: {
-    margin: 20,
+    margin: 100,
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
