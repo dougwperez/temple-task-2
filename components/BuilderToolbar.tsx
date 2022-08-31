@@ -33,7 +33,7 @@ const BuilderToolbar = () => {
       )}
       trailing={props => (
         <HStack>
-          <NativeBaseProvider>
+          {/* <NativeBaseProvider>
             <Popover
               trigger={triggerProps => {
                 return (
@@ -60,7 +60,7 @@ const BuilderToolbar = () => {
                 </Popover.Footer>
               </Popover.Content>
             </Popover>
-          </NativeBaseProvider>
+          </NativeBaseProvider> */}
           <IconButton
             icon={props => <IconIon name="hammer" {...props} />}
             {...props}
