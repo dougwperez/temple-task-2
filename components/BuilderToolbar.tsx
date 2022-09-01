@@ -9,6 +9,7 @@ import IconIon from 'react-native-vector-icons/Ionicons';
 import IconFoundation from 'react-native-vector-icons/Foundation';
 import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Popover, Button, Box, Center, NativeBaseProvider} from 'native-base';
+import ColorPicker from './ColorPicker';
 
 import {
   Provider,
@@ -21,6 +22,7 @@ import {
 
 const BuilderToolbar = () => {
   const [visible, setVisible] = useState(false);
+  const [isOpenTop, setIsOpenTop] = React.useState(false);
   return (
     <AppBar
       title="TempleTask"
@@ -33,34 +35,6 @@ const BuilderToolbar = () => {
       )}
       trailing={props => (
         <HStack>
-          {/* <NativeBaseProvider>
-            <Popover
-              trigger={triggerProps => {
-                return (
-                  <Button {...triggerProps} colorScheme="danger">
-                    Delete Customer
-                  </Button>
-                );
-              }}>
-              <Popover.Content accessibilityLabel="Delete Customerd" w="56">
-                <Popover.Arrow />
-                <Popover.CloseButton />
-                <Popover.Header>Delete Customer</Popover.Header>
-                <Popover.Body>
-                  This will remove all data relating to Alex. This action cannot
-                  be reversed. Deleted data can not be recovered.
-                </Popover.Body>
-                <Popover.Footer justifyContent="flex-end">
-                  <Button.Group space={2}>
-                    <Button colorScheme="coolGray" variant="ghost">
-                      Cancel
-                    </Button>
-                    <Button colorScheme="danger">Delete</Button>
-                  </Button.Group>
-                </Popover.Footer>
-              </Popover.Content>
-            </Popover>
-          </NativeBaseProvider> */}
           <IconButton
             icon={props => <IconIon name="hammer" {...props} />}
             {...props}
@@ -69,6 +43,7 @@ const BuilderToolbar = () => {
             icon={props => <IconFoundation name="paint-bucket" {...props} />}
             {...props}
           />
+
           <IconButton
             icon={props => <IconMaterial name="toy-brick" {...props} />}
             {...props}
