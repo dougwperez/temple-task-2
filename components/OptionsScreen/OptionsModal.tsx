@@ -1,8 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableWithoutFeedback} from 'react-native';
-// import {Popover, Button, Box, Center, NativeBaseProvider} from 'native-base';
-import {IconButton} from '@react-native-material/core';
-import IconFoundation from 'react-native-vector-icons/Foundation';
+
 import Modal from 'react-native-modal';
 import {ListItem} from '@react-native-material/core';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';

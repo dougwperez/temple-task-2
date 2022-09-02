@@ -24,10 +24,15 @@ import {
 
 const BuilderToolbar = () => {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
-  const [isOpenTop, setIsOpenTop] = React.useState(false);
+  const [colorPickerVisible, setColorPickerVisible] = useState(false);
+  // const [isOpenTop, setIsOpenTop] = React.useState(false);
 
   const toggleModal = () => {
     setOptionsModalVisible(!optionsModalVisible);
+  };
+
+  const toggleColorPicker = () => {
+    setColorPickerVisible(!colorPickerVisible);
   };
 
   return (
@@ -49,7 +54,13 @@ const BuilderToolbar = () => {
               {...props}
             />
             <IconButton
-              icon={props => <IconFoundation name="paint-bucket" {...props} />}
+              icon={props => (
+                <IconFoundation
+                  name="paint-bucket"
+                  {...props}
+                  onPress={() => toggleColorPicker()}
+                />
+              )}
               {...props}
             />
 
@@ -69,6 +80,13 @@ const BuilderToolbar = () => {
           toggleModal={toggleModal}
           setOptionsModalVisible={setOptionsModalVisible}
           optionsModalVisible={optionsModalVisible}
+        />
+      ) : null}
+      {colorPickerVisible ? (
+        <ColorPicker
+          toggleColorPicker={toggleColorPicker}
+          setColorPickerVisible={setColorPickerVisible}
+          colorPickerVisible={colorPickerVisible}
         />
       ) : null}
     </>
