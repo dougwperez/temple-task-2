@@ -1,16 +1,12 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import {AppBar, IconButton, HStack} from '@react-native-material/core';
-// import Icon from '@expo/vector-icons/MaterialCommunityIcons';
-// import Icon from 'react-native-vector-icons/FontAwesome';
-// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/Feather';
 import IconIon from 'react-native-vector-icons/Ionicons';
 import IconFoundation from 'react-native-vector-icons/Foundation';
 import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Popover, Button, Box, Center, NativeBaseProvider} from 'native-base';
 import ColorPicker from './ColorPicker';
-import CompletionModal from '../BottomBar/CompletionModal';
+import BrickPicker from './BrickPicker';
 import OptionsModal from '../OptionsScreen/OptionsModal';
 
 import {
@@ -25,6 +21,7 @@ import {
 const BuilderToolbar = () => {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
   const [colorPickerVisible, setColorPickerVisible] = useState(false);
+  const [brickPickerVisible, setBrickPickerVisible] = useState(false);
   // const [isOpenTop, setIsOpenTop] = React.useState(false);
 
   const toggleModal = () => {
@@ -33,6 +30,10 @@ const BuilderToolbar = () => {
 
   const toggleColorPicker = () => {
     setColorPickerVisible(!colorPickerVisible);
+  };
+
+  const toggleBrickPicker = () => {
+    setBrickPickerVisible(!brickPickerVisible);
   };
 
   return (
@@ -65,7 +66,13 @@ const BuilderToolbar = () => {
             />
 
             <IconButton
-              icon={props => <IconMaterial name="toy-brick" {...props} />}
+              icon={props => (
+                <IconMaterial
+                  name="toy-brick"
+                  {...props}
+                  onPress={() => toggleBrickPicker()}
+                />
+              )}
               {...props}
             />
             <IconButton
@@ -87,6 +94,13 @@ const BuilderToolbar = () => {
           toggleColorPicker={toggleColorPicker}
           setColorPickerVisible={setColorPickerVisible}
           colorPickerVisible={colorPickerVisible}
+        />
+      ) : null}
+      {brickPickerVisible ? (
+        <BrickPicker
+          toggleBrickPicker={toggleBrickPicker}
+          setBrickPickerVisible={setBrickPickerVisible}
+          brickPickerVisible={brickPickerVisible}
         />
       ) : null}
     </>

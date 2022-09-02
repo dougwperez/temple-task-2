@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableWithoutFeedback} from 'react-native';
-
+import {HStack} from '@react-native-material/core';
 import Modal from 'react-native-modal';
 import {ListItem} from '@react-native-material/core';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
@@ -8,7 +8,7 @@ import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 const ColorPicker = props => {
   const {toggleColorPicker, setColorPickerVisible, colorPickerVisible} = props;
   return (
-    <View>
+    <View style={styles.modalContainer}>
       <Modal
         isVisible={colorPickerVisible}
         hasBackdrop={true}
@@ -21,8 +21,29 @@ const ColorPicker = props => {
             <View style={{flex: 1}} />
           </TouchableWithoutFeedback>
         }>
-        <View style={styles.mainModal}>
-          <Text>I am the modal content!</Text>
+        <View>
+          <HStack style={styles.mainModal}>
+            <HStack style={styles.colorBoxContainer}>
+              <View
+                style={[{backgroundColor: '#FF0000'}, styles.colorBox]}></View>
+              <View
+                style={[{backgroundColor: '#FF9800'}, styles.colorBox]}></View>
+              <View
+                style={[{backgroundColor: '#F0E100'}, styles.colorBox]}></View>
+              <View
+                style={[{backgroundColor: '#00DE00'}, styles.colorBox]}></View>
+              <View
+                style={[{backgroundColor: '#A1BC24'}, styles.colorBox]}></View>
+              <View
+                style={[{backgroundColor: '#0011CF'}, styles.colorBox]}></View>
+              <View
+                style={[{backgroundColor: '#FFFFFF'}, styles.colorBox]}></View>
+              <View
+                style={[{backgroundColor: '#000000'}, styles.colorBox]}></View>
+              <View
+                style={[{backgroundColor: '#652A0C'}, styles.colorBox]}></View>
+            </HStack>
+          </HStack>
         </View>
       </Modal>
     </View>
@@ -30,13 +51,21 @@ const ColorPicker = props => {
 };
 
 const styles = StyleSheet.create({
+  modalContainer: {
+    // height: 1,
+  },
   mainModal: {
     marginHorizontal: -20,
-    marginBottom: 580,
-    backgroundColor: 'white',
+    marginBottom: 623,
+    backgroundColor: '#6226ee',
     // borderRadius: 20,
-    padding: 35,
+    padding: 20,
+    height: 30,
     alignItems: 'center',
+    // justifyContent: 'Center',
+    borderTopColor: 'gray',
+    borderTopWidth: 1,
+
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -45,6 +74,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+  },
+  colorBox: {
+    width: 20,
+    height: 20,
+    margin: 2,
+  },
+  colorBoxContainer: {
+    justifyContent: 'center',
   },
 });
 export default ColorPicker;

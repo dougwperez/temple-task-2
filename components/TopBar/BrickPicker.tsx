@@ -1,17 +1,88 @@
 import React from 'react';
-import {WebView} from 'react-native-webview';
-import {View} from 'react-native';
-import {Popover, Button, Box, Center, NativeBaseProvider} from 'native-base';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Image,
+} from 'react-native';
+import {HStack} from '@react-native-material/core';
+import Modal from 'react-native-modal';
+import {ListItem} from '@react-native-material/core';
 
-const BrickPicker = () => {
+const BrickPicker = props => {
+  const {toggleBrickPicker, setBrickPickerVisible, brickPickerVisible} = props;
   return (
-    <View style={{height: 1000, top: -160}}>
-      <WebView
-        source={{uri: 'https://brickbuilder.herokuapp.com/'}}
-        // https://nicmosc.github.io/brick-builder/
-        style={{flex: 1}}
-      />
+    <View style={styles.modalContainer}>
+      <Modal
+        isVisible={brickPickerVisible}
+        hasBackdrop={true}
+        animationType="fade"
+        animationIn={'slideInLeft'}
+        animationOut={'slideOutLeft'}
+        useNativeDriver={true}
+        customBackdrop={
+          <TouchableWithoutFeedback onPress={toggleBrickPicker}>
+            <View style={{flex: 1}} />
+          </TouchableWithoutFeedback>
+        }>
+        <View>
+          <HStack style={styles.mainModal}>
+            <HStack style={styles.colorBoxContainer}>
+              <View style={styles.colorBox}></View>
+
+              <Image source={require('../Images/3005.png')} />
+              <Image source={require('../Images/3005.png')} />
+              <View style={styles.colorBox}></View>
+              <View style={styles.colorBox}></View>
+              <View style={styles.colorBox}></View>
+              <View style={styles.colorBox}></View>
+              <View style={styles.colorBox}></View>
+              <View style={styles.colorBox}></View>
+              <View style={styles.colorBox}></View>
+              <View style={styles.colorBox}></View>
+            </HStack>
+          </HStack>
+        </View>
+      </Modal>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  modalContainer: {
+    // height: 1,
+  },
+  mainModal: {
+    marginHorizontal: -20,
+    marginBottom: 623,
+    backgroundColor: '#6226ee',
+    // borderRadius: 20,
+    padding: 20,
+    height: 30,
+    alignItems: 'center',
+    // justifyContent: 'Center',
+    borderTopColor: 'gray',
+    borderTopWidth: 1,
+
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  colorBox: {
+    width: 20,
+    height: 20,
+    margin: 2,
+    // marginBottm: 100,
+    backgroundColor: 'red',
+  },
+  colorBoxContainer: {
+    justifyContent: 'center',
+  },
+});
 export default BrickPicker;
