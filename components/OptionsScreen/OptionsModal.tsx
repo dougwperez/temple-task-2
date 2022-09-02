@@ -12,8 +12,8 @@ const OptionsModal = props => {
       <Modal
         isVisible={optionsModalVisible}
         hasBackdrop={true}
-        animationType="slide"
-        animationIn={'slideInTop'}
+        animationType="fade"
+        animationIn={'slideInLeft'}
         animationOut={'slideOutLeft'}
         useNativeDriver={true}
         customBackdrop={
