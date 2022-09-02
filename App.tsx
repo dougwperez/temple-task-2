@@ -26,8 +26,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import TaskToolbar from './components/TaskToolbar';
-import BuilderToolbar from './components/BuilderToolbar';
+import TaskToolbar from './components/BottomBar/TaskToolbar';
+import BuilderToolbar from './components/TopBar/BuilderToolbar';
 import Playground from './components/Playground';
 
 // const Section = (children: any, title: string): Node => {
