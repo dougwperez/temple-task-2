@@ -10,6 +10,8 @@ import IconFoundation from 'react-native-vector-icons/Foundation';
 import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Popover, Button, Box, Center, NativeBaseProvider} from 'native-base';
 import ColorPicker from './ColorPicker';
+import CompletionModal from '../BottomBar/CompletionModal';
+import OptionsModal from '../OptionsScreen/OptionsModal';
 
 import {
   Provider,
@@ -21,40 +23,55 @@ import {
 } from '@react-native-material/core';
 
 const BuilderToolbar = () => {
-  const [visible, setVisible] = useState(false);
+  const [optionsModalVisible, setOptionsModalVisible] = useState(false);
   const [isOpenTop, setIsOpenTop] = React.useState(false);
-  return (
-    <AppBar
-      title="TempleTask"
-      leading={props => (
-        <IconButton
-          icon={props => <Icon name="menu" {...props} />}
-          {...props}
-          style={{marginRight: -12}}
-        />
-      )}
-      trailing={props => (
-        <HStack>
-          <IconButton
-            icon={props => <IconIon name="hammer" {...props} />}
-            {...props}
-          />
-          <IconButton
-            icon={props => <IconFoundation name="paint-bucket" {...props} />}
-            {...props}
-          />
 
+  const toggleModal = () => {
+    setOptionsModalVisible(!optionsModalVisible);
+  };
+
+  return (
+    <>
+      <AppBar
+        title="TempleTask"
+        leading={props => (
           <IconButton
-            icon={props => <IconMaterial name="toy-brick" {...props} />}
+            icon={props => <Icon name="menu" {...props} />}
             {...props}
+            style={{marginRight: -12}}
+            onPress={() => toggleModal()}
           />
-          <IconButton
-            icon={props => <IconMaterial name="delete" {...props} />}
-            {...props}
-          />
-        </HStack>
-      )}
-    />
+        )}
+        trailing={props => (
+          <HStack>
+            <IconButton
+              icon={props => <IconIon name="hammer" {...props} />}
+              {...props}
+            />
+            <IconButton
+              icon={props => <IconFoundation name="paint-bucket" {...props} />}
+              {...props}
+            />
+
+            <IconButton
+              icon={props => <IconMaterial name="toy-brick" {...props} />}
+              {...props}
+            />
+            <IconButton
+              icon={props => <IconMaterial name="delete" {...props} />}
+              {...props}
+            />
+          </HStack>
+        )}
+      />
+      {optionsModalVisible ? (
+        <OptionsModal
+          toggleModal={toggleModal}
+          setOptionsModalVisible={setOptionsModalVisible}
+          optionsModalVisible={optionsModalVisible}
+        />
+      ) : null}
+    </>
   );
 };
 export default BuilderToolbar;
