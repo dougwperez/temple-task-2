@@ -23,6 +23,7 @@ const BuilderToolbar = () => {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
   const [colorPickerVisible, setColorPickerVisible] = useState(false);
   const [brickPickerVisible, setBrickPickerVisible] = useState(false);
+  const [toolPickerVisible, setToolPickerVisible] = useState(false);
   // const [isOpenTop, setIsOpenTop] = React.useState(false);
 
   const toggleModal = () => {
@@ -35,6 +36,10 @@ const BuilderToolbar = () => {
 
   const toggleBrickPicker = () => {
     setBrickPickerVisible(!brickPickerVisible);
+  };
+
+  const toggleToolPicker = () => {
+    setToolPickerVisible(!toolPickerVisible);
   };
 
   return (
@@ -53,6 +58,7 @@ const BuilderToolbar = () => {
           <HStack>
             <IconButton
               icon={props => <IconIon name="hammer" {...props} />}
+              onPress={() => toggleToolPicker()}
               {...props}
             />
             <IconButton
@@ -104,11 +110,11 @@ const BuilderToolbar = () => {
           brickPickerVisible={brickPickerVisible}
         />
       ) : null}
-      {brickPickerVisible ? (
+      {toolPickerVisible ? (
         <ToolPicker
-          toggleBrickPicker={toggleBrickPicker}
-          setBrickPickerVisible={setBrickPickerVisible}
-          brickPickerVisible={brickPickerVisible}
+          toggleToolPicker={toggleToolPicker}
+          setToolPickerVisible={setToolPickerVisible}
+          toolPickerVisible={toolPickerVisible}
         />
       ) : null}
     </>

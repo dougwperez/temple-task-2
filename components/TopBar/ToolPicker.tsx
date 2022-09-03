@@ -6,56 +6,84 @@ import {
   TouchableWithoutFeedback,
   Image,
 } from 'react-native';
-import {HStack} from '@react-native-material/core';
+import {HStack, IconButton} from '@react-native-material/core';
 import Modal from 'react-native-modal';
 import {ListItem} from '@react-native-material/core';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const ToolPicker = props => {
-  const {toggleBrickPicker, setBrickPickerVisible, brickPickerVisible} = props;
+  const {toggleToolPicker, setToolPickerVisible, toolPickerVisible} = props;
   return (
     <View style={styles.modalContainer}>
       <Modal
-        isVisible={brickPickerVisible}
+        isVisible={toolPickerVisible}
         hasBackdrop={true}
         animationType="fade"
         animationIn={'slideInLeft'}
         animationOut={'slideOutLeft'}
         useNativeDriver={true}
         customBackdrop={
-          <TouchableWithoutFeedback onPress={toggleBrickPicker}>
+          <TouchableWithoutFeedback onPress={toggleToolPicker}>
             <View style={{flex: 1}} />
           </TouchableWithoutFeedback>
         }>
         <View>
           <HStack style={styles.mainModal}>
             <HStack style={styles.colorBoxContainer}>
-              <Image
-                style={styles.brickPicks}
-                source={require('../Images/1x1.png')}
+              <IconButton
+                icon={props => (
+                  <Icon
+                    name="drag-variant"
+                    {...props}
+                    color="white"
+                    // onPress={() => toggleBrickPicker()}
+                  />
+                )}
+                {...props}
               />
-              <Image
-                style={styles.brickPicks}
-                source={require('../Images/1x2.png')}
+              <IconButton
+                icon={props => (
+                  <Icon
+                    name="cursor-default-click"
+                    {...props}
+                    color="white"
+                    // onPress={() => toggleBrickPicker()}
+                  />
+                )}
+                {...props}
               />
-              <Image
-                style={styles.brickPicks}
-                source={require('../Images/1x3.png')}
+              <IconButton
+                icon={props => (
+                  <Icon
+                    name="rotate-right"
+                    {...props}
+                    color="white"
+                    // onPress={() => toggleBrickPicker()}
+                  />
+                )}
+                {...props}
               />
-              <Image
-                style={styles.brickPicks}
-                source={require('../Images/1x4.png')}
+              <IconButton
+                icon={props => (
+                  <Icon
+                    name="grid"
+                    {...props}
+                    color="white"
+                    // onPress={() => toggleBrickPicker()}
+                  />
+                )}
+                {...props}
               />
-              <Image
-                style={styles.brickPicks}
-                source={require('../Images/2x2.png')}
-              />
-              <Image
-                style={styles.brickPicks}
-                source={require('../Images/2x3.png')}
-              />
-              <Image
-                style={styles.brickPicks}
-                source={require('../Images/2x4.png')}
+              <IconButton
+                icon={props => (
+                  <Icon
+                    name="trash-can"
+                    {...props}
+                    color="white"
+                    // onPress={() => toggleBrickPicker()}
+                  />
+                )}
+                {...props}
               />
             </HStack>
           </HStack>
