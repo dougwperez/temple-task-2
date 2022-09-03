@@ -24,6 +24,11 @@ const OptionsModal = props => {
         <View style={styles.mainModal}>
           <>
             <ListItem
+              title="User Profile"
+              leading={<Icon name="account" size={24} />}
+              trailing={props => <Icon name="chevron-right" {...props} />}
+            />
+            <ListItem
               title="Hall of Fame"
               leading={<Icon name="trophy-award" size={24} />}
               trailing={props => <Icon name="chevron-right" {...props} />}
@@ -38,11 +43,11 @@ const OptionsModal = props => {
               leading={<Icon name="lock-reset" size={24} />}
               trailing={props => <Icon name="chevron-right" {...props} />}
             />
-            <ListItem
+            {/* <ListItem
               title="Toggle Grid"
               leading={<Icon name="grid" size={24} />}
               trailing={props => <Icon name="chevron-right" {...props} />}
-            />
+            /> */}
             <ListItem
               title="Help"
               leading={<Icon name="help" size={24} />}

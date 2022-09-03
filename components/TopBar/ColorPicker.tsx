@@ -76,9 +76,11 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   colorBox: {
-    width: 20,
-    height: 20,
-    margin: 2,
+    width: 30,
+    height: 30,
+    margin: 3,
+    borderWidth: 1,
+    borderColor: 'gray',
   },
   colorBoxContainer: {
     justifyContent: 'center',

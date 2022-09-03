@@ -10,7 +10,7 @@ import {HStack} from '@react-native-material/core';
 import Modal from 'react-native-modal';
 import {ListItem} from '@react-native-material/core';
 
-const BrickPicker = props => {
+const ToolPicker = props => {
   const {toggleBrickPicker, setBrickPickerVisible, brickPickerVisible} = props;
   return (
     <View style={styles.modalContainer}>
@@ -108,4 +108,4 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
   },
 });
-export default BrickPicker;
+export default ToolPicker;

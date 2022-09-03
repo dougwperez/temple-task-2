@@ -7,6 +7,7 @@ import IconFoundation from 'react-native-vector-icons/Foundation';
 import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
 import ColorPicker from './ColorPicker';
 import BrickPicker from './BrickPicker';
+import ToolPicker from './ToolPicker';
 import OptionsModal from '../OptionsScreen/OptionsModal';
 
 import {
@@ -39,7 +40,7 @@ const BuilderToolbar = () => {
   return (
     <>
       <AppBar
-        title="TempleTask"
+        title="Temple Task"
         leading={props => (
           <IconButton
             icon={props => <Icon name="menu" {...props} />}
@@ -75,10 +76,10 @@ const BuilderToolbar = () => {
               )}
               {...props}
             />
-            <IconButton
+            {/* <IconButton
               icon={props => <IconMaterial name="delete" {...props} />}
               {...props}
-            />
+            /> */}
           </HStack>
         )}
       />
@@ -98,6 +99,13 @@ const BuilderToolbar = () => {
       ) : null}
       {brickPickerVisible ? (
         <BrickPicker
+          toggleBrickPicker={toggleBrickPicker}
+          setBrickPickerVisible={setBrickPickerVisible}
+          brickPickerVisible={brickPickerVisible}
+        />
+      ) : null}
+      {brickPickerVisible ? (
+        <ToolPicker
           toggleBrickPicker={toggleBrickPicker}
           setBrickPickerVisible={setBrickPickerVisible}
           brickPickerVisible={brickPickerVisible}
