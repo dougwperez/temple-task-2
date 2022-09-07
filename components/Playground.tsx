@@ -5,6 +5,8 @@ import {View} from 'react-native';
 const Playground = () => {
   const WebAPICode = `
   setTimeout(function() { document.querySelector(".ion-paintbrush").click(); }, 1000);
+  setTimeout(function() { document.querySelector(".ion-grid").click(); }, 3000);
+  setTimeout(function() { document.querySelector(".ion-grid").click(); }, 6000);
   true`;
 
   return (
