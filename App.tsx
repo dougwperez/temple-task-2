@@ -58,7 +58,7 @@ import Playground from './components/Playground';
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  const [gridStatus, setGridStatus] = useState(false);
+  const [gridStatus, setGridStatus] = useState(true);
   console.log('Koca: gridStatus ', gridStatus);
 
   const toggleGrid = () => {
@@ -73,7 +73,7 @@ const App: () => Node = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <BuilderToolbar toggleGrid={toggleGrid} />
-      <Playground />
+      <Playground gridStatus={gridStatus} />
 
       <TaskToolbar />
     </SafeAreaView>
