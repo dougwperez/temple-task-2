@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -58,6 +58,12 @@ import Playground from './components/Playground';
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
+  const [gridStatus, setGridStatus] = useState(false);
+  console.log('Koca: gridStatus ', gridStatus);
+
+  const toggleGrid = () => {
+    setGridStatus(!gridStatus);
+  };
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -66,7 +72,7 @@ const App: () => Node = () => {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <BuilderToolbar />
+      <BuilderToolbar toggleGrid={toggleGrid} />
       <Playground />
 
       <TaskToolbar />

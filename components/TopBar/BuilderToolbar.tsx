@@ -19,7 +19,9 @@ import {
   Text,
 } from '@react-native-material/core';
 
-const BuilderToolbar = () => {
+const BuilderToolbar = props => {
+  const {toggleGrid} = props;
+
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
   const [colorPickerVisible, setColorPickerVisible] = useState(false);
   const [brickPickerVisible, setBrickPickerVisible] = useState(false);
@@ -115,6 +117,7 @@ const BuilderToolbar = () => {
           toggleToolPicker={toggleToolPicker}
           setToolPickerVisible={setToolPickerVisible}
           toolPickerVisible={toolPickerVisible}
+          toggleGrid={toggleGrid}
         />
       ) : null}
     </>

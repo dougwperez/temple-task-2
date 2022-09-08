@@ -12,7 +12,12 @@ import {ListItem} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const ToolPicker = props => {
-  const {toggleToolPicker, setToolPickerVisible, toolPickerVisible} = props;
+  const {
+    toggleToolPicker,
+    setToolPickerVisible,
+    toolPickerVisible,
+    toggleGrid,
+  } = props;
   return (
     <View style={styles.modalContainer}>
       <Modal
@@ -69,7 +74,7 @@ const ToolPicker = props => {
                     name="grid"
                     {...props}
                     color="white"
-                    // onPress={() => toggleBrickPicker()}
+                    onPress={() => toggleGrid()}
                   />
                 )}
                 {...props}
