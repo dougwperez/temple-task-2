@@ -24,22 +24,6 @@ const DATA = [
     title: 'Do Three Toy Problems',
   },
 ];
-const Item = ({title, onPress}) => (
-  <BouncyCheckbox
-    size={25}
-    fillColor="green"
-    unfillColor="#FFFFFF"
-    text={title}
-    iconStyle={{borderColor: 'red'}}
-    innerIconStyle={{borderWidth: 2}}
-    // textStyle={{fontFamily: 'JosefinSans-Regular'}}
-    onPress={() => {
-      onPress;
-    }}
-    // disableBuiltInState
-    style={{marginBottom: 10}}
-  />
-);
 
 const CompletionModal = props => {
   const {setCompletionModalVisible, completionModalVisible} = props;
@@ -48,17 +32,17 @@ const CompletionModal = props => {
   console.log('Koca: dailyScore ', dailyScore);
 
   const renderItem = ({item}) => (
-    // <Item title={item.title} onPress={() => console.log('test')} />
     <BouncyCheckbox
       size={25}
       fillColor="green"
       unfillColor="#FFFFFF"
-      text="test"
+      text={item.title}
       iconStyle={{borderColor: 'red'}}
       innerIconStyle={{borderWidth: 2}}
-      // textStyle={{fontFamily: 'JosefinSans-Regular'}}
-      onPress={() => {
-        setDailyScore(dailyScore + 1);
+      onPress={(isChecked: boolean) => {
+        isChecked
+          ? setDailyScore(dailyScore + 1)
+          : setDailyScore(dailyScore - 1);
       }}
       // disableBuiltInState
       style={{marginBottom: 10}}

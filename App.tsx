@@ -47,7 +47,7 @@ const App: () => Node = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <BuilderToolbar toggleGrid={toggleGrid} />
-      {/* <Playground gridStatus={gridStatus} /> */}
+      <Playground gridStatus={gridStatus} />
 
       <TaskToolbar />
     </SafeAreaView>
