@@ -30,12 +30,6 @@ const DATA = [
   },
 ];
 
-const Item = ({item, onPress, backgroundColor, textColor}) => (
-  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-    <Text style={[styles.title, textColor]}>{item.title}</Text>
-  </TouchableOpacity>
-);
-
 const GoalsModal = props => {
   const {setGoalModalVisible, goalModalVisible} = props;
   const [selectedId, setSelectedId] = useState(null);
@@ -44,6 +38,14 @@ const GoalsModal = props => {
   const renderItem = ({item}) => {
     const backgroundColor = item.id === selectedId ? '#6e3b6e' : 'white';
     const color = item.id === selectedId ? 'white' : 'black';
+
+    const Item = ({item, onPress, backgroundColor, textColor}) => (
+      <TouchableOpacity
+        onPress={onPress}
+        style={[styles.item, backgroundColor]}>
+        <Text style={[styles.title, textColor]}>{item.title}</Text>
+      </TouchableOpacity>
+    );
 
     return (
       <HStack>

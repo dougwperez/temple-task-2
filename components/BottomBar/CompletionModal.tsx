@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Alert,
   Modal,
@@ -24,8 +24,7 @@ const DATA = [
     title: 'Do Three Toy Problems',
   },
 ];
-
-const Item = ({title}) => (
+const Item = ({title, onPress}) => (
   <BouncyCheckbox
     size={25}
     fillColor="green"
@@ -34,7 +33,10 @@ const Item = ({title}) => (
     iconStyle={{borderColor: 'red'}}
     innerIconStyle={{borderWidth: 2}}
     // textStyle={{fontFamily: 'JosefinSans-Regular'}}
-    onPress={(isChecked: boolean) => {}}
+    onPress={() => {
+      onPress;
+    }}
+    // disableBuiltInState
     style={{marginBottom: 10}}
   />
 );
@@ -42,7 +44,26 @@ const Item = ({title}) => (
 const CompletionModal = props => {
   const {setCompletionModalVisible, completionModalVisible} = props;
 
-  const renderItem = ({item}) => <Item title={item.title} />;
+  const [dailyScore, setDailyScore] = React.useState(0);
+  console.log('Koca: dailyScore ', dailyScore);
+
+  const renderItem = ({item}) => (
+    // <Item title={item.title} onPress={() => console.log('test')} />
+    <BouncyCheckbox
+      size={25}
+      fillColor="green"
+      unfillColor="#FFFFFF"
+      text="test"
+      iconStyle={{borderColor: 'red'}}
+      innerIconStyle={{borderWidth: 2}}
+      // textStyle={{fontFamily: 'JosefinSans-Regular'}}
+      onPress={() => {
+        setDailyScore(dailyScore + 1);
+      }}
+      // disableBuiltInState
+      style={{marginBottom: 10}}
+    />
+  );
 
   return (
     <View style={styles.centeredView}>
@@ -63,7 +84,9 @@ const CompletionModal = props => {
               renderItem={renderItem}
               keyExtractor={item => item.id}
             />
-            <Text style={styles.trackerText}>X Coins Earned Today</Text>
+            <Text style={styles.trackerText}>
+              {dailyScore} Coins Earned Today
+            </Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() =>
