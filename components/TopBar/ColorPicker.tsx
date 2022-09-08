@@ -37,7 +37,7 @@ const ColorPicker = props => {
             <HStack style={styles.colorBoxContainer}>
               <TouchableOpacity
                 style={[{backgroundColor: '#FF0000'}, styles.colorBox]}
-                onPress={() => selectColor('red')}></TouchableOpacity>
+                onPress={() => selectColor('#FF0000')}></TouchableOpacity>
               <View
                 style={[{backgroundColor: '#FF9800'}, styles.colorBox]}></View>
               <View

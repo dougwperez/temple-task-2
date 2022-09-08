@@ -20,7 +20,7 @@ import {
 } from '@react-native-material/core';
 
 const BuilderToolbar = props => {
-  const {toggleGrid, selectColor} = props;
+  const {toggleGrid, selectColor, selectedColor} = props;
 
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
   const [colorPickerVisible, setColorPickerVisible] = useState(false);
@@ -81,6 +81,7 @@ const BuilderToolbar = props => {
                 <IconFoundation
                   name="paint-bucket"
                   {...props}
+                  color={selectedColor}
                   onPress={() => toggleColorPicker()}
                 />
               )}

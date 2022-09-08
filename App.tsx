@@ -33,7 +33,7 @@ import Playground from './components/Playground';
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [gridStatus, setGridStatus] = useState(true);
-  const [selectedColor, setSelectedColor] = useState('blue');
+  const [selectedColor, setSelectedColor] = useState('white');
   console.log('Koca: selectedColor ', selectedColor);
   console.log('Koca: gridStatus ', gridStatus);
 
@@ -52,7 +52,11 @@ const App: () => Node = () => {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <BuilderToolbar toggleGrid={toggleGrid} selectColor={selectColor} />
+      <BuilderToolbar
+        toggleGrid={toggleGrid}
+        selectColor={selectColor}
+        selectedColor={selectedColor}
+      />
       <Playground gridStatus={gridStatus} selectedColor={selectedColor} />
 
       <TaskToolbar />
