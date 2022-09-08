@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 import {AppBar, IconButton, HStack} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/Feather';
 import IconIon from 'react-native-vector-icons/Ionicons';
@@ -47,14 +47,21 @@ const BuilderToolbar = props => {
   return (
     <>
       <AppBar
-        title="Temple Task"
+        title="TempleTask"
+        titleStyle={{fontWeight: 'bold'}}
         leading={props => (
-          <IconButton
-            icon={props => <Icon name="menu" {...props} />}
-            {...props}
-            style={{marginRight: -12}}
-            onPress={() => toggleModal()}
-          />
+          <HStack>
+            <IconButton
+              icon={props => <Icon name="menu" {...props} />}
+              {...props}
+              style={{marginRight: -12}}
+              onPress={() => toggleModal()}
+            />
+            <Image
+              style={styles.brickPicks}
+              source={require('../Images/logoNoBackground.png')}
+            />
+          </HStack>
         )}
         trailing={props => (
           <HStack>
@@ -123,4 +130,15 @@ const BuilderToolbar = props => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  brickPicks: {
+    width: 42,
+    height: 35,
+    margin: 3,
+    marginRight: -27,
+    marginTop: 7,
+  },
+});
+
 export default BuilderToolbar;
