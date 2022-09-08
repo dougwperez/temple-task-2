@@ -1,12 +1,23 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableWithoutFeedback} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
+} from 'react-native';
 import {HStack} from '@react-native-material/core';
 import Modal from 'react-native-modal';
 import {ListItem} from '@react-native-material/core';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 
 const ColorPicker = props => {
-  const {toggleColorPicker, setColorPickerVisible, colorPickerVisible} = props;
+  const {
+    toggleColorPicker,
+    setColorPickerVisible,
+    colorPickerVisible,
+    selectColor,
+  } = props;
   return (
     <View style={styles.modalContainer}>
       <Modal
@@ -24,8 +35,9 @@ const ColorPicker = props => {
         <View>
           <HStack style={styles.mainModal}>
             <HStack style={styles.colorBoxContainer}>
-              <View
-                style={[{backgroundColor: '#FF0000'}, styles.colorBox]}></View>
+              <TouchableOpacity
+                style={[{backgroundColor: '#FF0000'}, styles.colorBox]}
+                onPress={() => selectColor('red')}></TouchableOpacity>
               <View
                 style={[{backgroundColor: '#FF9800'}, styles.colorBox]}></View>
               <View

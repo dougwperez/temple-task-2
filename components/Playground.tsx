@@ -3,7 +3,8 @@ import {WebView} from 'react-native-webview';
 import {View} from 'react-native';
 
 const Playground = props => {
-  const {gridStatus} = props;
+  const {gridStatus, selectedColor} = props;
+  console.log('Koca: selectedColor in playground ', selectedColor);
 
   const webViewRef = useRef(null);
 
