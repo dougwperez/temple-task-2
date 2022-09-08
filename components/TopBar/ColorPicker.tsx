@@ -38,22 +38,37 @@ const ColorPicker = props => {
               <TouchableOpacity
                 style={[{backgroundColor: '#FF0000'}, styles.colorBox]}
                 onPress={() => selectColor('#FF0000')}></TouchableOpacity>
-              <View
-                style={[{backgroundColor: '#FF9800'}, styles.colorBox]}></View>
-              <View
-                style={[{backgroundColor: '#F0E100'}, styles.colorBox]}></View>
-              <View
-                style={[{backgroundColor: '#00DE00'}, styles.colorBox]}></View>
-              <View
-                style={[{backgroundColor: '#A1BC24'}, styles.colorBox]}></View>
-              <View
-                style={[{backgroundColor: '#0011CF'}, styles.colorBox]}></View>
-              <View
-                style={[{backgroundColor: '#FFFFFF'}, styles.colorBox]}></View>
-              <View
-                style={[{backgroundColor: '#000000'}, styles.colorBox]}></View>
-              <View
-                style={[{backgroundColor: '#652A0C'}, styles.colorBox]}></View>
+              <TouchableOpacity
+                style={[{backgroundColor: '#FF9800'}, styles.colorBox]}
+                onPress={() => selectColor('#FF9800')}></TouchableOpacity>
+
+              <TouchableOpacity
+                style={[{backgroundColor: '#F0E100'}, styles.colorBox]}
+                onPress={() => selectColor('#F0E100')}></TouchableOpacity>
+
+              <TouchableOpacity
+                style={[{backgroundColor: '#00DE00'}, styles.colorBox]}
+                onPress={() => selectColor('#00DE00')}></TouchableOpacity>
+
+              <TouchableOpacity
+                style={[{backgroundColor: '#A1BC24'}, styles.colorBox]}
+                onPress={() => selectColor('#A1BC24')}></TouchableOpacity>
+
+              <TouchableOpacity
+                style={[{backgroundColor: '#0011CF'}, styles.colorBox]}
+                onPress={() => selectColor('#0011CF')}></TouchableOpacity>
+
+              <TouchableOpacity
+                style={[{backgroundColor: '#FFFFFF'}, styles.colorBox]}
+                onPress={() => selectColor('#FFFFFF')}></TouchableOpacity>
+
+              <TouchableOpacity
+                style={[{backgroundColor: '#000000'}, styles.colorBox]}
+                onPress={() => selectColor('#000000')}></TouchableOpacity>
+
+              <TouchableOpacity
+                style={[{backgroundColor: '#652A0C'}, styles.colorBox]}
+                onPress={() => selectColor('#652A0C')}></TouchableOpacity>
             </HStack>
           </HStack>
         </View>
