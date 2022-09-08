@@ -48,7 +48,13 @@ const BuilderToolbar = props => {
     <>
       <AppBar
         title="TempleTask"
-        titleStyle={{fontWeight: 'bold'}}
+        titleStyle={{
+          fontWeight: '700',
+          color: '#50eb1a',
+          textShadowColor: 'rgba(0, 0, 0, 0.75)',
+          textShadowOffset: {width: -1, height: 1},
+          textShadowRadius: 10,
+        }}
         leading={props => (
           <HStack>
             <IconButton

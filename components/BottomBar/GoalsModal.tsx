@@ -22,11 +22,11 @@ const DATA = [
   },
   {
     id: '3ac68afc',
-    title: 'Go to Gym',
+    title: 'Go to Gym for one hour',
   },
   {
     id: '58694a0f',
-    title: 'Do Toy Problem',
+    title: 'Do Three Toy Problems',
   },
 ];
 

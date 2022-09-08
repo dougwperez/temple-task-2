@@ -17,11 +17,11 @@ const DATA = [
   },
   {
     id: '3ac68afc',
-    title: 'Go to Gym',
+    title: 'Go to Gym for one hour',
   },
   {
     id: '58694a0f',
-    title: 'Do Toy Problem',
+    title: 'Do Three Toy Problems',
   },
 ];
 
@@ -30,7 +30,7 @@ const Item = ({title}) => (
     size={25}
     fillColor="green"
     unfillColor="#FFFFFF"
-    text="Custom Checkbox"
+    text={title}
     iconStyle={{borderColor: 'red'}}
     innerIconStyle={{borderWidth: 2}}
     // textStyle={{fontFamily: 'JosefinSans-Regular'}}
@@ -63,7 +63,7 @@ const CompletionModal = props => {
               renderItem={renderItem}
               keyExtractor={item => item.id}
             />
-            <Text style={styles.modalText}>X Coins Earned Today</Text>
+            <Text style={styles.trackerText}>X Coins Earned Today</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() =>
@@ -118,10 +118,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   modalText: {
-    marginBottom: 15,
+    marginBottom: 25,
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 18,
+  },
+  trackerText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    // fontWeight: 'bold',
+    fontSize: 15,
   },
 });
 export default CompletionModal;
