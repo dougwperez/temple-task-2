@@ -76,7 +76,7 @@ const CompletionModal = props => {
               onPress={() =>
                 setCompletionModalVisible(!completionModalVisible)
               }>
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              <Text style={styles.textStyle}>Finished!</Text>
             </Pressable>
           </View>
         </View>
