@@ -33,7 +33,7 @@ const DATA = [
 const GoalsModal = props => {
   const {setGoalModalVisible, goalModalVisible} = props;
   const [selectedId, setSelectedId] = useState(null);
-  const [text, onChangeText] = React.useState('Useless Text');
+  const [text, onChangeText] = React.useState('Add your task..');
 
   const renderItem = ({item}) => {
     const backgroundColor = item.id === selectedId ? '#6e3b6e' : 'white';
@@ -43,7 +43,7 @@ const GoalsModal = props => {
       <TouchableOpacity
         onPress={onPress}
         style={[styles.item, backgroundColor]}>
-        <Text style={[styles.title, textColor]}>{item.title}</Text>
+        <Text style={[styles.title, textColor]}>{`\u2022 ${item.title}`}</Text>
       </TouchableOpacity>
     );
 
@@ -75,7 +75,7 @@ const GoalsModal = props => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Add Goal</Text>
+            <Text style={styles.modalText}>Edit My Tasks</Text>
             <SafeAreaView style={styles.container}>
               <HStack>
                 <TextInput
@@ -88,7 +88,6 @@ const GoalsModal = props => {
                   color="primary"
                 />
               </HStack>
-              <Text style={styles.modalText}>All Goals</Text>
               <FlatList
                 data={DATA}
                 renderItem={renderItem}
@@ -99,7 +98,7 @@ const GoalsModal = props => {
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setGoalModalVisible(!goalModalVisible)}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              <Text style={styles.textStyle}>Save Tasks</Text>
             </Pressable>
           </View>
         </View>
@@ -147,7 +146,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   modalText: {
-    marginBottom: 15,
+    marginBottom: 25,
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
@@ -159,16 +158,12 @@ const styles = StyleSheet.create({
   item: {
     padding: 20,
     marginVertical: 5,
-    marginHorizontal: 10,
-    borderWidth: 2,
+    marginHorizontal: 5,
+
     height: 40,
     margin: 12,
-    borderWidth: 0,
     padding: 10,
     width: 150,
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
   },
   title: {
     fontSize: 15,
@@ -176,12 +171,11 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     margin: 12,
-    borderWidth: 0.2,
+    borderWidth: 0.1,
     padding: 10,
     width: 150,
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+    backgroundColor: '#e4f6f8',
+    borderRadius: 10,
   },
   todoWrapper: {
     display: 'flex',
