@@ -35,34 +35,6 @@ const BrickPicker = props => {
         <View>
           <HStack style={styles.mainModal}>
             <HStack style={styles.colorBoxContainer}>
-              {/* <Image
-                style={styles.brickPicks}
-                source={require('../Images/1x1.png')}
-              />
-              <Image
-                style={styles.brickPicks}
-                source={require('../Images/1x2.png')}
-              />
-              <Image
-                style={styles.brickPicks}
-                source={require('../Images/1x3.png')}
-              />
-              <Image
-                style={styles.brickPicks}
-                source={require('../Images/1x4.png')}
-              />
-              <Image
-                style={styles.brickPicks}
-                source={require('../Images/2x2.png')}
-              />
-              <Image
-                style={styles.brickPicks}
-                source={require('../Images/2x3.png')}
-              />
-              <Image
-                style={styles.brickPicks}
-                source={require('../Images/2x4.png')}
-              /> */}
               <TouchableOpacity
                 style={styles.brickPicks}
                 onPress={() => selectBrick(0)}>
@@ -81,7 +53,7 @@ const BrickPicker = props => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.brickPicks}
-                onPress={() => selectBrick(2)}>
+                onPress={() => selectBrick(3)}>
                 <Image
                   style={styles.brickImg}
                   source={require('../Images/1x3.png')}
@@ -97,7 +69,7 @@ const BrickPicker = props => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.brickPicks}
-                onPress={() => selectBrick(5)}>
+                onPress={() => selectBrick(2)}>
                 <Image
                   style={styles.brickImg}
                   source={require('../Images/2x2.png')}
@@ -105,7 +77,7 @@ const BrickPicker = props => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.brickPicks}
-                onPress={() => selectBrick(6)}>
+                onPress={() => selectBrick(4)}>
                 <Image
                   style={styles.brickImg}
                   source={require('../Images/2x3.png')}
@@ -113,7 +85,7 @@ const BrickPicker = props => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.brickPicks}
-                onPress={() => selectBrick(7)}>
+                onPress={() => selectBrick(6)}>
                 <Image
                   style={styles.brickImg}
                   source={require('../Images/2x4.png')}
