@@ -34,8 +34,7 @@ const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [gridStatus, setGridStatus] = useState(true);
   const [selectedColor, setSelectedColor] = useState('white');
-  console.log('Koca: selectedColor ', selectedColor);
-  console.log('Koca: gridStatus ', gridStatus);
+  const [selectedBrick, setSelectedBrick] = useState(3);
 
   const toggleGrid = () => {
     setGridStatus(!gridStatus);
@@ -43,6 +42,10 @@ const App: () => Node = () => {
 
   const selectColor = (color: string) => {
     setSelectedColor(color);
+  };
+
+  const selectBrick = (brickNum: number) => {
+    setSelectedBrick(brickNum);
   };
 
   const backgroundStyle = {
@@ -56,8 +59,14 @@ const App: () => Node = () => {
         toggleGrid={toggleGrid}
         selectColor={selectColor}
         selectedColor={selectedColor}
+        selectBrick={selectBrick}
+        selectedBrick={selectedBrick}
       />
-      <Playground gridStatus={gridStatus} selectedColor={selectedColor} />
+      <Playground
+        gridStatus={gridStatus}
+        selectedColor={selectedColor}
+        selectedBrick={selectedBrick}
+      />
 
       <TaskToolbar />
     </SafeAreaView>

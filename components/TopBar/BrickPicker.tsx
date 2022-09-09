@@ -5,13 +5,19 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import {HStack} from '@react-native-material/core';
 import Modal from 'react-native-modal';
 import {ListItem} from '@react-native-material/core';
 
 const BrickPicker = props => {
-  const {toggleBrickPicker, setBrickPickerVisible, brickPickerVisible} = props;
+  const {
+    toggleBrickPicker,
+    setBrickPickerVisible,
+    brickPickerVisible,
+    selectBrick,
+  } = props;
   return (
     <View style={styles.modalContainer}>
       <Modal
@@ -57,6 +63,9 @@ const BrickPicker = props => {
                 style={styles.brickPicks}
                 source={require('../Images/2x4.png')}
               />
+              <TouchableOpacity
+                style={styles.brickPicks}
+                onPress={() => selectBrick(5)}></TouchableOpacity>
             </HStack>
           </HStack>
         </View>

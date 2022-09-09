@@ -3,7 +3,7 @@ import {WebView} from 'react-native-webview';
 import {View} from 'react-native';
 
 const Playground = props => {
-  const {gridStatus, selectedColor} = props;
+  const {gridStatus, selectedColor, selectedBrick} = props;
   console.log('Koca: selectedColor in playground ', selectedColor);
 
   const webViewRef = useRef(null);
@@ -16,6 +16,10 @@ const Playground = props => {
   setTimeout(function() { document.querySelector('[title="${selectedColor}"]').click() }, 1);
   true`;
 
+  const selectBrickString = `
+  setTimeout(function() { document.getElementsByClassName("brick-picker__brickThumb--QVXb4")[${selectedBrick}].click() }, "1");
+  true`;
+
   useEffect(() => {
     webViewRef.current.injectJavaScript(toggleGridString);
   }, [gridStatus]);
@@ -24,6 +28,11 @@ const Playground = props => {
     webViewRef.current.injectJavaScript(selectColorString);
     console.log('use effect for color called');
   }, [selectedColor]);
+
+  useEffect(() => {
+    webViewRef.current.injectJavaScript(selectBrickString);
+    console.log('use effect for brick called');
+  }, [selectedBrick]);
 
   return (
     <View style={{height: 1000, top: -160}}>
