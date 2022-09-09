@@ -35,7 +35,7 @@ const BrickPicker = props => {
         <View>
           <HStack style={styles.mainModal}>
             <HStack style={styles.colorBoxContainer}>
-              <Image
+              {/* <Image
                 style={styles.brickPicks}
                 source={require('../Images/1x1.png')}
               />
@@ -62,10 +62,63 @@ const BrickPicker = props => {
               <Image
                 style={styles.brickPicks}
                 source={require('../Images/2x4.png')}
-              />
+              /> */}
               <TouchableOpacity
                 style={styles.brickPicks}
-                onPress={() => selectBrick(5)}></TouchableOpacity>
+                onPress={() => selectBrick(0)}>
+                <Image
+                  style={styles.brickImg}
+                  source={require('../Images/1x1.png')}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.brickPicks}
+                onPress={() => selectBrick(1)}>
+                <Image
+                  style={styles.brickImg}
+                  source={require('../Images/1x2.png')}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.brickPicks}
+                onPress={() => selectBrick(2)}>
+                <Image
+                  style={styles.brickImg}
+                  source={require('../Images/1x3.png')}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.brickPicks}
+                onPress={() => selectBrick(5)}>
+                <Image
+                  style={styles.brickImg}
+                  source={require('../Images/1x4.png')}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.brickPicks}
+                onPress={() => selectBrick(5)}>
+                <Image
+                  style={styles.brickImg}
+                  source={require('../Images/2x2.png')}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.brickPicks}
+                onPress={() => selectBrick(6)}>
+                <Image
+                  style={styles.brickImg}
+                  source={require('../Images/2x3.png')}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.brickPicks}
+                onPress={() => selectBrick(7)}>
+                <Image
+                  style={styles.brickImg}
+                  source={require('../Images/2x4.png')}
+                />
+              </TouchableOpacity>
             </HStack>
           </HStack>
         </View>
@@ -113,6 +166,14 @@ const styles = StyleSheet.create({
     width: 42,
     height: 35,
     margin: 3,
+    borderWidth: 1,
+    borderColor: 'gray',
+  },
+  brickImg: {
+    width: 42,
+    height: 35,
+    marginTop: -1,
+    // margin: 3,
     borderWidth: 1,
     borderColor: 'gray',
   },
