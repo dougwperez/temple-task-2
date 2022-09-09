@@ -61,7 +61,7 @@ const CompletionModal = props => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Completion Modal</Text>
+            <Text style={styles.modalText}>Daily Tasks</Text>
 
             <FlatList
               data={DATA}
