@@ -8,13 +8,22 @@ const Playground = props => {
 
   const webViewRef = useRef(null);
 
-  const toggleGrid = `
+  const toggleGridString = `
   setTimeout(function() { document.querySelector(".ion-grid").click(); }, 1);
   true`;
 
+  const selectColorString = `
+  setTimeout(function() { document.querySelector('[title="${selectedColor}"]').click() }, 1);
+  true`;
+
   useEffect(() => {
-    webViewRef.current.injectJavaScript(toggleGrid);
+    webViewRef.current.injectJavaScript(toggleGridString);
   }, [gridStatus]);
+
+  useEffect(() => {
+    webViewRef.current.injectJavaScript(selectColorString);
+    console.log('use effect for color called');
+  }, [selectedColor]);
 
   return (
     <View style={{height: 1000, top: -160}}>
