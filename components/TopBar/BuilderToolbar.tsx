@@ -50,10 +50,11 @@ const BuilderToolbar = props => {
         title="TempleTask"
         titleStyle={{
           fontWeight: '700',
-          color: '#50eb1a',
-          textShadowColor: 'rgba(0, 0, 0, 0.75)',
-          textShadowOffset: {width: -1, height: 1},
-          textShadowRadius: 10,
+          // color: '#4ce01a',
+          color: 'white',
+          // textShadowColor: 'rgba(0, 0, 0, 0.75)',
+          // textShadowOffset: {width: -1, height: 1},
+          // textShadowRadius: 10,
         }}
         leading={props => (
           <HStack>
