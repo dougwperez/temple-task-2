@@ -6,7 +6,7 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
 } from 'react-native';
-import {HStack} from '@react-native-material/core';
+import {AppBar, HStack} from '@react-native-material/core';
 import Modal from 'react-native-modal';
 import {ListItem} from '@react-native-material/core';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
@@ -20,6 +20,36 @@ const ColorPicker = props => {
   } = props;
   return (
     <View style={styles.modalContainer}>
+      {/* <AppBar
+        title="Testing Appbar"
+        isVisible={colorPickerVisible}
+        hasBackdrop={true}
+        animationType="fade"
+        animationIn={'slideInLeft'}
+        animationOut={'slideOutLeft'}
+        titleStyle={{
+          fontWeight: '700',
+          // color: '#4ce01a',
+          color: 'white',
+          // textShadowColor: 'rgba(0, 0, 0, 0.75)',
+          // textShadowOffset: {width: -1, height: 1},
+          // textShadowRadius: 10,
+        }}>
+        <HStack style={styles.appBarModal}>
+          <HStack style={styles.colorBoxContainer}>
+            <TouchableOpacity
+              style={[{backgroundColor: '#FF0000'}, styles.colorBox]}
+              onPress={() => selectColor('#FF0000')}></TouchableOpacity>
+            <TouchableOpacity
+              style={[{backgroundColor: '#FF9800'}, styles.colorBox]}
+              onPress={() => selectColor('#FF9800')}></TouchableOpacity>
+
+            <TouchableOpacity
+              style={[{backgroundColor: '#F0E100'}, styles.colorBox]}
+              onPress={() => selectColor('#F0E100')}></TouchableOpacity>
+          </HStack>
+        </HStack>
+      </AppBar> */}
       <Modal
         isVisible={colorPickerVisible}
         hasBackdrop={true}
@@ -80,11 +110,36 @@ const ColorPicker = props => {
 const styles = StyleSheet.create({
   modalContainer: {
     // height: 1,
+    // position: 'absolute',
+  },
+  appBarModal: {
+    marginHorizontal: -20,
+    position: 'absolute',
+    // marginBottom: 623,
+    backgroundColor: '#6226ee',
+    // borderRadius: 20,
+
+    padding: 20,
+    height: 30,
+    alignItems: 'center',
+    // justifyContent: 'Center',
+    borderTopColor: 'gray',
+    borderTopWidth: 1,
+
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
   mainModal: {
     marginHorizontal: -20,
     marginBottom: 623,
     backgroundColor: '#6226ee',
+
     // borderRadius: 20,
     padding: 20,
     height: 30,
