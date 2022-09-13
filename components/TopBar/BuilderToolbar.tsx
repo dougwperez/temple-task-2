@@ -70,6 +70,14 @@ const BuilderToolbar = props => {
       setTimeout(() => {
         setColorPickerVisible(false);
       }, 500);
+    } else if (brickPickerVisible) {
+      slideOut();
+      setTimeout(() => {
+        setBrickPickerVisible(false);
+      }, 500);
+      setTimeout(() => {
+        setColorPickerVisible(true);
+      }, 510);
     } else {
       setColorPickerVisible(true);
     }
@@ -78,9 +86,6 @@ const BuilderToolbar = props => {
   const toggleBrickPicker = () => {
     if (brickPickerVisible) {
       slideOut();
-      // setTimeout(() => {
-      //   setBrickPickerVisible(false);
-      // }, 500);
       setTimeout(() => {
         setBrickPickerVisible(false);
       }, 500);
@@ -92,6 +97,8 @@ const BuilderToolbar = props => {
       setTimeout(() => {
         setBrickPickerVisible(true);
       }, 510);
+    } else {
+      setBrickPickerVisible(true);
     }
   };
 
