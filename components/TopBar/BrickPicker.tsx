@@ -17,13 +17,14 @@ const BrickPicker = props => {
     setBrickPickerVisible,
     brickPickerVisible,
     selectBrick,
+    isVisible,
   } = props;
   return (
     <View style={styles.modalContainer}>
       <Modal
-        isVisible={brickPickerVisible}
+        isVisible={isVisible}
         hasBackdrop={true}
-        animationType="fade"
+        // animationType="fade"
         animationIn={'slideInLeft'}
         animationOut={'slideOutLeft'}
         useNativeDriver={true}

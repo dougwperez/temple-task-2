@@ -6,13 +6,13 @@ import {ListItem} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const OptionsModal = props => {
-  const {toggleModal, setOptionsModalVisible, optionsModalVisible} = props;
+  const {toggleModal, setOptionsModalVisible, optionsModalVisible, isVisible} =
+    props;
   return (
     <View>
       <Modal
-        isVisible={optionsModalVisible}
+        isVisible={isVisible}
         hasBackdrop={true}
-        animationType="fade"
         animationIn={'slideInLeft'}
         animationOut={'slideOutLeft'}
         useNativeDriver={true}

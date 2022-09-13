@@ -108,13 +108,13 @@ const BuilderToolbar = props => {
           </HStack>
         )}
       />
-      {optionsModalVisible ? (
-        <OptionsModal
-          toggleModal={toggleModal}
-          setOptionsModalVisible={setOptionsModalVisible}
-          optionsModalVisible={optionsModalVisible}
-        />
-      ) : null}
+
+      <OptionsModal
+        toggleModal={toggleModal}
+        setOptionsModalVisible={setOptionsModalVisible}
+        isVisible={optionsModalVisible}
+      />
+
       {colorPickerVisible ? (
         // <ColorPicker
         //   selectColor={selectColor}
@@ -129,14 +129,14 @@ const BuilderToolbar = props => {
           colorPickerVisible={colorPickerVisible}
         />
       ) : null}
-      {brickPickerVisible ? (
-        <BrickPicker
-          selectBrick={selectBrick}
-          toggleBrickPicker={toggleBrickPicker}
-          setBrickPickerVisible={setBrickPickerVisible}
-          brickPickerVisible={brickPickerVisible}
-        />
-      ) : null}
+
+      <BrickPicker
+        selectBrick={selectBrick}
+        toggleBrickPicker={toggleBrickPicker}
+        setBrickPickerVisible={setBrickPickerVisible}
+        isVisible={brickPickerVisible}
+      />
+
       {toolPickerVisible ? (
         <ToolPicker
           toggleToolPicker={toggleToolPicker}
