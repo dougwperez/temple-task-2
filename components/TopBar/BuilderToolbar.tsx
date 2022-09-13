@@ -141,20 +141,15 @@ const BuilderToolbar = props => {
                   name="paint-bucket"
                   {...props}
                   color={selectedColor}
-                  onPress={() => toggleColorPicker()}
                 />
               )}
+              onPress={() => toggleColorPicker()}
               {...props}
             />
 
             <IconButton
-              icon={props => (
-                <IconMaterial
-                  name="toy-brick"
-                  {...props}
-                  onPress={() => toggleBrickPicker()}
-                />
-              )}
+              icon={props => <IconMaterial name="toy-brick" {...props} />}
+              onPress={() => toggleBrickPicker()}
               {...props}
             />
           </HStack>
