@@ -190,6 +190,8 @@ const BuilderToolbar = props => {
           setToolPickerVisible={setToolPickerVisible}
           toolPickerVisible={toolPickerVisible}
           toggleGrid={toggleGrid}
+          animation={animation}
+          slideIn={slideIn}
         />
       ) : null}
     </>

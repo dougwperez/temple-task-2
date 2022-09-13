@@ -4,6 +4,7 @@ import {View, Text, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 import Modal from 'react-native-modal';
 import {ListItem} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import IconIon from 'react-native-vector-icons/Ionicons';
 
 const OptionsModal = props => {
   const {toggleModal, setOptionsModalVisible, optionsModalVisible, isVisible} =
@@ -50,14 +51,15 @@ const OptionsModal = props => {
               leading={<Icon name="lock-reset" size={24} />}
               trailing={props => <Icon name="chevron-right" {...props} />}
             />
-            {/* <ListItem
-              title="Toggle Grid"
-              leading={<Icon name="grid" size={24} />}
-              trailing={props => <Icon name="chevron-right" {...props} />}
-            /> */}
+
             <ListItem
               title="Help"
               leading={<Icon name="help" size={24} />}
+              trailing={props => <Icon name="chevron-right" {...props} />}
+            />
+            <ListItem
+              title="Settings"
+              leading={<IconIon name="settings-outline" size={24} />}
               trailing={props => <Icon name="chevron-right" {...props} />}
             />
             <ListItem
