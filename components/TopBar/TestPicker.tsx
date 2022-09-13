@@ -19,66 +19,25 @@ const TestPicker = props => {
     toggleColorPicker,
     setColorPickerVisible,
     colorPickerVisible,
-
     selectColor,
-    // animated,
     animation,
     slideIn,
     slideOut,
   } = props;
 
-  console.log('Koca: colorPickerVisible ', colorPickerVisible);
-
-  // const slideIn = () => {
-  //   Animated.sequence([
-  //     Animated.timing(animation, {
-  //       toValue: 0,
-  //       duration: 300,
-  //       useNativeDriver: true,
-  //     }),
-  //   ]).start();
-  // };
-
-  // const slideOut = () => {
-  //   Animated.sequence([
-  //     Animated.timing(animation, {
-  //       toValue: -500,
-  //       duration: 300,
-  //       useNativeDriver: true,
-  //     }),
-  //   ]).start();
-  // };
-
   useEffect(() => {
     slideIn();
   }, [colorPickerVisible]);
 
-  // useEffect(() => {
-  //   slideOut();
-  // }, [colorPickerVisible]);
-
   return (
-    // <SafeAreaView style={backgroundStyle}>
-    // <Animated.View
-    //   style={[
-    //     styles.fadingContainer,
-    //     {
-    //       // Bind opacity to animated value
-    //       opacity: fadeAnim,
-    //     },
-    //   ]}>
     <AppBar
-      // title="Title"
       style={{
         position: 'absolute',
         width: '100%',
         top: 91,
-        // opacity: 1,
-        // opacity: colorPickerVisible ? 1 : 0,
 
         transform: [{translateX: animation}],
       }}>
-      {/* <HStack style={styles.mainModal}> */}
       <HStack style={styles.colorBoxContainer}>
         <TouchableOpacity
           style={[{backgroundColor: '#FF0000'}, styles.colorBox]}
@@ -115,63 +74,11 @@ const TestPicker = props => {
           style={[{backgroundColor: '#652A0C'}, styles.colorBox]}
           onPress={() => selectColor('#652A0C')}></TouchableOpacity>
       </HStack>
-      {/* </HStack> */}
     </AppBar>
-    // </Animated.View>
   );
 };
 
 const styles = StyleSheet.create({
-  modalContainer: {
-    height: 1,
-    position: 'relative',
-    marginTop: 200,
-  },
-  appBarModal: {
-    marginHorizontal: -20,
-    position: 'absolute',
-    marginBottom: 623,
-    backgroundColor: '#6226ee',
-    // borderRadius: 20,
-
-    padding: 20,
-    height: 30,
-    alignItems: 'center',
-    // justifyContent: 'Center',
-    borderTopColor: 'gray',
-    borderTopWidth: 1,
-
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  mainModal: {
-    marginHorizontal: -20,
-    marginBottom: 623,
-    backgroundColor: '#6226ee',
-
-    // borderRadius: 20,
-    padding: 20,
-    height: 30,
-    alignItems: 'center',
-    // justifyContent: 'Center',
-    borderTopColor: 'gray',
-    borderTopWidth: 1,
-
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
   colorBox: {
     width: 30,
     height: 30,

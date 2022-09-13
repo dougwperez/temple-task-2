@@ -28,7 +28,6 @@ const BuilderToolbar = props => {
   const [colorPickerVisible, setColorPickerVisible] = useState(false);
   const [brickPickerVisible, setBrickPickerVisible] = useState(false);
   const [toolPickerVisible, setToolPickerVisible] = useState(false);
-  // const [isOpenTop, setIsOpenTop] = React.useState(false);
 
   const animation = new Animated.Value(-350);
 
@@ -50,11 +49,6 @@ const BuilderToolbar = props => {
 
   const slideIn = () => {
     Animated.sequence([
-      // Animated.timing(animation, {
-      //   toValue: -300,
-      //   duration: 1000,
-      //   useNativeDriver: true,
-      // }),
       Animated.timing(animation, {
         toValue: 0,
         duration: 300,
@@ -97,9 +91,6 @@ const BuilderToolbar = props => {
     } else {
       setBrickPickerVisible(!brickPickerVisible);
     }
-
-    // setBrickPickerVisible(!brickPickerVisible);
-    // setColorPickerVisible(false);
   };
 
   const toggleToolPicker = () => {
@@ -112,11 +103,7 @@ const BuilderToolbar = props => {
         title="TempleTask"
         titleStyle={{
           fontWeight: '700',
-          // color: '#4ce01a',
           color: 'white',
-          // textShadowColor: 'rgba(0, 0, 0, 0.75)',
-          // textShadowOffset: {width: -1, height: 1},
-          // textShadowRadius: 10,
         }}
         leading={props => (
           <HStack>
@@ -161,10 +148,6 @@ const BuilderToolbar = props => {
               )}
               {...props}
             />
-            {/* <IconButton
-              icon={props => <IconMaterial name="delete" {...props} />}
-              {...props}
-            /> */}
           </HStack>
         )}
       />
@@ -176,12 +159,6 @@ const BuilderToolbar = props => {
       />
 
       {colorPickerVisible ? (
-        // <ColorPicker
-        //   selectColor={selectColor}
-        //   toggleColorPicker={toggleColorPicker}
-        //   setColorPickerVisible={setColorPickerVisible}
-        //   colorPickerVisible={colorPickerVisible}
-        // />
         <TestPicker
           selectColor={selectColor}
           toggleColorPicker={toggleColorPicker}
@@ -189,21 +166,8 @@ const BuilderToolbar = props => {
           colorPickerVisible={colorPickerVisible}
           animation={animation}
           slideIn={slideIn}
-          // animated={animated}
         />
       ) : null}
-      {/* {!brickPickerVisible ? (
-        <TestPicker
-          selectColor={selectColor}
-          toggleColorPicker={toggleColorPicker}
-          setColorPickerVisible={setColorPickerVisible}
-          colorPickerVisible={colorPickerVisible}
-          // animated={animated}
-          animation={animation}
-          slideIn={slideIn}
-          slideOut={slideOut}
-        />
-      ) : null} */}
 
       <BrickPicker
         selectBrick={selectBrick}
