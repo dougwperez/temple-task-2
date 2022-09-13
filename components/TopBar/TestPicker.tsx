@@ -23,34 +23,34 @@ const TestPicker = props => {
     selectColor,
     // animated,
     animation,
+    slideIn,
+    slideOut,
   } = props;
 
   console.log('Koca: colorPickerVisible ', colorPickerVisible);
 
-  const animated = new Animated.Value(-300);
+  // const slideIn = () => {
+  //   Animated.sequence([
+  //     Animated.timing(animation, {
+  //       toValue: 0,
+  //       duration: 300,
+  //       useNativeDriver: true,
+  //     }),
+  //   ]).start();
+  // };
 
-  const slideIn = () => {
-    Animated.sequence([
-      Animated.timing(animation, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  };
-
-  const slideOut = () => {
-    Animated.sequence([
-      Animated.timing(animation, {
-        toValue: -500,
-        duration: 300,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  };
+  // const slideOut = () => {
+  //   Animated.sequence([
+  //     Animated.timing(animation, {
+  //       toValue: -500,
+  //       duration: 300,
+  //       useNativeDriver: true,
+  //     }),
+  //   ]).start();
+  // };
 
   useEffect(() => {
-    colorPickerVisible ? slideIn() : slideOut();
+    slideIn();
   }, [colorPickerVisible]);
 
   // useEffect(() => {

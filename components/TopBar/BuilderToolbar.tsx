@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Image, StyleSheet, Animated} from 'react-native';
 import {AppBar, IconButton, HStack} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/Feather';
@@ -30,7 +30,7 @@ const BuilderToolbar = props => {
   const [toolPickerVisible, setToolPickerVisible] = useState(false);
   // const [isOpenTop, setIsOpenTop] = React.useState(false);
 
-  const animation = new Animated.Value(-300);
+  const animation = new Animated.Value(-350);
 
   const noColors = () => {
     return brickPickerVisible || optionsModalVisible ? true : false;
@@ -38,14 +38,24 @@ const BuilderToolbar = props => {
 
   console.log('Koca: noColors ', noColors);
 
-  const slideIn = () => {
+  const slideOut = () => {
     Animated.sequence([
-      Animated.timing(animated, {
-        toValue: -300,
-        duration: 1000,
+      Animated.timing(animation, {
+        toValue: -500,
+        duration: 300,
         useNativeDriver: true,
       }),
-      Animated.timing(animated, {
+    ]).start();
+  };
+
+  const slideIn = () => {
+    Animated.sequence([
+      // Animated.timing(animation, {
+      //   toValue: -300,
+      //   duration: 1000,
+      //   useNativeDriver: true,
+      // }),
+      Animated.timing(animation, {
         toValue: 0,
         duration: 300,
         useNativeDriver: true,
@@ -58,12 +68,37 @@ const BuilderToolbar = props => {
   };
 
   const toggleColorPicker = () => {
-    setColorPickerVisible(!colorPickerVisible);
+    // setColorPickerVisible(!colorPickerVisible);
     // slideIn();
+
+    if (colorPickerVisible) {
+      slideOut();
+      setTimeout(() => {
+        setColorPickerVisible(false);
+        console.log('Delayed for 1 second.');
+      }, 500);
+    } else {
+      setColorPickerVisible(true);
+    }
   };
 
   const toggleBrickPicker = () => {
-    setBrickPickerVisible(!brickPickerVisible);
+    if (colorPickerVisible) {
+      slideOut();
+      setTimeout(() => {
+        setColorPickerVisible(false);
+        // setBrickPickerVisible(true);
+        console.log('Delayed for 1 second.');
+      }, 500);
+      setTimeout(() => {
+        setBrickPickerVisible(true);
+        console.log('Delayed for 1 second.');
+      }, 550);
+    } else {
+      setBrickPickerVisible(!brickPickerVisible);
+    }
+
+    // setBrickPickerVisible(!brickPickerVisible);
     // setColorPickerVisible(false);
   };
 
@@ -140,7 +175,7 @@ const BuilderToolbar = props => {
         isVisible={optionsModalVisible}
       />
 
-      {/* {colorPickerVisible ? (
+      {colorPickerVisible ? (
         // <ColorPicker
         //   selectColor={selectColor}
         //   toggleColorPicker={toggleColorPicker}
@@ -153,10 +188,11 @@ const BuilderToolbar = props => {
           setColorPickerVisible={setColorPickerVisible}
           colorPickerVisible={colorPickerVisible}
           animation={animation}
+          slideIn={slideIn}
           // animated={animated}
         />
-      ) : null} */}
-      {!brickPickerVisible ? (
+      ) : null}
+      {/* {!brickPickerVisible ? (
         <TestPicker
           selectColor={selectColor}
           toggleColorPicker={toggleColorPicker}
@@ -164,8 +200,10 @@ const BuilderToolbar = props => {
           colorPickerVisible={colorPickerVisible}
           // animated={animated}
           animation={animation}
+          slideIn={slideIn}
+          slideOut={slideOut}
         />
-      ) : null}
+      ) : null} */}
 
       <BrickPicker
         selectBrick={selectBrick}
