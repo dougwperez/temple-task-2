@@ -18,6 +18,7 @@ import {
   DialogActions,
   Text,
 } from '@react-native-material/core';
+import TestPicker from './TestPicker';
 
 const BuilderToolbar = props => {
   const {toggleGrid, selectColor, selectedColor, selectBrick, selectedBrick} =
@@ -115,7 +116,13 @@ const BuilderToolbar = props => {
         />
       ) : null}
       {colorPickerVisible ? (
-        <ColorPicker
+        // <ColorPicker
+        //   selectColor={selectColor}
+        //   toggleColorPicker={toggleColorPicker}
+        //   setColorPickerVisible={setColorPickerVisible}
+        //   colorPickerVisible={colorPickerVisible}
+        // />
+        <TestPicker
           selectColor={selectColor}
           toggleColorPicker={toggleColorPicker}
           setColorPickerVisible={setColorPickerVisible}
