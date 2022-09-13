@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet, Animated} from 'react-native';
 import {AppBar, IconButton, HStack} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/Feather';
 import IconIon from 'react-native-vector-icons/Ionicons';
@@ -30,16 +30,41 @@ const BuilderToolbar = props => {
   const [toolPickerVisible, setToolPickerVisible] = useState(false);
   // const [isOpenTop, setIsOpenTop] = React.useState(false);
 
+  const animation = new Animated.Value(-300);
+
+  const noColors = () => {
+    return brickPickerVisible || optionsModalVisible ? true : false;
+  };
+
+  console.log('Koca: noColors ', noColors);
+
+  const slideIn = () => {
+    Animated.sequence([
+      Animated.timing(animated, {
+        toValue: -300,
+        duration: 1000,
+        useNativeDriver: true,
+      }),
+      Animated.timing(animated, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
+
   const toggleModal = () => {
     setOptionsModalVisible(!optionsModalVisible);
   };
 
   const toggleColorPicker = () => {
     setColorPickerVisible(!colorPickerVisible);
+    // slideIn();
   };
 
   const toggleBrickPicker = () => {
     setBrickPickerVisible(!brickPickerVisible);
+    // setColorPickerVisible(false);
   };
 
   const toggleToolPicker = () => {
@@ -115,7 +140,7 @@ const BuilderToolbar = props => {
         isVisible={optionsModalVisible}
       />
 
-      {colorPickerVisible ? (
+      {/* {colorPickerVisible ? (
         // <ColorPicker
         //   selectColor={selectColor}
         //   toggleColorPicker={toggleColorPicker}
@@ -127,6 +152,18 @@ const BuilderToolbar = props => {
           toggleColorPicker={toggleColorPicker}
           setColorPickerVisible={setColorPickerVisible}
           colorPickerVisible={colorPickerVisible}
+          animation={animation}
+          // animated={animated}
+        />
+      ) : null} */}
+      {!brickPickerVisible ? (
+        <TestPicker
+          selectColor={selectColor}
+          toggleColorPicker={toggleColorPicker}
+          setColorPickerVisible={setColorPickerVisible}
+          colorPickerVisible={colorPickerVisible}
+          // animated={animated}
+          animation={animation}
         />
       ) : null}
 

@@ -12,6 +12,7 @@ import {AppBar, HStack, IconButton} from '@react-native-material/core';
 import Modal from 'react-native-modal';
 import {ListItem} from '@react-native-material/core';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
+import {Hidden} from 'native-base';
 
 const TestPicker = props => {
   const {
@@ -20,50 +21,41 @@ const TestPicker = props => {
     colorPickerVisible,
 
     selectColor,
+    // animated,
+    animation,
   } = props;
+
   console.log('Koca: colorPickerVisible ', colorPickerVisible);
 
-  const backgroundStyle = {
-    // backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    flex: 1,
-  };
-
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-
-  const fadeIn = () => {
-    // Will change fadeAnim value to 1 in 5 seconds
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 5000,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  const fadeOut = () => {
-    // Will change fadeAnim value to 0 in 3 seconds
-    Animated.timing(fadeAnim, {
-      toValue: 0,
-      duration: 3000,
-    }).start();
-  };
-
   const animated = new Animated.Value(-300);
-  const duration = 5000;
 
-  useEffect(() => {
+  const slideIn = () => {
     Animated.sequence([
-      // Animated.timing(animated, {
-      //   toValue: -300,
-      //   duration: 1000,
-      //   useNativeDriver: true,
-      // }),
-      Animated.timing(animated, {
+      Animated.timing(animation, {
         toValue: 0,
         duration: 300,
         useNativeDriver: true,
       }),
     ]).start();
-  }, []);
+  };
+
+  const slideOut = () => {
+    Animated.sequence([
+      Animated.timing(animation, {
+        toValue: -500,
+        duration: 300,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
+
+  useEffect(() => {
+    colorPickerVisible ? slideIn() : slideOut();
+  }, [colorPickerVisible]);
+
+  // useEffect(() => {
+  //   slideOut();
+  // }, [colorPickerVisible]);
 
   return (
     // <SafeAreaView style={backgroundStyle}>
@@ -81,8 +73,10 @@ const TestPicker = props => {
         position: 'absolute',
         width: '100%',
         top: 100,
+        // opacity: 1,
+        // opacity: colorPickerVisible ? 1 : 0,
 
-        transform: [{translateX: animated}],
+        transform: [{translateX: animation}],
       }}>
       {/* <HStack style={styles.mainModal}> */}
       <HStack style={styles.colorBoxContainer}>
