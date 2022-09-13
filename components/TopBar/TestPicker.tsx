@@ -72,7 +72,7 @@ const TestPicker = props => {
       style={{
         position: 'absolute',
         width: '100%',
-        top: 100,
+        top: 91,
         // opacity: 1,
         // opacity: colorPickerVisible ? 1 : 0,
 

@@ -93,7 +93,7 @@ const BuilderToolbar = props => {
       setTimeout(() => {
         setBrickPickerVisible(true);
         console.log('Delayed for 1 second.');
-      }, 550);
+      }, 510);
     } else {
       setBrickPickerVisible(!brickPickerVisible);
     }
