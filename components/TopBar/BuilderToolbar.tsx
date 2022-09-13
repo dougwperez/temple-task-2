@@ -18,7 +18,7 @@ import {
   DialogActions,
   Text,
 } from '@react-native-material/core';
-import TestPicker from './TestPicker';
+// import TestPicker from './TestPicker';
 
 const BuilderToolbar = props => {
   const {toggleGrid, selectColor, selectedColor, selectBrick, selectedBrick} =
@@ -69,7 +69,6 @@ const BuilderToolbar = props => {
       slideOut();
       setTimeout(() => {
         setColorPickerVisible(false);
-        console.log('Delayed for 1 second.');
       }, 500);
     } else {
       setColorPickerVisible(true);
@@ -77,19 +76,22 @@ const BuilderToolbar = props => {
   };
 
   const toggleBrickPicker = () => {
-    if (colorPickerVisible) {
+    if (brickPickerVisible) {
+      slideOut();
+      // setTimeout(() => {
+      //   setBrickPickerVisible(false);
+      // }, 500);
+      setTimeout(() => {
+        setBrickPickerVisible(false);
+      }, 500);
+    } else if (colorPickerVisible) {
       slideOut();
       setTimeout(() => {
         setColorPickerVisible(false);
-        // setBrickPickerVisible(true);
-        console.log('Delayed for 1 second.');
       }, 500);
       setTimeout(() => {
         setBrickPickerVisible(true);
-        console.log('Delayed for 1 second.');
       }, 510);
-    } else {
-      setBrickPickerVisible(!brickPickerVisible);
     }
   };
 
@@ -159,7 +161,7 @@ const BuilderToolbar = props => {
       />
 
       {colorPickerVisible ? (
-        <TestPicker
+        <ColorPicker
           selectColor={selectColor}
           toggleColorPicker={toggleColorPicker}
           setColorPickerVisible={setColorPickerVisible}
@@ -169,12 +171,16 @@ const BuilderToolbar = props => {
         />
       ) : null}
 
-      <BrickPicker
-        selectBrick={selectBrick}
-        toggleBrickPicker={toggleBrickPicker}
-        setBrickPickerVisible={setBrickPickerVisible}
-        isVisible={brickPickerVisible}
-      />
+      {brickPickerVisible ? (
+        <BrickPicker
+          selectBrick={selectBrick}
+          toggleBrickPicker={toggleBrickPicker}
+          setBrickPickerVisible={setBrickPickerVisible}
+          brickPickerVisible={brickPickerVisible}
+          animation={animation}
+          slideIn={slideIn}
+        />
+      ) : null}
 
       {toolPickerVisible ? (
         <ToolPicker

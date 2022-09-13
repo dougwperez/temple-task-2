@@ -1,15 +1,18 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableWithoutFeedback,
   TouchableOpacity,
+  SafeAreaView,
+  Animated,
 } from 'react-native';
-import {AppBar, HStack} from '@react-native-material/core';
+import {AppBar, HStack, IconButton} from '@react-native-material/core';
 import Modal from 'react-native-modal';
 import {ListItem} from '@react-native-material/core';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
+import {Hidden} from 'native-base';
 
 const ColorPicker = props => {
   const {
@@ -17,146 +20,65 @@ const ColorPicker = props => {
     setColorPickerVisible,
     colorPickerVisible,
     selectColor,
+    animation,
+    slideIn,
+    slideOut,
   } = props;
+
+  useEffect(() => {
+    slideIn();
+  }, [colorPickerVisible]);
+
   return (
-    <View style={styles.modalContainer}>
-      {/* <AppBar
-        title="Testing Appbar"
-        isVisible={colorPickerVisible}
-        hasBackdrop={true}
-        animationType="fade"
-        animationIn={'slideInLeft'}
-        animationOut={'slideOutLeft'}
-        titleStyle={{
-          fontWeight: '700',
-          // color: '#4ce01a',
-          color: 'white',
-          // textShadowColor: 'rgba(0, 0, 0, 0.75)',
-          // textShadowOffset: {width: -1, height: 1},
-          // textShadowRadius: 10,
-        }}>
-        <HStack style={styles.appBarModal}>
-          <HStack style={styles.colorBoxContainer}>
-            <TouchableOpacity
-              style={[{backgroundColor: '#FF0000'}, styles.colorBox]}
-              onPress={() => selectColor('#FF0000')}></TouchableOpacity>
-            <TouchableOpacity
-              style={[{backgroundColor: '#FF9800'}, styles.colorBox]}
-              onPress={() => selectColor('#FF9800')}></TouchableOpacity>
+    <AppBar
+      style={{
+        position: 'absolute',
+        width: '100%',
+        top: 91,
 
-            <TouchableOpacity
-              style={[{backgroundColor: '#F0E100'}, styles.colorBox]}
-              onPress={() => selectColor('#F0E100')}></TouchableOpacity>
-          </HStack>
-        </HStack>
-      </AppBar> */}
-      <Modal
-        isVisible={colorPickerVisible}
-        hasBackdrop={true}
-        animationType="fade"
-        animationIn={'slideInLeft'}
-        animationOut={'slideOutLeft'}
-        useNativeDriver={true}
-        customBackdrop={
-          <TouchableWithoutFeedback onPress={toggleColorPicker}>
-            <View style={{flex: 1}} />
-          </TouchableWithoutFeedback>
-        }>
-        <View>
-          <HStack style={styles.mainModal}>
-            <HStack style={styles.colorBoxContainer}>
-              <TouchableOpacity
-                style={[{backgroundColor: '#FF0000'}, styles.colorBox]}
-                onPress={() => selectColor('#FF0000')}></TouchableOpacity>
-              <TouchableOpacity
-                style={[{backgroundColor: '#FF9800'}, styles.colorBox]}
-                onPress={() => selectColor('#FF9800')}></TouchableOpacity>
+        transform: [{translateX: animation}],
+      }}>
+      <HStack style={styles.colorBoxContainer}>
+        <TouchableOpacity
+          style={[{backgroundColor: '#FF0000'}, styles.colorBox]}
+          onPress={() => selectColor('#FF0000')}></TouchableOpacity>
+        <TouchableOpacity
+          style={[{backgroundColor: '#FF9800'}, styles.colorBox]}
+          onPress={() => selectColor('#FF9800')}></TouchableOpacity>
 
-              <TouchableOpacity
-                style={[{backgroundColor: '#F0E100'}, styles.colorBox]}
-                onPress={() => selectColor('#F0E100')}></TouchableOpacity>
+        <TouchableOpacity
+          style={[{backgroundColor: '#F0E100'}, styles.colorBox]}
+          onPress={() => selectColor('#F0E100')}></TouchableOpacity>
 
-              <TouchableOpacity
-                style={[{backgroundColor: '#00DE00'}, styles.colorBox]}
-                onPress={() => selectColor('#00DE00')}></TouchableOpacity>
+        <TouchableOpacity
+          style={[{backgroundColor: '#00DE00'}, styles.colorBox]}
+          onPress={() => selectColor('#00DE00')}></TouchableOpacity>
 
-              <TouchableOpacity
-                style={[{backgroundColor: '#A1BC24'}, styles.colorBox]}
-                onPress={() => selectColor('#A1BC24')}></TouchableOpacity>
+        <TouchableOpacity
+          style={[{backgroundColor: '#A1BC24'}, styles.colorBox]}
+          onPress={() => selectColor('#A1BC24')}></TouchableOpacity>
 
-              <TouchableOpacity
-                style={[{backgroundColor: '#0011CF'}, styles.colorBox]}
-                onPress={() => selectColor('#0011CF')}></TouchableOpacity>
+        <TouchableOpacity
+          style={[{backgroundColor: '#0011CF'}, styles.colorBox]}
+          onPress={() => selectColor('#0011CF')}></TouchableOpacity>
 
-              <TouchableOpacity
-                style={[{backgroundColor: '#FFFFFF'}, styles.colorBox]}
-                onPress={() => selectColor('#FFFFFF')}></TouchableOpacity>
+        <TouchableOpacity
+          style={[{backgroundColor: '#FFFFFF'}, styles.colorBox]}
+          onPress={() => selectColor('#FFFFFF')}></TouchableOpacity>
 
-              <TouchableOpacity
-                style={[{backgroundColor: '#000000'}, styles.colorBox]}
-                onPress={() => selectColor('#000000')}></TouchableOpacity>
+        <TouchableOpacity
+          style={[{backgroundColor: '#000000'}, styles.colorBox]}
+          onPress={() => selectColor('#000000')}></TouchableOpacity>
 
-              <TouchableOpacity
-                style={[{backgroundColor: '#652A0C'}, styles.colorBox]}
-                onPress={() => selectColor('#652A0C')}></TouchableOpacity>
-            </HStack>
-          </HStack>
-        </View>
-      </Modal>
-    </View>
+        <TouchableOpacity
+          style={[{backgroundColor: '#652A0C'}, styles.colorBox]}
+          onPress={() => selectColor('#652A0C')}></TouchableOpacity>
+      </HStack>
+    </AppBar>
   );
 };
 
 const styles = StyleSheet.create({
-  modalContainer: {
-    // height: 1,
-    // position: 'absolute',
-  },
-  appBarModal: {
-    marginHorizontal: -20,
-    position: 'absolute',
-    // marginBottom: 623,
-    backgroundColor: '#6226ee',
-    // borderRadius: 20,
-
-    padding: 20,
-    height: 30,
-    alignItems: 'center',
-    // justifyContent: 'Center',
-    borderTopColor: 'gray',
-    borderTopWidth: 1,
-
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  mainModal: {
-    marginHorizontal: -20,
-    marginBottom: 623,
-    backgroundColor: '#6226ee',
-
-    // borderRadius: 20,
-    padding: 20,
-    height: 30,
-    alignItems: 'center',
-    // justifyContent: 'Center',
-    borderTopColor: 'gray',
-    borderTopWidth: 1,
-
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
   colorBox: {
     width: 30,
     height: 30,
@@ -166,6 +88,9 @@ const styles = StyleSheet.create({
   },
   colorBoxContainer: {
     justifyContent: 'center',
+    marginTop: -45,
+    borderTopColor: 'gray',
+    borderTopWidth: 1,
   },
 });
 export default ColorPicker;
