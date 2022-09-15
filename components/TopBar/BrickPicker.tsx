@@ -4,6 +4,10 @@ import {AppBar, HStack, IconButton} from '@react-native-material/core';
 import Svg1x1 from '../Images/1x1svg';
 import Svg1x2 from '../Images/1x2svg';
 import Svg1x3 from '../Images/1x3svg';
+import Svg1x4 from '../Images/1x4svg';
+import Svg2x2 from '../Images/2x2svg';
+import Svg2x3 from '../Images/2x3svg';
+import Svg2x4 from '../Images/2x4svg';
 
 const ColorPicker = props => {
   const {
@@ -43,43 +47,43 @@ const ColorPicker = props => {
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(3)}>
-          {/* <Image
-            style={styles.brickImg}
-            source={require('../Images/1x3.png')}
-          /> */}
           <Svg1x3 style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(5)}>
-          <Image
+          {/* <Image
             style={styles.brickImg}
             source={require('../Images/1x4.png')}
-          />
+          /> */}
+          <Svg1x4 style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(2)}>
-          <Image
+          {/* <Image
             style={styles.brickImg}
             source={require('../Images/2x2.png')}
-          />
+          /> */}
+          <Svg2x2 style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(4)}>
-          <Image
+          {/* <Image
             style={styles.brickImg}
             source={require('../Images/2x3.png')}
-          />
+          /> */}
+          <Svg2x3 style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(6)}>
-          <Image
+          {/* <Image
             style={styles.brickImg}
             source={require('../Images/2x4.png')}
-          />
+          /> */}
+          <Svg2x4 style={styles.brickImg} />
         </TouchableOpacity>
       </HStack>
     </AppBar>
@@ -104,9 +108,10 @@ const styles = StyleSheet.create({
     width: 42,
     height: 35,
     margin: 3,
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderColor: 'gray',
     backgroundColor: 'white',
+    borderRadius: 7,
   },
   brickImg: {
     width: 42,

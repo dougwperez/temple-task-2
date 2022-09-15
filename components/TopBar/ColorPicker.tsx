@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
     margin: 3,
     borderWidth: 1,
     borderColor: 'gray',
+    borderRadius: 7,
   },
   colorBoxContainer: {
     justifyContent: 'center',

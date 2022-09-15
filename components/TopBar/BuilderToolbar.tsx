@@ -9,6 +9,7 @@ import ColorPicker from './ColorPicker';
 import BrickPicker from './BrickPicker';
 import ToolPicker from './ToolPicker';
 import OptionsModal from '../OptionsScreen/OptionsModal';
+import Svg1x3 from '../Images/1x3svg';
 
 import {
   Provider,
