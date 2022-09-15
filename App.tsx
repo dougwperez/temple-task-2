@@ -54,22 +54,25 @@ const App: () => Node = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <BuilderToolbar
-        toggleGrid={toggleGrid}
-        selectColor={selectColor}
-        selectedColor={selectedColor}
-        selectBrick={selectBrick}
-        selectedBrick={selectedBrick}
-      />
-      <Playground
-        gridStatus={gridStatus}
-        selectedColor={selectedColor}
-        selectedBrick={selectedBrick}
-      />
+    <>
+      <StatusBar />
+      <SafeAreaView style={backgroundStyle}>
+        <BuilderToolbar
+          toggleGrid={toggleGrid}
+          selectColor={selectColor}
+          selectedColor={selectedColor}
+          selectBrick={selectBrick}
+          selectedBrick={selectedBrick}
+        />
+        <Playground
+          gridStatus={gridStatus}
+          selectedColor={selectedColor}
+          selectedBrick={selectedBrick}
+        />
 
-      <TaskToolbar />
-    </SafeAreaView>
+        <TaskToolbar />
+      </SafeAreaView>
+    </>
   );
 };
 

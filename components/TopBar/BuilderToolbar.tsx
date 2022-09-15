@@ -78,6 +78,14 @@ const BuilderToolbar = props => {
       setTimeout(() => {
         setColorPickerVisible(true);
       }, 510);
+    } else if (toolPickerVisible) {
+      slideOut();
+      setTimeout(() => {
+        setToolPickerVisible(false);
+      }, 500);
+      setTimeout(() => {
+        setColorPickerVisible(true);
+      }, 510);
     } else {
       setColorPickerVisible(true);
     }
@@ -97,13 +105,45 @@ const BuilderToolbar = props => {
       setTimeout(() => {
         setBrickPickerVisible(true);
       }, 510);
+    } else if (toolPickerVisible) {
+      slideOut();
+      setTimeout(() => {
+        setToolPickerVisible(false);
+      }, 500);
+      setTimeout(() => {
+        setBrickPickerVisible(true);
+      }, 510);
     } else {
       setBrickPickerVisible(true);
     }
   };
 
   const toggleToolPicker = () => {
-    setToolPickerVisible(!toolPickerVisible);
+    if (toolPickerVisible) {
+      slideOut();
+      setTimeout(() => {
+        setToolPickerVisible(false);
+      }, 500);
+    } else if (colorPickerVisible) {
+      slideOut();
+      setTimeout(() => {
+        setColorPickerVisible(false);
+      }, 500);
+      setTimeout(() => {
+        setToolPickerVisible(true);
+      }, 510);
+    } else if (brickPickerVisible) {
+      slideOut();
+      setTimeout(() => {
+        setBrickPickerVisible(false);
+      }, 500);
+      setTimeout(() => {
+        setToolPickerVisible(true);
+      }, 510);
+    } else {
+      setToolPickerVisible(true);
+    }
+    // setToolPickerVisible(!toolPickerVisible);
   };
 
   return (
