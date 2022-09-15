@@ -13,7 +13,7 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 const DATA = [
   {
     id: 'bd7acbea',
-    title: 'Food Journal',
+    title: 'Food Journal three times',
   },
   {
     id: '3ac68afc',
@@ -22,6 +22,10 @@ const DATA = [
   {
     id: '58694a0f',
     title: 'Do Three Toy Problems',
+  },
+  {
+    id: '58694a0f',
+    title: 'Work on React App',
   },
 ];
 
@@ -50,7 +54,7 @@ const CompletionModal = props => {
   );
 
   return (
-    <View style={styles.centeredView}>
+    <View>
       <Modal
         animationType="slide"
         transparent={true}
@@ -61,14 +65,25 @@ const CompletionModal = props => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Daily Check In</Text>
+            <Text style={styles.modalTitle}>Daily Check In</Text>
 
             <FlatList
               data={DATA}
               renderItem={renderItem}
               keyExtractor={item => item.id}
             />
-            <Text style={styles.trackerText}>
+            <Text
+              style={{
+                color:
+                  dailyScore === 0
+                    ? 'red'
+                    : dailyScore === 1
+                    ? 'orange'
+                    : dailyScore === 2
+                    ? 'gold'
+                    : 'green',
+                ...styles.trackerText,
+              }}>
               {dailyScore} Coins Earned Today
             </Text>
             <Pressable
@@ -93,11 +108,11 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   modalView: {
-    marginHorizontal: 10,
+    // marginHorizontal: 10,
     marginVertical: 100,
     backgroundColor: 'white',
     borderRadius: 20,
-    padding: 35,
+    padding: 20,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
@@ -107,6 +122,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+    width: '85%',
+    height: '65%',
   },
   button: {
     borderRadius: 20,
@@ -124,17 +141,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  modalText: {
+  modalTitle: {
     marginBottom: 25,
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 18,
+    paddingTop: 15,
   },
   trackerText: {
-    marginBottom: 15,
+    marginBottom: 17,
     textAlign: 'center',
-    // fontWeight: 'bold',
+    fontWeight: 'bold',
     fontSize: 15,
+    // color: dailyScore === 0 ? 'red' : 'green',
   },
 });
 export default CompletionModal;

@@ -24,6 +24,7 @@ const TaskToolbar = () => {
     <>
       <AppBar
         title="Coins: 2"
+        titleStyle={{fontWeight: 'bold', marginRight: -10}}
         leading={props => (
           <IconFont5 name="coins" {...props} stye={{color: 'Secondary'}} />
         )}
