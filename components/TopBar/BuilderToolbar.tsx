@@ -181,6 +181,7 @@ const BuilderToolbar = props => {
                   name="paint-bucket"
                   {...props}
                   color={selectedColor}
+                  // style={{borderWidth: 1}}
                 />
               )}
               onPress={() => toggleColorPicker()}

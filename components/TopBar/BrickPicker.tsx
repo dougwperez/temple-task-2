@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {AppBar, HStack, IconButton} from '@react-native-material/core';
 import Svg1x1 from '../Images/1x1svg';
 import Svg1x2 from '../Images/1x2svg';
+import Svg1x3 from '../Images/1x3svg';
 
 const ColorPicker = props => {
   const {
@@ -42,10 +43,11 @@ const ColorPicker = props => {
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(3)}>
-          <Image
+          {/* <Image
             style={styles.brickImg}
             source={require('../Images/1x3.png')}
-          />
+          /> */}
+          <Svg1x3 style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
