@@ -43,7 +43,7 @@ const GoalsModal = props => {
       <TouchableOpacity
         onPress={onPress}
         style={[styles.item, backgroundColor]}>
-        <Text style={[styles.title, textColor]}>{`\u2022 ${item.title}`}</Text>
+        <Text style={[styles.title, textColor]}>{`${item.title}`}</Text>
       </TouchableOpacity>
     );
 
@@ -56,6 +56,10 @@ const GoalsModal = props => {
           textColor={{color}}
         />
         <IconButton
+          icon={props => <Icon name="lead-pencil" {...props} />}
+          color="primary"
+        />
+        <IconButton
           icon={props => <Icon name="delete" {...props} />}
           color="primary"
         />
@@ -64,8 +68,9 @@ const GoalsModal = props => {
   };
 
   return (
-    <View style={styles.centeredView}>
+    <View>
       <Modal
+        style={styles.goalModal}
         animationType="slide"
         transparent={true}
         visible={true}
@@ -75,7 +80,7 @@ const GoalsModal = props => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Edit My Tasks</Text>
+            <Text style={styles.modalTitle}>Edit My Tasks</Text>
             <SafeAreaView style={styles.container}>
               <HStack>
                 <TextInput
@@ -108,6 +113,9 @@ const GoalsModal = props => {
 };
 
 const styles = StyleSheet.create({
+  goalModal: {
+    // width: 200,
+  },
   centeredView: {
     flex: 1,
     justifyContent: 'center',
@@ -118,7 +126,7 @@ const styles = StyleSheet.create({
     margin: 100,
     backgroundColor: 'white',
     borderRadius: 20,
-    padding: 35,
+    padding: 20,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
@@ -128,6 +136,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+    width: '85%',
+    height: '65%',
   },
   button: {
     borderRadius: 20,
@@ -145,25 +155,24 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  modalText: {
+  modalTitle: {
     marginBottom: 25,
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
+    paddingTop: 15,
   },
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
   },
   item: {
-    padding: 20,
     marginVertical: 5,
-    marginHorizontal: 5,
-
+    marginHorizontal: 0,
     height: 40,
     // margin: 2,
     padding: 10,
-    width: 150,
+    width: 170,
   },
   title: {
     fontSize: 15,
