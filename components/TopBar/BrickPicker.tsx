@@ -2,6 +2,7 @@ import React, {useRef, useEffect} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {AppBar, HStack, IconButton} from '@react-native-material/core';
 import Svg1x1 from '../Images/1x1svg';
+import Svg1x2 from '../Images/1x2svg';
 
 const ColorPicker = props => {
   const {
@@ -31,19 +32,12 @@ const ColorPicker = props => {
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(0)}>
-          {/* <Image
-            style={styles.brickImg}
-            source={require('../Images/1x1.png')}
-          /> */}
           <Svg1x1 style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(1)}>
-          <Image
-            style={styles.brickImg}
-            source={require('../Images/1x2.png')}
-          />
+          <Svg1x2 style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
