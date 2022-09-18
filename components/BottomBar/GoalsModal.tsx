@@ -17,21 +17,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {DataStore} from 'aws-amplify';
 import {Todo} from '../.././src/models';
 
-const DATA = [
-  {
-    id: 'bd7acbea',
-    title: 'Food Journal',
-  },
-  {
-    id: '3ac68afc',
-    title: 'Go to Gym for one hour',
-  },
-  {
-    id: '58694a0f',
-    title: 'Do Three Toy Problems',
-  },
-];
-
 const GoalsModal = props => {
   const {setGoalModalVisible, goalModalVisible} = props;
   const [selectedId, setSelectedId] = useState(null);

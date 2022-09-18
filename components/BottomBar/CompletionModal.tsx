@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Alert,
   Modal,
@@ -9,6 +9,8 @@ import {
   FlatList,
 } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import {DataStore} from 'aws-amplify';
+import {Todo} from '../.././src/models';
 
 const DATA = [
   {
@@ -31,16 +33,34 @@ const DATA = [
 
 const CompletionModal = props => {
   const {setCompletionModalVisible, completionModalVisible} = props;
+  const [todos, setTodos] = useState([]);
+  console.log('Koca: todos ', todos);
 
   const [dailyScore, setDailyScore] = React.useState(0);
   console.log('Koca: dailyScore ', dailyScore);
+
+  useEffect(() => {
+    //query the initial todolist and subscribe to data updates
+    const subscription = DataStore.observeQuery(Todo).subscribe(snapshot => {
+      //isSynced can be used to show a loading spinner when the list is being loaded.
+      const {items, isSynced} = snapshot;
+      console.log('Koca: items ', items);
+
+      setTodos(items);
+    });
+
+    //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
+    return function cleanup() {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   const renderItem = ({item}) => (
     <BouncyCheckbox
       size={25}
       fillColor="green"
       unfillColor="#FFFFFF"
-      text={item.title}
+      text={item.name}
       iconStyle={{borderColor: 'red'}}
       innerIconStyle={{borderWidth: 2}}
       onPress={(isChecked: boolean) => {
@@ -68,7 +88,7 @@ const CompletionModal = props => {
             <Text style={styles.modalTitle}>Daily Check In</Text>
 
             <FlatList
-              data={DATA}
+              data={todos}
               renderItem={renderItem}
               keyExtractor={item => item.id}
             />
