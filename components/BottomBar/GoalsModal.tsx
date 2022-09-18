@@ -36,14 +36,24 @@ const GoalsModal = props => {
   const {setGoalModalVisible, goalModalVisible} = props;
   const [selectedId, setSelectedId] = useState(null);
   const [text, onChangeText] = React.useState('Add your task..');
+  console.log('Koca: text ', text);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [todos, setTodos] = useState([]);
+  console.log('Koca: todos ', todos);
 
   async function addTodo() {
     await DataStore.save(new Todo({name, description, isComplete: false}));
-    setName('Test1');
+    setName(text);
     setDescription('The Room is the best Movie ever1');
+  }
+
+  async function deleteTodo(todo) {
+    try {
+      await DataStore.delete(todo);
+    } catch (e) {
+      console.log('Delete failed: $e');
+    }
   }
 
   useEffect(() => {
@@ -70,7 +80,7 @@ const GoalsModal = props => {
       <TouchableOpacity
         onPress={onPress}
         style={[styles.item, backgroundColor]}>
-        <Text style={[styles.title, textColor]}>{`${item.title}`}</Text>
+        <Text style={[styles.title, textColor]}>{`${item.name}`}</Text>
       </TouchableOpacity>
     );
 
@@ -89,6 +99,7 @@ const GoalsModal = props => {
         <IconButton
           icon={props => <Icon name="delete" {...props} />}
           color="primary"
+          onPress={() => deleteTodo(item)}
         />
       </HStack>
     );
@@ -122,7 +133,7 @@ const GoalsModal = props => {
                 />
               </HStack>
               <FlatList
-                data={DATA}
+                data={todos}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
                 extraData={selectedId}
