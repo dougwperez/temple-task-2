@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Alert,
   Modal,
@@ -15,7 +15,7 @@ import {
 import {IconButton, HStack} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {DataStore} from 'aws-amplify';
-import {Todo} from './models';
+import {Todo} from '../.././src/models';
 
 const DATA = [
   {
@@ -36,6 +36,31 @@ const GoalsModal = props => {
   const {setGoalModalVisible, goalModalVisible} = props;
   const [selectedId, setSelectedId] = useState(null);
   const [text, onChangeText] = React.useState('Add your task..');
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [todos, setTodos] = useState([]);
+
+  async function addTodo() {
+    await DataStore.save(new Todo({name, description, isComplete: false}));
+    setName('Test1');
+    setDescription('The Room is the best Movie ever1');
+  }
+
+  useEffect(() => {
+    //query the initial todolist and subscribe to data updates
+    const subscription = DataStore.observeQuery(Todo).subscribe(snapshot => {
+      //isSynced can be used to show a loading spinner when the list is being loaded.
+      const {items, isSynced} = snapshot;
+      console.log('Koca: items ', items);
+
+      setTodos(items);
+    });
+
+    //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
+    return function cleanup() {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   const renderItem = ({item}) => {
     const backgroundColor = item.id === selectedId ? '#6e3b6e' : 'white';
@@ -93,6 +118,7 @@ const GoalsModal = props => {
                 <IconButton
                   icon={props => <Icon name="plus" {...props} />}
                   color="primary"
+                  onPress={addTodo}
                 />
               </HStack>
               <FlatList
