@@ -14,6 +14,8 @@ import {
 } from 'react-native';
 import {IconButton, HStack} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {DataStore} from 'aws-amplify';
+import {Todo} from './models';
 
 const DATA = [
   {
