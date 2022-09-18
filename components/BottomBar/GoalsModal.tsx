@@ -43,9 +43,10 @@ const GoalsModal = props => {
   console.log('Koca: todos ', todos);
 
   async function addTodo() {
+    // await setName(text);
     await DataStore.save(new Todo({name, description, isComplete: false}));
-    setName(text);
-    setDescription('The Room is the best Movie ever1');
+    setName('');
+    setDescription('');
   }
 
   async function deleteTodo(todo) {
@@ -123,8 +124,8 @@ const GoalsModal = props => {
               <HStack>
                 <TextInput
                   style={styles.input}
-                  onChangeText={onChangeText}
-                  value={text}
+                  onChangeText={setName}
+                  // value={text}
                 />
                 <IconButton
                   icon={props => <Icon name="plus" {...props} />}
