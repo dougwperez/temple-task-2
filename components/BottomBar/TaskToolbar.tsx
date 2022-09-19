@@ -4,14 +4,6 @@ import {Button, AppBar, HStack, IconButton} from '@react-native-material/core';
 import IconIon from 'react-native-vector-icons/Ionicons';
 import IconFont5 from 'react-native-vector-icons/FontAwesome5';
 import IconFont from 'react-native-vector-icons/FontAwesome';
-// import {
-//   Provider,
-//   Dialog,
-//   DialogHeader,
-//   DialogContent,
-//   DialogActions,
-//   Text,
-// } from '@react-native-material/core';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 import GoalsModal from './GoalsModal';
 import CompletionModal from './CompletionModal';
@@ -25,18 +17,13 @@ const TaskToolbar = () => {
   console.log('Koca: coins ', coins);
 
   useEffect(() => {
-    //query the initial todolist and subscribe to data updates
     const subscription = DataStore.observeQuery(TaskCounter).subscribe(
       snapshot => {
-        //isSynced can be used to show a loading spinner when the list is being loaded.
         const {items, isSynced} = snapshot;
         console.log('Koca: items ', items[0].count);
         setCoins(items[0].count);
-
-        // setTodos(items);
       },
     );
-
     //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
     return function cleanup() {
       subscription.unsubscribe();

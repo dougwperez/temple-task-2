@@ -35,9 +35,7 @@ const CompletionModal = props => {
   }
 
   useEffect(() => {
-    //query the initial todolist and subscribe to data updates
     const subscription = DataStore.observeQuery(Todo).subscribe(snapshot => {
-      //isSynced can be used to show a loading spinner when the list is being loaded.
       const {items, isSynced} = snapshot;
       console.log('Koca: items ', items);
 
@@ -63,7 +61,6 @@ const CompletionModal = props => {
           ? setDailyScore(dailyScore + 1)
           : setDailyScore(dailyScore - 1);
       }}
-      // disableBuiltInState
       style={{marginBottom: 10}}
     />
   );

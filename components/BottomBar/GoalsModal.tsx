@@ -28,7 +28,6 @@ const GoalsModal = props => {
   console.log('Koca: todos ', todos);
 
   async function addTodo() {
-    // await setName(text);
     await DataStore.save(new Todo({name, description, isComplete: false}));
     setName('');
     setDescription('');
@@ -43,9 +42,7 @@ const GoalsModal = props => {
   }
 
   useEffect(() => {
-    //query the initial todolist and subscribe to data updates
     const subscription = DataStore.observeQuery(Todo).subscribe(snapshot => {
-      //isSynced can be used to show a loading spinner when the list is being loaded.
       const {items, isSynced} = snapshot;
       console.log('Koca: items ', items);
 
