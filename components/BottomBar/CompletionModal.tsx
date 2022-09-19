@@ -17,8 +17,6 @@ console.log('Koca: TaskCounter ', TaskCounter);
 const CompletionModal = props => {
   const {setCompletionModalVisible, completionModalVisible} = props;
   const [todos, setTodos] = useState([]);
-  console.log('Koca: todos ', todos);
-
   const [dailyScore, setDailyScore] = React.useState(0);
   console.log('Koca: dailyScore ', dailyScore);
 
