@@ -23,17 +23,13 @@ const CompletionModal = props => {
   console.log('Koca: dailyScore ', dailyScore);
 
   async function updateCount() {
-    //update the todo item with updateValue
-    //   await DataStore.save(
-    //     Todo.copyOf(todo, updated => {
-    //       updated.isComplete = updateValue
-    //     })
-    //   );
-    // }
     setCompletionModalVisible(!completionModalVisible);
+    const models = await DataStore.query(TaskCounter);
+    console.log(models[0].count);
+
     await DataStore.save(
-      TaskCounter.copyOf(CURRENT_ITEM, item => {
-        item.count = dailyScore;
+      TaskCounter.copyOf(models[0], item => {
+        item.count += dailyScore;
       }),
     );
   }
