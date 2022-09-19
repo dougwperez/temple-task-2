@@ -1,7 +1,20 @@
 import { ModelInit, MutableModel } from "@aws-amplify/datastore";
 
+type TaskCounterMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type TodoMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+export declare class TaskCounter {
+  readonly id: string;
+  readonly count?: number | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<TaskCounter, TaskCounterMetaData>);
+  static copyOf(source: TaskCounter, mutator: (draft: MutableModel<TaskCounter, TaskCounterMetaData>) => MutableModel<TaskCounter, TaskCounterMetaData> | void): TaskCounter;
 }
 
 export declare class Todo {

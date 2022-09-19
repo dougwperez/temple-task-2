@@ -11,25 +11,8 @@ import {
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {DataStore} from 'aws-amplify';
 import {Todo} from '../.././src/models';
-
-const DATA = [
-  {
-    id: 'bd7acbea',
-    title: 'Food Journal three times',
-  },
-  {
-    id: '3ac68afc',
-    title: 'Go to Gym for one hour',
-  },
-  {
-    id: '58694a0f',
-    title: 'Do Three Toy Problems',
-  },
-  {
-    id: '58694a0f',
-    title: 'Work on React App',
-  },
-];
+import {TaskCounter} from '../.././src/models';
+console.log('Koca: TaskCounter ', TaskCounter);
 
 const CompletionModal = props => {
   const {setCompletionModalVisible, completionModalVisible} = props;
@@ -38,6 +21,22 @@ const CompletionModal = props => {
 
   const [dailyScore, setDailyScore] = React.useState(0);
   console.log('Koca: dailyScore ', dailyScore);
+
+  async function updateCount() {
+    //update the todo item with updateValue
+    //   await DataStore.save(
+    //     Todo.copyOf(todo, updated => {
+    //       updated.isComplete = updateValue
+    //     })
+    //   );
+    // }
+    setCompletionModalVisible(!completionModalVisible);
+    await DataStore.save(
+      TaskCounter.copyOf(CURRENT_ITEM, item => {
+        item.count = dailyScore;
+      }),
+    );
+  }
 
   useEffect(() => {
     //query the initial todolist and subscribe to data updates
@@ -108,9 +107,7 @@ const CompletionModal = props => {
             </Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={() =>
-                setCompletionModalVisible(!completionModalVisible)
-              }>
+              onPress={() => updateCount()}>
               <Text style={styles.textStyle}>Finished!</Text>
             </Pressable>
           </View>
