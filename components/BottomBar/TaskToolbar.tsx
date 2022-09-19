@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 // import {View} from 'react-native';
 import {Button, AppBar, HStack, IconButton} from '@react-native-material/core';
 import IconIon from 'react-native-vector-icons/Ionicons';
@@ -15,15 +15,38 @@ import IconFont from 'react-native-vector-icons/FontAwesome';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 import GoalsModal from './GoalsModal';
 import CompletionModal from './CompletionModal';
+import {DataStore} from 'aws-amplify';
+import {TaskCounter} from '../.././src/models';
 
 const TaskToolbar = () => {
   const [goalModalVisible, setGoalModalVisible] = useState(false);
   const [completionModalVisible, setCompletionModalVisible] = useState(false);
+  const [coins, setCoins] = useState(Number);
+  console.log('Koca: coins ', coins);
+
+  useEffect(() => {
+    //query the initial todolist and subscribe to data updates
+    const subscription = DataStore.observeQuery(TaskCounter).subscribe(
+      snapshot => {
+        //isSynced can be used to show a loading spinner when the list is being loaded.
+        const {items, isSynced} = snapshot;
+        console.log('Koca: items ', items[0].count);
+        setCoins(items[0].count);
+
+        // setTodos(items);
+      },
+    );
+
+    //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
+    return function cleanup() {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   return (
     <>
       <AppBar
-        title="Coins: 2"
+        title={`Coins ${coins}`}
         titleStyle={{fontWeight: 'bold', marginRight: -10}}
         leading={props => (
           <IconFont5 name="coins" {...props} stye={{color: 'Secondary'}} />
