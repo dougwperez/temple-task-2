@@ -35,7 +35,7 @@ const Playground = props => {
     const subscription = DataStore.observeQuery(TaskCounter).subscribe(
       snapshot => {
         const {items, isSynced} = snapshot;
-        console.log('Koca: items in Playground ', items);
+        // console.log('Koca: items in Playground ', items);
 
         // setTodos(items);
       },
@@ -48,29 +48,27 @@ const Playground = props => {
   }, []);
 
   useEffect(() => {
-    // decrementCoinCount();
+    decrementCoinCount();
     // webViewRef.current.injectJavaScript(checkBrickCount);
   }, [brickCount]);
 
   useEffect(() => {
     webViewRef.current.injectJavaScript(toggleGridString);
-    console.log('toggleGridString', toggleGridString);
   }, [gridStatus]);
 
   useEffect(() => {
     webViewRef.current.injectJavaScript(selectColorString);
-    console.log('use effect for color called');
   }, [selectedColor]);
 
   useEffect(() => {
     webViewRef.current.injectJavaScript(selectBrickString);
-    console.log('use effect for brick called');
+    // console.log('use effect for brick called');
   }, [selectedBrick]);
 
-  useEffect(() => {
-    webViewRef.current.injectJavaScript(checkBrickCount);
-    console.log('brickCount');
-  }, []);
+  // useEffect(() => {
+  //   webViewRef.current.injectJavaScript(checkBrickCount);
+  //   console.log('brickCount');
+  // }, []);
 
   async function decrementCoinCount() {
     const models = await DataStore.query(TaskCounter);
@@ -105,10 +103,6 @@ const Playground = props => {
 
             console.log('brickCount PG', brickCount);
             // setBrickCount(event.nativeEvent.data);
-            if (event.nativeEvent.data !== brickCount) {
-              // setBrickCount(event.nativeEvent.data);
-              // decrementCoinCount();
-            }
           }}
         />
       </View>
