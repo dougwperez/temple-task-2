@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import {WebView} from 'react-native-webview';
 import {View, TouchableWithoutFeedback} from 'react-native';
 import {DataStore} from 'aws-amplify';
@@ -6,6 +6,8 @@ import {TaskCounter} from '.././src/models';
 
 const Playground = props => {
   const {gridStatus, selectedColor, selectedBrick} = props;
+  const [brickCount, setBrickCount] = useState(Number);
+  console.log('Koca: brickCount ', brickCount);
 
   const webViewRef = useRef(null);
 
@@ -23,12 +25,16 @@ const Playground = props => {
 
   const checkBrickCount = `
   setTimeout(function () {
-    const countText = document.getElementsByClassName("help__text--2hH-a")[0].textContent
+    const countText = document.getElementsByClassName("topbar__title--1eC9U")[0].textContent
     window.ReactNativeWebView.postMessage(countText)
   }, 1);
   true`;
 
   // setTimeout(function() { document.getElementsByClassName("help__text--2hH-a")[0].click() }, "1");
+
+  useEffect(() => {
+    decrementCoinCount();
+  }, [brickCount]);
 
   useEffect(() => {
     webViewRef.current.injectJavaScript(toggleGridString);
@@ -62,8 +68,10 @@ const Playground = props => {
   }
 
   const checkBrickFunction = () => {
-    decrementCoinCount();
+    // decrementCoinCount();
+    // setTimeout(() => {
     webViewRef.current.injectJavaScript(checkBrickCount);
+    // }, 500);
   };
 
   return (
@@ -75,9 +83,8 @@ const Playground = props => {
           source={{uri: 'https://dougwperez.github.io/brick-playground/'}}
           style={{flex: 1}}
           onMessage={event => {
-            // alert(event.nativeEvent.data);
-            //Need to compare the brickCount value from the web with the total ammount of coins. Decrement Accordingly. Compare count with... Maybe track the number of clicks here in state, and compare that with the total added bricks, if there is a difference, then decrement our counter in the DB ....
             console.log('Testing Feedback', event.nativeEvent.data);
+            setBrickCount(event.nativeEvent.data);
           }}
         />
       </View>
