@@ -30,10 +30,26 @@ const Playground = props => {
   }, 1);
   true`;
 
-  // setTimeout(function() { document.getElementsByClassName("help__text--2hH-a")[0].click() }, "1");
+  useEffect(() => {
+    // setTotalScore(10);
+    const subscription = DataStore.observeQuery(TaskCounter).subscribe(
+      snapshot => {
+        const {items, isSynced} = snapshot;
+        console.log('Koca: items in Playground ', items);
+
+        // setTodos(items);
+      },
+    );
+
+    //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
+    return function cleanup() {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   useEffect(() => {
-    decrementCoinCount();
+    // decrementCoinCount();
+    // webViewRef.current.injectJavaScript(checkBrickCount);
   }, [brickCount]);
 
   useEffect(() => {
@@ -81,10 +97,18 @@ const Playground = props => {
         <WebView
           ref={webViewRef}
           source={{uri: 'https://dougwperez.github.io/brick-playground/'}}
+          // pointerEvents="none"
           style={{flex: 1}}
           onMessage={event => {
-            console.log('Testing Feedback', event.nativeEvent.data);
             setBrickCount(event.nativeEvent.data);
+            console.log('event.nativeEvent.data PG', event.nativeEvent.data);
+
+            console.log('brickCount PG', brickCount);
+            // setBrickCount(event.nativeEvent.data);
+            if (event.nativeEvent.data !== brickCount) {
+              // setBrickCount(event.nativeEvent.data);
+              // decrementCoinCount();
+            }
           }}
         />
       </View>
