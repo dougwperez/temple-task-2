@@ -3,10 +3,13 @@ import {WebView} from 'react-native-webview';
 import {View, TouchableWithoutFeedback} from 'react-native';
 import {DataStore} from 'aws-amplify';
 import {TaskCounter} from '.././src/models';
+import {even} from '@react-native-material/core';
 
 const Playground = props => {
   const {gridStatus, selectedColor, selectedBrick} = props;
   const [brickCount, setBrickCount] = useState(Number);
+  const [coins, SetCoins] = React.useState(0);
+  console.log('Koca: coins ', coins);
   console.log('Koca: brickCount ', brickCount);
 
   const webViewRef = useRef(null);
@@ -35,9 +38,9 @@ const Playground = props => {
     const subscription = DataStore.observeQuery(TaskCounter).subscribe(
       snapshot => {
         const {items, isSynced} = snapshot;
-        // console.log('Koca: items in Playground ', items);
+        console.log('Koca: items in Playground ', items[0].count);
 
-        // setTodos(items);
+        SetCoins(items[0].count);
       },
     );
 
@@ -48,7 +51,7 @@ const Playground = props => {
   }, []);
 
   useEffect(() => {
-    decrementCoinCount();
+    // decrementCoinCount();
     // webViewRef.current.injectJavaScript(checkBrickCount);
   }, [brickCount]);
 
@@ -65,10 +68,10 @@ const Playground = props => {
     // console.log('use effect for brick called');
   }, [selectedBrick]);
 
-  // useEffect(() => {
-  //   webViewRef.current.injectJavaScript(checkBrickCount);
-  //   console.log('brickCount');
-  // }, []);
+  useEffect(() => {
+    webViewRef.current.injectJavaScript(checkBrickCount);
+    // console.log('brickCount');
+  }, []);
 
   async function decrementCoinCount() {
     const models = await DataStore.query(TaskCounter);
@@ -83,9 +86,10 @@ const Playground = props => {
 
   const checkBrickFunction = () => {
     // decrementCoinCount();
-    // setTimeout(() => {
-    webViewRef.current.injectJavaScript(checkBrickCount);
-    // }, 500);
+    setTimeout(() => {
+      console.log('screen touched');
+      webViewRef.current.injectJavaScript(checkBrickCount);
+    }, 100);
   };
 
   return (
@@ -95,14 +99,18 @@ const Playground = props => {
         <WebView
           ref={webViewRef}
           source={{uri: 'https://dougwperez.github.io/brick-playground/'}}
-          // pointerEvents="none"
+          pointerEvents={coins === 0 ? 'none' : null}
           style={{flex: 1}}
           onMessage={event => {
-            setBrickCount(event.nativeEvent.data);
+            // setBrickCount(event.nativeEvent.data);
             console.log('event.nativeEvent.data PG', event.nativeEvent.data);
 
             console.log('brickCount PG', brickCount);
             // setBrickCount(event.nativeEvent.data);
+            if (event.nativeEvent.data > brickCount) {
+              decrementCoinCount();
+              setBrickCount(event.nativeEvent.data);
+            }
           }}
         />
       </View>
