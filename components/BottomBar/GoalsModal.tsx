@@ -21,11 +21,10 @@ const GoalsModal = props => {
   const {setGoalModalVisible, goalModalVisible} = props;
   const [selectedId, setSelectedId] = useState(null);
   const [text, onChangeText] = React.useState('Add your task..');
-  console.log('Koca: text ', text);
+
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [todos, setTodos] = useState([]);
-  console.log('Koca: todos ', todos);
 
   async function addTodo() {
     await DataStore.save(new Todo({name, description, isComplete: false}));
@@ -44,7 +43,6 @@ const GoalsModal = props => {
   useEffect(() => {
     const subscription = DataStore.observeQuery(Todo).subscribe(snapshot => {
       const {items, isSynced} = snapshot;
-      console.log('Koca: items ', items);
 
       setTodos(items);
     });

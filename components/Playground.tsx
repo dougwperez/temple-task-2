@@ -70,12 +70,10 @@ const Playground = props => {
 
   useEffect(() => {
     webViewRef.current.injectJavaScript(checkBrickCount);
-    // console.log('brickCount');
   }, []);
 
   async function decrementCoinCount() {
     const models = await DataStore.query(TaskCounter);
-    console.log('modelCount IN PLAYGROUND', models[0].count);
 
     await DataStore.save(
       TaskCounter.copyOf(models[0], item => {
@@ -87,7 +85,6 @@ const Playground = props => {
   const checkBrickFunction = () => {
     // decrementCoinCount();
     setTimeout(() => {
-      console.log('screen touched');
       webViewRef.current.injectJavaScript(checkBrickCount);
     }, 100);
   };

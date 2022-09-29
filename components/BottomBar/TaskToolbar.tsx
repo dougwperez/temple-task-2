@@ -14,13 +14,11 @@ const TaskToolbar = () => {
   const [goalModalVisible, setGoalModalVisible] = useState(false);
   const [completionModalVisible, setCompletionModalVisible] = useState(false);
   const [coins, setCoins] = useState(Number);
-  console.log('Koca: coins ', coins);
 
   useEffect(() => {
     const subscription = DataStore.observeQuery(TaskCounter).subscribe(
       snapshot => {
         const {items, isSynced} = snapshot;
-        console.log('Koca: items ', items[0].count);
         setCoins(items[0].count);
       },
     );

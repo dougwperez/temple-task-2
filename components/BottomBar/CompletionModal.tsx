@@ -12,7 +12,6 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {DataStore} from 'aws-amplify';
 import {Todo} from '../.././src/models';
 import {TaskCounter} from '../.././src/models';
-console.log('Koca: TaskCounter ', TaskCounter);
 
 const CompletionModal = props => {
   const {setCompletionModalVisible, completionModalVisible} = props;
@@ -20,12 +19,10 @@ const CompletionModal = props => {
   const [dailyScore, setDailyScore] = React.useState(0);
 
   const [totalScore, setTotalScore] = React.useState(0);
-  console.log('Koca: totalScore ', totalScore);
 
   async function updateCount() {
     setCompletionModalVisible(!completionModalVisible);
     const models = await DataStore.query(TaskCounter);
-    console.log('modelCount', models[0].count);
 
     await DataStore.save(
       TaskCounter.copyOf(models[0], item => {
@@ -38,7 +35,6 @@ const CompletionModal = props => {
     // setTotalScore(10);
     const subscription = DataStore.observeQuery(Todo).subscribe(snapshot => {
       const {items, isSynced} = snapshot;
-      console.log('Koca: items ', items);
 
       setTodos(items);
     });
