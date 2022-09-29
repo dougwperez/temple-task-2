@@ -18,7 +18,7 @@ const CompletionModal = props => {
   const {setCompletionModalVisible, completionModalVisible} = props;
   const [todos, setTodos] = useState([]);
   const [dailyScore, setDailyScore] = React.useState(0);
-  console.log('Koca: dailyScore ', dailyScore);
+
   const [totalScore, setTotalScore] = React.useState(0);
   console.log('Koca: totalScore ', totalScore);
 
