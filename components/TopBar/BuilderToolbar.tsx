@@ -31,8 +31,6 @@ const BuilderToolbar = props => {
   const {toggleGrid, selectColor, selectedColor, selectBrick, selectedBrick} =
     props;
 
-  console.log('Koca: selectedBrick ', selectedBrick);
-
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
   const [colorPickerVisible, setColorPickerVisible] = useState(false);
   const [brickPickerVisible, setBrickPickerVisible] = useState(false);

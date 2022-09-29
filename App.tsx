@@ -34,7 +34,7 @@ const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [gridStatus, setGridStatus] = useState(true);
   const [selectedColor, setSelectedColor] = useState('white');
-  const [selectedBrick, setSelectedBrick] = useState(3);
+  const [selectedBrick, setSelectedBrick] = useState(0);
 
   const toggleGrid = () => {
     setGridStatus(!gridStatus);

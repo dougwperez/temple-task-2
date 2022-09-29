@@ -52,37 +52,21 @@ const ColorPicker = props => {
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(5)}>
-          {/* <Image
-            style={styles.brickImg}
-            source={require('../Images/1x4.png')}
-          /> */}
           <Svg1x4 style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(2)}>
-          {/* <Image
-            style={styles.brickImg}
-            source={require('../Images/2x2.png')}
-          /> */}
           <Svg2x2 style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(4)}>
-          {/* <Image
-            style={styles.brickImg}
-            source={require('../Images/2x3.png')}
-          /> */}
           <Svg2x3 style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(6)}>
-          {/* <Image
-            style={styles.brickImg}
-            source={require('../Images/2x4.png')}
-          /> */}
           <Svg2x4 style={styles.brickImg} />
         </TouchableOpacity>
       </HStack>
