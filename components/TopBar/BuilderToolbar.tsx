@@ -46,8 +46,6 @@ const BuilderToolbar = props => {
     return brickPickerVisible || optionsModalVisible ? true : false;
   };
 
-  console.log('Koca: noColors ', noColors);
-
   const slideOut = () => {
     Animated.sequence([
       Animated.timing(animation, {
