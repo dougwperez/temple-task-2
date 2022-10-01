@@ -34,7 +34,6 @@ const Playground = props => {
   true`;
 
   useEffect(() => {
-    // setTotalScore(10);
     const subscription = DataStore.observeQuery(TaskCounter).subscribe(
       snapshot => {
         const {items, isSynced} = snapshot;
