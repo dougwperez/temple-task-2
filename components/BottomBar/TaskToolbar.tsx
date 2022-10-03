@@ -22,7 +22,7 @@ const TaskToolbar = () => {
         setCoins(items[0].count);
       },
     );
-    //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
+    //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak. Need to remove this line
     return function cleanup() {
       subscription.unsubscribe();
     };
