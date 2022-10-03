@@ -72,7 +72,6 @@ const BuilderToolbar = props => {
 
   const toggleColorPicker = () => {
     // setColorPickerVisible(!colorPickerVisible);
-    // slideIn();
 
     if (colorPickerVisible) {
       slideOut();
