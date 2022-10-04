@@ -38,10 +38,6 @@ const BuilderToolbar = props => {
 
   const animation = new Animated.Value(-350);
 
-  // const changeBrickIcon = () => {
-  //   selectedBrick === 0 ?
-  // }
-
   const noColors = () => {
     return brickPickerVisible || optionsModalVisible ? true : false;
   };

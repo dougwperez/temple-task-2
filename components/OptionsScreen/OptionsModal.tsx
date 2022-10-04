@@ -1,5 +1,11 @@
-import React from 'react';
-import {View, Text, StyleSheet, TouchableWithoutFeedback} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Animated,
+} from 'react-native';
 
 import Modal from 'react-native-modal';
 import {ListItem} from '@react-native-material/core';
@@ -9,6 +15,29 @@ import IconIon from 'react-native-vector-icons/Ionicons';
 const OptionsModal = props => {
   const {toggleModal, setOptionsModalVisible, optionsModalVisible, isVisible} =
     props;
+
+  const animation = new Animated.Value(-350);
+
+  const slideOut = () => {
+    Animated.sequence([
+      Animated.timing(animation, {
+        toValue: -500,
+        duration: 300,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
+
+  const slideIn = () => {
+    Animated.sequence([
+      Animated.timing(animation, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
+
   return (
     <View>
       <Modal
@@ -30,11 +59,18 @@ const OptionsModal = props => {
           </TouchableWithoutFeedback>
         }>
         <View style={styles.mainModal}>
-          <>
+          <Animated.View
+            style={{
+              // position: 'absolute',
+              // width: '100%',
+              // top: 91,
+              transform: [{translateX: animation}],
+            }}>
             <ListItem
               title="User Profile"
               leading={<Icon name="account" size={24} />}
               trailing={props => <Icon name="chevron-right" {...props} />}
+              onPress={() => slideOut()}
             />
             <ListItem
               title="Hall of Fame"
@@ -67,7 +103,7 @@ const OptionsModal = props => {
               leading={<Icon name="logout" size={24} />}
               trailing={props => <Icon name="chevron-right" {...props} />}
             />
-          </>
+          </Animated.View>
         </View>
       </Modal>
     </View>
