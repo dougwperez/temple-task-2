@@ -16,28 +16,6 @@ const OptionsModal = props => {
   const {toggleModal, setOptionsModalVisible, optionsModalVisible, isVisible} =
     props;
 
-  const animation = new Animated.Value(-350);
-
-  const slideOut = () => {
-    Animated.sequence([
-      Animated.timing(animation, {
-        toValue: -500,
-        duration: 300,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  };
-
-  const slideIn = () => {
-    Animated.sequence([
-      Animated.timing(animation, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  };
-
   return (
     <View>
       <Modal
@@ -59,18 +37,12 @@ const OptionsModal = props => {
           </TouchableWithoutFeedback>
         }>
         <View style={styles.mainModal}>
-          <Animated.View
-            style={{
-              // position: 'absolute',
-              // width: '100%',
-              // top: 91,
-              transform: [{translateX: animation}],
-            }}>
+          <>
             <ListItem
               title="User Profile"
               leading={<Icon name="account" size={24} />}
               trailing={props => <Icon name="chevron-right" {...props} />}
-              onPress={() => slideOut()}
+              onPress={() => console.log('clicked')}
             />
             <ListItem
               title="Hall of Fame"
@@ -103,7 +75,7 @@ const OptionsModal = props => {
               leading={<Icon name="logout" size={24} />}
               trailing={props => <Icon name="chevron-right" {...props} />}
             />
-          </Animated.View>
+          </>
         </View>
       </Modal>
     </View>
