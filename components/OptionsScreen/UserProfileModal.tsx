@@ -5,61 +5,93 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
   Animated,
-  Modal as RNModal,
+  Modal,
+  TouchableOpacity,
+  Pressable,
 } from 'react-native';
 
-import Modal from 'react-native-modal';
 import {ListItem} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconIon from 'react-native-vector-icons/Ionicons';
 
 const UserProfileModal = props => {
-  const {setOptionsModalVisible, optionsModalVisible, isVisible} = props;
-  console.log('Koca: isVisible ', isVisible);
+  const {userProfileModalVisible, setUserProfileModalVisible} = props;
 
   return (
-    <View>
-      <Modal
-        isVisible={isVisible}
-        hasBackdrop={true}
-        backdropColor="black"
-        animationIn={'slideInLeft'}
-        animationOut={'slideOutLeft'}
-        // animationIn={'fadeIn'}
-        // animationOut={'fadeOut'}
-        useNativeDriver={true}
-        customBackdrop={
-          <TouchableWithoutFeedback>
-            <View
-              style={{
-                flex: 1,
-                backgroundColor: 'black',
-                // backgroundOpacity: 1,
-              }}
-            />
-          </TouchableWithoutFeedback>
-        }>
-        <View style={styles.mainModal}>
-          <>
-            <ListItem
-              title="Something Something"
-              leading={<Icon name="account" size={24} />}
-              trailing={props => <Icon name="chevron-right" {...props} />}
-              onPress={() => console.log('clicked')}
-            />
-          </>
-        </View>
-      </Modal>
-    </View>
+    <>
+      <View>
+        <Modal
+          style={styles.goalModal}
+          onBack
+          animationType="fade"
+          transparent={true}
+          visible={true}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+            setUserProfileModalVisible(!userProfileModalVisible);
+          }}>
+          <TouchableOpacity
+            style={{flex: 1}}
+            onPress={() => {
+              setUserProfileModalVisible(false);
+            }}>
+            <View style={styles.centeredView}>
+              <View style={styles.mainModal}>
+                <Text style={styles.modalTitle}>User Profile</Text>
+                <>
+                  <ListItem
+                    title="User Profile"
+                    leading={<Icon name="account" size={24} />}
+                    trailing={props => <Icon name="chevron-right" {...props} />}
+                    onPress={() => setUserProfileModalVisible(true)}
+                  />
+                  <ListItem
+                    title="Hall of Fame"
+                    leading={<Icon name="trophy-award" size={24} />}
+                    trailing={props => <Icon name="chevron-right" {...props} />}
+                  />
+                  <ListItem
+                    title="Publish Scene"
+                    leading={<Icon name="publish" size={24} />}
+                    trailing={props => <Icon name="chevron-right" {...props} />}
+                  />
+                  <ListItem
+                    title="Reset Scene"
+                    leading={<Icon name="lock-reset" size={24} />}
+                    trailing={props => <Icon name="chevron-right" {...props} />}
+                  />
+                </>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => setUserProfileModalVisible(false)}>
+                  <Text style={styles.textStyle}>Save</Text>
+                </Pressable>
+              </View>
+            </View>
+          </TouchableOpacity>
+        </Modal>
+      </View>
+      {/* {userProfileModalVisible ? (
+        <UserProfileModal
+          setGoalModalVisible={setUserProfileModalVisible}
+          goalModalVisible={userProfileModalVisible}
+        />
+      ) : null} */}
+      {/* <UserProfileModal
+        setGoalModalVisible={setUserProfileModalVisible}
+        goalModalVisible={userProfileModalVisible}
+        isVisible={userProfileModalVisible}
+      /> */}
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   mainModal: {
-    marginLeft: -20,
-
+    // marginLeft: -20,
+    height: 500,
     marginVertical: 100,
-    backgroundColor: 'red',
+    backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
     // alignItems: 'center',
@@ -70,7 +102,42 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
+
     elevation: 5,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    // alignItems: 'center',
+    marginHorizontal: 20,
+    marginTop: 10,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    // width: 200,
+    marginHorizontal: 100,
+    // marginTop: '20%',
+    marginBottom: 110,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalTitle: {
+    marginBottom: 25,
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
+    paddingTop: 1,
   },
 });
 export default UserProfileModal;

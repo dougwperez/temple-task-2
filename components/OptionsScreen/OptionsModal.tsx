@@ -3,10 +3,9 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableWithoutFeedback,
-  Animated,
   Modal,
   Pressable,
+  TouchableOpacity,
 } from 'react-native';
 
 // import Modal from 'react-native-modal';
@@ -16,7 +15,7 @@ import IconIon from 'react-native-vector-icons/Ionicons';
 import UserProfileModal from './UserProfileModal';
 
 const OptionsModal = props => {
-  const {toggleModal, setOptionsModalVisible, optionsModalVisible} = props;
+  const {setOptionsModalVisible, optionsModalVisible} = props;
   const [userProfileModalVisible, setUserProfileModalVisible] = useState(false);
   console.log('Koca: userProfileModalVisible ', userProfileModalVisible);
 
@@ -25,75 +24,85 @@ const OptionsModal = props => {
       <View>
         <Modal
           style={styles.goalModal}
+          onBack
           animationType="fade"
           transparent={true}
           visible={true}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
-            setGoalModalVisible(!goalModalVisible);
+            setOptionsModalVisible(!optionsModalVisible);
           }}>
-          <View style={styles.centeredView}>
-            <View style={styles.mainModal}>
-              <Text style={styles.modalTitle}>Main Menu</Text>
-              <>
-                <ListItem
-                  title="User Profile"
-                  leading={<Icon name="account" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                  onPress={() => setUserProfileModalVisible(true)}
-                />
-                <ListItem
-                  title="Hall of Fame"
-                  leading={<Icon name="trophy-award" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                />
-                <ListItem
-                  title="Publish Scene"
-                  leading={<Icon name="publish" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                />
-                <ListItem
-                  title="Reset Scene"
-                  leading={<Icon name="lock-reset" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                />
+          <TouchableOpacity
+            style={{flex: 1}}
+            onPress={() => {
+              setOptionsModalVisible(false);
+            }}>
+            <View style={styles.centeredView}>
+              <View style={styles.mainModal}>
+                <Text style={styles.modalTitle}>Main Menu</Text>
+                <>
+                  <ListItem
+                    title="User Profile"
+                    leading={<Icon name="account" size={24} />}
+                    trailing={props => <Icon name="chevron-right" {...props} />}
+                    onPress={() => setUserProfileModalVisible(true)}
+                  />
+                  <ListItem
+                    title="Hall of Fame"
+                    leading={<Icon name="trophy-award" size={24} />}
+                    trailing={props => <Icon name="chevron-right" {...props} />}
+                  />
+                  <ListItem
+                    title="Publish Scene"
+                    leading={<Icon name="publish" size={24} />}
+                    trailing={props => <Icon name="chevron-right" {...props} />}
+                  />
+                  <ListItem
+                    title="Reset Scene"
+                    leading={<Icon name="lock-reset" size={24} />}
+                    trailing={props => <Icon name="chevron-right" {...props} />}
+                  />
 
-                <ListItem
-                  title="Help"
-                  leading={<Icon name="help" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                />
-                <ListItem
-                  title="Settings"
-                  leading={<IconIon name="settings-outline" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                />
-                <ListItem
-                  title="Logout"
-                  leading={<Icon name="logout" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                />
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => setOptionsModalVisible(!optionsModalVisible)}>
-                  <Text style={styles.textStyle}>Close</Text>
-                </Pressable>
-              </>
+                  <ListItem
+                    title="Help"
+                    leading={<Icon name="help" size={24} />}
+                    trailing={props => <Icon name="chevron-right" {...props} />}
+                  />
+                  <ListItem
+                    title="Settings"
+                    leading={<IconIon name="settings-outline" size={24} />}
+                    trailing={props => <Icon name="chevron-right" {...props} />}
+                  />
+                  <ListItem
+                    title="Logout"
+                    leading={<Icon name="logout" size={24} />}
+                    trailing={props => <Icon name="chevron-right" {...props} />}
+                  />
+                  <Pressable
+                    style={[styles.button, styles.buttonClose]}
+                    onPress={() =>
+                      setOptionsModalVisible(!optionsModalVisible)
+                    }>
+                    <Text style={styles.textStyle}>Close</Text>
+                  </Pressable>
+                </>
+              </View>
             </View>
-          </View>
+          </TouchableOpacity>
+          {userProfileModalVisible ? (
+            <UserProfileModal
+              setUserProfileModalVisible={setUserProfileModalVisible}
+              userProfileModalVisible={userProfileModalVisible}
+            />
+          ) : null}
         </Modal>
       </View>
-      {/* {userProfileModalVisible ? (
-        <UserProfileModal
-          setGoalModalVisible={setUserProfileModalVisible}
-          goalModalVisible={userProfileModalVisible}
-        />
-      ) : null} */}
-      <UserProfileModal
+
+      {/* <UserProfileModal
         setGoalModalVisible={setUserProfileModalVisible}
         goalModalVisible={userProfileModalVisible}
         isVisible={userProfileModalVisible}
-      />
+      /> */}
     </>
   );
 };
@@ -101,7 +110,7 @@ const OptionsModal = props => {
 const styles = StyleSheet.create({
   mainModal: {
     // marginLeft: -20,
-
+    height: 500,
     marginVertical: 100,
     backgroundColor: 'white',
     borderRadius: 20,
@@ -129,8 +138,9 @@ const styles = StyleSheet.create({
     elevation: 2,
     // width: 200,
     marginHorizontal: 100,
-    marginTop: 30,
-    marginBottom: -10,
+    marginTop: '8%',
+    // marginBottom: -10,
+    // marginVertical: 50,
   },
   buttonOpen: {
     backgroundColor: '#F194FF',
