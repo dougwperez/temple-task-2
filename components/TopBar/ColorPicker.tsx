@@ -40,39 +40,39 @@ const ColorPicker = props => {
       }}>
       <HStack style={styles.colorBoxContainer}>
         <TouchableOpacity
-          style={[{backgroundColor: '#FF0000'}, styles.colorBox]}
-          onPress={() => selectColor('#FF0000')}></TouchableOpacity>
+          style={[{backgroundColor: '#f94144'}, styles.colorBox]}
+          onPress={() => selectColor('#f94144')}></TouchableOpacity>
         <TouchableOpacity
-          style={[{backgroundColor: '#FF9800'}, styles.colorBox]}
-          onPress={() => selectColor('#FF9800')}></TouchableOpacity>
+          style={[{backgroundColor: '#f3722c'}, styles.colorBox]}
+          onPress={() => selectColor('#f3722c')}></TouchableOpacity>
 
         <TouchableOpacity
-          style={[{backgroundColor: '#F0E100'}, styles.colorBox]}
-          onPress={() => selectColor('#F0E100')}></TouchableOpacity>
+          style={[{backgroundColor: '#ffbe0b'}, styles.colorBox]}
+          onPress={() => selectColor('#ffbe0b')}></TouchableOpacity>
 
         <TouchableOpacity
-          style={[{backgroundColor: '#00DE00'}, styles.colorBox]}
-          onPress={() => selectColor('#00DE00')}></TouchableOpacity>
+          style={[{backgroundColor: '#90be6d'}, styles.colorBox]}
+          onPress={() => selectColor('#90be6d')}></TouchableOpacity>
 
         <TouchableOpacity
-          style={[{backgroundColor: '#A1BC24'}, styles.colorBox]}
-          onPress={() => selectColor('#A1BC24')}></TouchableOpacity>
+          style={[{backgroundColor: '#43aa8b'}, styles.colorBox]}
+          onPress={() => selectColor('#43aa8b')}></TouchableOpacity>
 
         <TouchableOpacity
-          style={[{backgroundColor: '#0011CF'}, styles.colorBox]}
-          onPress={() => selectColor('#0011CF')}></TouchableOpacity>
+          style={[{backgroundColor: '#1e6091'}, styles.colorBox]}
+          onPress={() => selectColor('#1e6091')}></TouchableOpacity>
 
         <TouchableOpacity
-          style={[{backgroundColor: '#FFFFFF'}, styles.colorBox]}
-          onPress={() => selectColor('#FFFFFF')}></TouchableOpacity>
+          style={[{backgroundColor: '#faf9f9'}, styles.colorBox]}
+          onPress={() => selectColor('#faf9f9')}></TouchableOpacity>
 
         <TouchableOpacity
-          style={[{backgroundColor: '#000000'}, styles.colorBox]}
-          onPress={() => selectColor('#000000')}></TouchableOpacity>
+          style={[{backgroundColor: '#212529'}, styles.colorBox]}
+          onPress={() => selectColor('#212529')}></TouchableOpacity>
 
         <TouchableOpacity
-          style={[{backgroundColor: '#652A0C'}, styles.colorBox]}
-          onPress={() => selectColor('#652A0C')}></TouchableOpacity>
+          style={[{backgroundColor: '#774936'}, styles.colorBox]}
+          onPress={() => selectColor('#774936')}></TouchableOpacity>
       </HStack>
     </AppBar>
   );
