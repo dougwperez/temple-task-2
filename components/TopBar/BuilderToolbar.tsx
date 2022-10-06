@@ -153,6 +153,7 @@ const BuilderToolbar = props => {
   return (
     <>
       <AppBar
+        // style={{backgroundColor: 'white'}} FOR REDESIGN
         title="TempleTask"
         titleStyle={{
           fontWeight: '700',
@@ -218,12 +219,13 @@ const BuilderToolbar = props => {
           </HStack>
         )}
       />
-
-      <OptionsModal
-        toggleModal={toggleModal}
-        setOptionsModalVisible={setOptionsModalVisible}
-        isVisible={optionsModalVisible}
-      />
+      {optionsModalVisible ? (
+        <OptionsModal
+          toggleModal={toggleModal}
+          setOptionsModalVisible={setOptionsModalVisible}
+          isVisible={optionsModalVisible}
+        />
+      ) : null}
 
       {colorPickerVisible ? (
         <ColorPicker
