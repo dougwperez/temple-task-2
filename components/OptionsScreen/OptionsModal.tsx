@@ -27,10 +27,10 @@ const OptionsModal = props => {
           isVisible={isVisible}
           hasBackdrop={true}
           backdropColor="black"
-          animationIn={'slideInLeft'}
-          animationOut={'slideOutLeft'}
-          // animationIn={'fadeIn'}
-          // animationOut={'fadeOut'}
+          // animationIn={'slideInLeft'}
+          // animationOut={'slideOutLeft'}
+          animationIn={'fadeIn'}
+          animationOut={'fadeOut'}
           useNativeDriver={true}
           customBackdrop={
             <TouchableWithoutFeedback onPress={toggleModal}>
