@@ -5,18 +5,18 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
   Animated,
-  Modal as RNModal,
+  Modal,
+  Pressable,
 } from 'react-native';
 
-import Modal from 'react-native-modal';
+// import Modal from 'react-native-modal';
 import {ListItem} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconIon from 'react-native-vector-icons/Ionicons';
 import UserProfileModal from './UserProfileModal';
 
 const OptionsModal = props => {
-  const {toggleModal, setOptionsModalVisible, optionsModalVisible, isVisible} =
-    props;
+  const {toggleModal, setOptionsModalVisible, optionsModalVisible} = props;
   const [userProfileModalVisible, setUserProfileModalVisible] = useState(false);
   console.log('Koca: userProfileModalVisible ', userProfileModalVisible);
 
@@ -24,63 +24,62 @@ const OptionsModal = props => {
     <>
       <View>
         <Modal
-          isVisible={isVisible}
-          hasBackdrop={true}
-          backdropColor="black"
-          animationIn={'fadeIn'}
-          animationOut={'fadeOut'}
-          useNativeDriver={true}
-          customBackdrop={
-            <TouchableWithoutFeedback onPress={toggleModal}>
-              <View
-                style={{
-                  flex: 1,
-                  backgroundColor: 'black',
-                  // backgroundOpacity: 1,
-                }}
-              />
-            </TouchableWithoutFeedback>
-          }>
-          <View style={styles.mainModal}>
-            <>
-              <ListItem
-                title="User Profile"
-                leading={<Icon name="account" size={24} />}
-                trailing={props => <Icon name="chevron-right" {...props} />}
-                onPress={() => setUserProfileModalVisible(true)}
-              />
-              <ListItem
-                title="Hall of Fame"
-                leading={<Icon name="trophy-award" size={24} />}
-                trailing={props => <Icon name="chevron-right" {...props} />}
-              />
-              <ListItem
-                title="Publish Scene"
-                leading={<Icon name="publish" size={24} />}
-                trailing={props => <Icon name="chevron-right" {...props} />}
-              />
-              <ListItem
-                title="Reset Scene"
-                leading={<Icon name="lock-reset" size={24} />}
-                trailing={props => <Icon name="chevron-right" {...props} />}
-              />
+          style={styles.goalModal}
+          animationType="fade"
+          transparent={true}
+          visible={true}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+            setGoalModalVisible(!goalModalVisible);
+          }}>
+          <View style={styles.centeredView}>
+            <View style={styles.mainModal}>
+              <Text style={styles.modalTitle}>Main Menu</Text>
+              <>
+                <ListItem
+                  title="User Profile"
+                  leading={<Icon name="account" size={24} />}
+                  trailing={props => <Icon name="chevron-right" {...props} />}
+                  onPress={() => setUserProfileModalVisible(true)}
+                />
+                <ListItem
+                  title="Hall of Fame"
+                  leading={<Icon name="trophy-award" size={24} />}
+                  trailing={props => <Icon name="chevron-right" {...props} />}
+                />
+                <ListItem
+                  title="Publish Scene"
+                  leading={<Icon name="publish" size={24} />}
+                  trailing={props => <Icon name="chevron-right" {...props} />}
+                />
+                <ListItem
+                  title="Reset Scene"
+                  leading={<Icon name="lock-reset" size={24} />}
+                  trailing={props => <Icon name="chevron-right" {...props} />}
+                />
 
-              <ListItem
-                title="Help"
-                leading={<Icon name="help" size={24} />}
-                trailing={props => <Icon name="chevron-right" {...props} />}
-              />
-              <ListItem
-                title="Settings"
-                leading={<IconIon name="settings-outline" size={24} />}
-                trailing={props => <Icon name="chevron-right" {...props} />}
-              />
-              <ListItem
-                title="Logout"
-                leading={<Icon name="logout" size={24} />}
-                trailing={props => <Icon name="chevron-right" {...props} />}
-              />
-            </>
+                <ListItem
+                  title="Help"
+                  leading={<Icon name="help" size={24} />}
+                  trailing={props => <Icon name="chevron-right" {...props} />}
+                />
+                <ListItem
+                  title="Settings"
+                  leading={<IconIon name="settings-outline" size={24} />}
+                  trailing={props => <Icon name="chevron-right" {...props} />}
+                />
+                <ListItem
+                  title="Logout"
+                  leading={<Icon name="logout" size={24} />}
+                  trailing={props => <Icon name="chevron-right" {...props} />}
+                />
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => setOptionsModalVisible(!optionsModalVisible)}>
+                  <Text style={styles.textStyle}>Close</Text>
+                </Pressable>
+              </>
+            </View>
           </View>
         </Modal>
       </View>
@@ -116,6 +115,40 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    // alignItems: 'center',
+    marginHorizontal: 20,
+    marginTop: 10,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    // width: 200,
+    marginHorizontal: 100,
+    marginTop: 30,
+    marginBottom: -10,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalTitle: {
+    marginBottom: 25,
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
+    paddingTop: 1,
   },
 });
 export default OptionsModal;

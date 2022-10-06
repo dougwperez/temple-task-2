@@ -223,7 +223,7 @@ const BuilderToolbar = props => {
         <OptionsModal
           toggleModal={toggleModal}
           setOptionsModalVisible={setOptionsModalVisible}
-          isVisible={optionsModalVisible}
+          optionsModalVisible={optionsModalVisible}
         />
       ) : null}
 
