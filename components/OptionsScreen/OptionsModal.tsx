@@ -110,6 +110,7 @@ const OptionsModal = props => {
 const styles = StyleSheet.create({
   mainModal: {
     // marginLeft: -20,
+    display: 'flex',
     height: 500,
     marginVertical: 100,
     backgroundColor: 'white',

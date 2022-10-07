@@ -89,6 +89,8 @@ const UserProfileModal = props => {
 const styles = StyleSheet.create({
   mainModal: {
     // marginLeft: -20,
+    display: 'flex',
+    justifyContent: 'flex-start',
     height: 500,
     marginVertical: 100,
     backgroundColor: 'white',
@@ -116,10 +118,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-    // width: 200,
     marginHorizontal: 100,
-    // marginTop: '20%',
-    marginBottom: 110,
+    marginTop: 'auto',
   },
   buttonOpen: {
     backgroundColor: '#F194FF',
