@@ -16,6 +16,8 @@ import UserProfileModal from './UserProfileModal';
 import HallOfFameModal from './HallOfFameModal';
 import PublishSceneModal from './PublishSceneModal';
 import ResetSceneModal from './ResetSceneModal';
+import SettingsModal from './SettingsModal';
+import LogoutModal from './LogoutModal';
 
 const OptionsModal = props => {
   const {setOptionsModalVisible, optionsModalVisible} = props;
@@ -119,6 +121,18 @@ const OptionsModal = props => {
             <ResetSceneModal
               setResetSceneModalVisible={setResetSceneModalVisible}
               resetSceneModalVisible={resetSceneModalVisible}
+            />
+          ) : null}
+          {settingsModalVisible ? (
+            <SettingsModal
+              setSettingsModalVisible={setSettingsModalVisible}
+              settingsModalVisible={settingsModalVisible}
+            />
+          ) : null}
+          {logoutModalVisible ? (
+            <LogoutModal
+              setLogoutModalVisible={setLogoutModalVisible}
+              logoutModalVisible={logoutModalVisible}
             />
           ) : null}
         </Modal>
