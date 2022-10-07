@@ -15,6 +15,7 @@ import IconIon from 'react-native-vector-icons/Ionicons';
 import UserProfileModal from './UserProfileModal';
 import HallOfFameModal from './HallOfFameModal';
 import PublishSceneModal from './PublishSceneModal';
+import ResetSceneModal from './ResetSceneModal';
 
 const OptionsModal = props => {
   const {setOptionsModalVisible, optionsModalVisible} = props;
@@ -22,7 +23,7 @@ const OptionsModal = props => {
   const [hallofFameModalVisible, setHallofFameModalVisible] = useState(false);
   const [publishSceneModalVisible, setPublishSceneModalVisible] =
     useState(false);
-  const [resetSceneModalVisible, setResetModalVisible] = useState(false);
+  const [resetSceneModalVisible, setResetSceneModalVisible] = useState(false);
   const [settingsModalVisible, setSettingsModalVisible] = useState(false);
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
 
@@ -70,7 +71,7 @@ const OptionsModal = props => {
                     title="Reset Scene"
                     leading={<Icon name="lock-reset" size={24} />}
                     trailing={props => <Icon name="chevron-right" {...props} />}
-                    onPress={() => setResetModalVisible(true)}
+                    onPress={() => setResetSceneModalVisible(true)}
                   />
 
                   <ListItem
@@ -112,6 +113,12 @@ const OptionsModal = props => {
             <PublishSceneModal
               setPublishSceneModalVisible={setPublishSceneModalVisible}
               publishSceneModalVisible={publishSceneModalVisible}
+            />
+          ) : null}
+          {resetSceneModalVisible ? (
+            <ResetSceneModal
+              setResetSceneModalVisible={setResetSceneModalVisible}
+              resetSceneModalVisible={resetSceneModalVisible}
             />
           ) : null}
         </Modal>
