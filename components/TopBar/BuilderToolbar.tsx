@@ -153,11 +153,11 @@ const BuilderToolbar = props => {
   return (
     <>
       <AppBar
-        // style={{backgroundColor: 'white'}} FOR REDESIGN
+        style={{backgroundColor: '#e9e4da'}}
         title="TempleTask"
         titleStyle={{
           fontWeight: '700',
-          color: 'white',
+          color: 'green',
         }}
         leading={props => (
           <HStack>
@@ -179,6 +179,7 @@ const BuilderToolbar = props => {
               icon={props => <IconIon name="hammer" {...props} />}
               onPress={() => toggleToolPicker()}
               {...props}
+              color="brown"
             />
             <IconButton
               icon={props => (

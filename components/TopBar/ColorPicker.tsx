@@ -35,6 +35,7 @@ const ColorPicker = props => {
         position: 'absolute',
         width: '100%',
         top: 91,
+        backgroundColor: '#e9e4da',
 
         transform: [{translateX: animation}],
       }}>
