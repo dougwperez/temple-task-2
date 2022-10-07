@@ -14,8 +14,8 @@ import {ListItem} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconIon from 'react-native-vector-icons/Ionicons';
 
-const UserProfileModal = props => {
-  const {userProfileModalVisible, setUserProfileModalVisible} = props;
+const PublishSceneModal = props => {
+  const {publishSceneModalVisible, setPublishSceneModalVisible} = props;
 
   return (
     <>
@@ -28,22 +28,21 @@ const UserProfileModal = props => {
           visible={true}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
-            setUserProfileModalVisible(!userProfileModalVisible);
+            setPublishSceneModalVisible(!hallofFameModalVisible);
           }}>
           <TouchableOpacity
             style={{flex: 1}}
             onPress={() => {
-              setUserProfileModalVisible(false);
+              setPublishSceneModalVisible(false);
             }}>
             <View style={styles.centeredView}>
               <View style={styles.mainModal}>
-                <Text style={styles.modalTitle}>User Profile</Text>
+                <Text style={styles.modalTitle}>Publish Scene</Text>
                 <>
                   <ListItem
                     title="User Profile"
                     leading={<Icon name="account" size={24} />}
                     trailing={props => <Icon name="chevron-right" {...props} />}
-                    onPress={() => setUserProfileModalVisible(true)}
                   />
                   <ListItem
                     title="Hall of Fame"
@@ -63,7 +62,7 @@ const UserProfileModal = props => {
                 </>
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
-                  onPress={() => setUserProfileModalVisible(false)}>
+                  onPress={() => setPublishSceneModalVisible(false)}>
                   <Text style={styles.textStyle}>Save</Text>
                 </Pressable>
               </View>
@@ -127,4 +126,4 @@ const styles = StyleSheet.create({
     paddingTop: 1,
   },
 });
-export default UserProfileModal;
+export default PublishSceneModal;

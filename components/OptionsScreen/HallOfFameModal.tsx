@@ -14,8 +14,8 @@ import {ListItem} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconIon from 'react-native-vector-icons/Ionicons';
 
-const UserProfileModal = props => {
-  const {userProfileModalVisible, setUserProfileModalVisible} = props;
+const HallOfFameModal = props => {
+  const {hallofFameModalVisible, setHallofFameModalVisible} = props;
 
   return (
     <>
@@ -28,16 +28,16 @@ const UserProfileModal = props => {
           visible={true}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
-            setUserProfileModalVisible(!userProfileModalVisible);
+            setHallofFameModalVisible(!hallofFameModalVisible);
           }}>
           <TouchableOpacity
             style={{flex: 1}}
             onPress={() => {
-              setUserProfileModalVisible(false);
+              setHallofFameModalVisible(false);
             }}>
             <View style={styles.centeredView}>
               <View style={styles.mainModal}>
-                <Text style={styles.modalTitle}>User Profile</Text>
+                <Text style={styles.modalTitle}>Hall of Fame</Text>
                 <>
                   <ListItem
                     title="User Profile"
@@ -63,7 +63,7 @@ const UserProfileModal = props => {
                 </>
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
-                  onPress={() => setUserProfileModalVisible(false)}>
+                  onPress={() => setHallofFameModalVisible(false)}>
                   <Text style={styles.textStyle}>Save</Text>
                 </Pressable>
               </View>
@@ -127,4 +127,4 @@ const styles = StyleSheet.create({
     paddingTop: 1,
   },
 });
-export default UserProfileModal;
+export default HallOfFameModal;

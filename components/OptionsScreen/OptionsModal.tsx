@@ -13,11 +13,18 @@ import {ListItem} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconIon from 'react-native-vector-icons/Ionicons';
 import UserProfileModal from './UserProfileModal';
+import HallOfFameModal from './HallOfFameModal';
+import PublishSceneModal from './PublishSceneModal';
 
 const OptionsModal = props => {
   const {setOptionsModalVisible, optionsModalVisible} = props;
   const [userProfileModalVisible, setUserProfileModalVisible] = useState(false);
-  console.log('Koca: userProfileModalVisible ', userProfileModalVisible);
+  const [hallofFameModalVisible, setHallofFameModalVisible] = useState(false);
+  const [publishSceneModalVisible, setPublishSceneModalVisible] =
+    useState(false);
+  const [resetSceneModalVisible, setResetModalVisible] = useState(false);
+  const [settingsModalVisible, setSettingsModalVisible] = useState(false);
+  const [logoutModalVisible, setLogoutModalVisible] = useState(false);
 
   return (
     <>
@@ -51,32 +58,32 @@ const OptionsModal = props => {
                     title="Hall of Fame"
                     leading={<Icon name="trophy-award" size={24} />}
                     trailing={props => <Icon name="chevron-right" {...props} />}
+                    onPress={() => setHallofFameModalVisible(true)}
                   />
                   <ListItem
                     title="Publish Scene"
                     leading={<Icon name="publish" size={24} />}
                     trailing={props => <Icon name="chevron-right" {...props} />}
+                    onPress={() => setPublishSceneModalVisible(true)}
                   />
                   <ListItem
                     title="Reset Scene"
                     leading={<Icon name="lock-reset" size={24} />}
                     trailing={props => <Icon name="chevron-right" {...props} />}
+                    onPress={() => setResetModalVisible(true)}
                   />
 
-                  <ListItem
-                    title="Help"
-                    leading={<Icon name="help" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
                   <ListItem
                     title="Settings"
                     leading={<IconIon name="settings-outline" size={24} />}
                     trailing={props => <Icon name="chevron-right" {...props} />}
+                    onPress={() => setSettingsModalVisible(true)}
                   />
                   <ListItem
                     title="Logout"
                     leading={<Icon name="logout" size={24} />}
                     trailing={props => <Icon name="chevron-right" {...props} />}
+                    onPress={() => setLogoutModalVisible(true)}
                   />
                   <Pressable
                     style={[styles.button, styles.buttonClose]}
@@ -95,28 +102,32 @@ const OptionsModal = props => {
               userProfileModalVisible={userProfileModalVisible}
             />
           ) : null}
+          {hallofFameModalVisible ? (
+            <HallOfFameModal
+              setHallofFameModalVisible={setHallofFameModalVisible}
+              hallofFameModalVisible={hallofFameModalVisible}
+            />
+          ) : null}
+          {publishSceneModalVisible ? (
+            <PublishSceneModal
+              setPublishSceneModalVisible={setPublishSceneModalVisible}
+              publishSceneModalVisible={publishSceneModalVisible}
+            />
+          ) : null}
         </Modal>
       </View>
-
-      {/* <UserProfileModal
-        setGoalModalVisible={setUserProfileModalVisible}
-        goalModalVisible={userProfileModalVisible}
-        isVisible={userProfileModalVisible}
-      /> */}
     </>
   );
 };
 
 const styles = StyleSheet.create({
   mainModal: {
-    // marginLeft: -20,
     display: 'flex',
     height: 500,
     marginVertical: 100,
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
-    // alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -129,7 +140,6 @@ const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: 'center',
-    // alignItems: 'center',
     marginHorizontal: 20,
     marginTop: 10,
   },
@@ -137,11 +147,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-    // width: 200,
     marginHorizontal: 100,
-    marginTop: '8%',
-    // marginBottom: -10,
-    // marginVertical: 50,
+    marginTop: 'auto',
   },
   buttonOpen: {
     backgroundColor: '#F194FF',
