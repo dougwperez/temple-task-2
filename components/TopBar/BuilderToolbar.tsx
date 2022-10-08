@@ -153,7 +153,7 @@ const BuilderToolbar = props => {
   return (
     <>
       <AppBar
-        style={{backgroundColor: '#e9e4da'}}
+        style={{backgroundColor: 'white'}}
         title="TempleTask"
         titleStyle={{
           fontWeight: '700',
@@ -166,6 +166,7 @@ const BuilderToolbar = props => {
               {...props}
               style={{marginRight: -12}}
               onPress={() => toggleModal()}
+              color="#cacaca"
             />
             <Image
               style={styles.brickPicks}
@@ -179,7 +180,7 @@ const BuilderToolbar = props => {
               icon={props => <IconIon name="hammer" {...props} />}
               onPress={() => toggleToolPicker()}
               {...props}
-              color="brown"
+              color="#65350f"
             />
             <IconButton
               icon={props => (
