@@ -166,7 +166,7 @@ const BuilderToolbar = props => {
               {...props}
               style={{marginRight: -12}}
               onPress={() => toggleModal()}
-              color="#cacaca"
+              color="#6F7378"
             />
             <Image
               style={styles.brickPicks}

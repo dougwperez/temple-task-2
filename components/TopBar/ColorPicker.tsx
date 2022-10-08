@@ -85,14 +85,15 @@ const styles = StyleSheet.create({
     height: 30,
     margin: 3,
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: '#6F7378',
     borderRadius: 7,
   },
   colorBoxContainer: {
     justifyContent: 'center',
-    marginTop: -45,
-    borderTopColor: 'gray',
-    borderTopWidth: 1,
+    marginTop: -46,
+    // borderTopColor: 'gray',
+    // borderTopWidth: 1,
+    // borderStyle: 'dashed',
   },
 });
 export default ColorPicker;
