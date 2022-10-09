@@ -33,7 +33,7 @@ import Playground from './components/Playground';
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [gridStatus, setGridStatus] = useState(true);
-  const [selectedColor, setSelectedColor] = useState('white');
+  const [selectedColor, setSelectedColor] = useState('#ffbe0b');
   const [selectedBrick, setSelectedBrick] = useState(0);
 
   const toggleGrid = () => {

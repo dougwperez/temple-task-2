@@ -9,8 +9,6 @@ const Playground = props => {
   const {gridStatus, selectedColor, selectedBrick} = props;
   const [brickCount, setBrickCount] = useState(Number);
   const [coins, SetCoins] = React.useState(0);
-  console.log('Koca: coins ', coins);
-  console.log('Koca: brickCount ', brickCount);
 
   const webViewRef = useRef(null);
 
@@ -69,7 +67,7 @@ const Playground = props => {
 
   useEffect(() => {
     webViewRef.current.injectJavaScript(checkBrickCount);
-  }, []);
+  });
 
   async function decrementCoinCount() {
     const models = await DataStore.query(TaskCounter);

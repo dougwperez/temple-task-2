@@ -32,7 +32,12 @@ const TaskToolbar = () => {
     <>
       <AppBar
         title={`Coins ${coins}`}
-        titleStyle={{fontWeight: '700', marginRight: -10, color: '#EEBC1D'}}
+        titleStyle={{
+          fontWeight: '700',
+          marginLeft: -5,
+          marginRight: -10,
+          color: '#EEBC1D',
+        }}
         tintColor="#EEBC1D"
         leading={props => <IconFont5 name="coins" {...props} />}
         variant="bottom"
@@ -52,7 +57,8 @@ const TaskToolbar = () => {
               // variant="outlined"
               title="Goals"
               color="white"
-              tintColor="#6226ee"
+              // tintColor="#6226ee"
+              tintColor={goalModalVisible ? '#6226ee' : '#6F7378'}
               style={{borderWidth: 0.6, borderColor: '#b6b6b6'}}
               backgroundColor="white"
               leading={props => <IconFont name="trophy" {...props} />}
@@ -62,7 +68,7 @@ const TaskToolbar = () => {
               // variant="outlined"
               title="Done!"
               color="white"
-              tintColor="green"
+              tintColor={completionModalVisible ? 'green' : '#6F7378'}
               backgroundColor="white"
               style={{borderWidth: 0.6, borderColor: '#b6b6b6'}}
               leading={props => <IconIon name="checkmark-circle" {...props} />}
