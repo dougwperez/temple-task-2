@@ -183,12 +183,12 @@ const BuilderToolbar = props => {
 
               onPress={() => toggleToolPicker()}
               {...props}
-              color="#65350f"
+              color="#6F7378"
             />
             <IconButton
               icon={props => (
-                <IconFoundation
-                  name="paint-bucket"
+                <IconIon
+                  name="md-color-palette"
                   {...props}
                   color={selectedColor}
                   // style={{borderWidth: 1}}
