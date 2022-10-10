@@ -86,7 +86,9 @@ const OptionsModal = props => {
                     title="Logout"
                     leading={<Icon name="logout" size={24} />}
                     trailing={props => <Icon name="chevron-right" {...props} />}
-                    onPress={() => setLogoutModalVisible(true)}
+                    onPress={() => {
+                      setLogoutModalVisible(true);
+                    }}
                   />
                   <Pressable
                     style={[styles.button, styles.buttonClose]}

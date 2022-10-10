@@ -24,7 +24,7 @@ const LogoutModal = props => {
           style={styles.goalModal}
           onBack
           animationType="fade"
-          transparent={true}
+          transparent={false}
           visible={true}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
@@ -42,21 +42,6 @@ const LogoutModal = props => {
                   <ListItem
                     title="User Profile"
                     leading={<Icon name="account" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
-                  <ListItem
-                    title="Hall of Fame"
-                    leading={<Icon name="trophy-award" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
-                  <ListItem
-                    title="Publish Scene"
-                    leading={<Icon name="publish" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
-                  <ListItem
-                    title="Reset Scene"
-                    leading={<Icon name="lock-reset" size={24} />}
                     trailing={props => <Icon name="chevron-right" {...props} />}
                   />
                 </>

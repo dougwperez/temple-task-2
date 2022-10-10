@@ -59,7 +59,10 @@ const TaskToolbar = () => {
               color="white"
               // tintColor="#6226ee"
               tintColor={goalModalVisible ? '#6226ee' : '#6F7378'}
-              style={{borderWidth: 0.6, borderColor: '#b6b6b6'}}
+              style={{
+                borderWidth: 0.6,
+                borderColor: '#b6b6b6',
+              }}
               backgroundColor="white"
               leading={props => <IconFont name="trophy" {...props} />}
               onPress={() => setGoalModalVisible(true)}
