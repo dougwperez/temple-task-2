@@ -83,14 +83,7 @@ const CompletionModal = props => {
             />
             <Text
               style={{
-                color:
-                  dailyScore === 0
-                    ? 'red'
-                    : dailyScore === 1
-                    ? 'orange'
-                    : dailyScore === 2
-                    ? 'gold'
-                    : 'green',
+                color: dailyScore === 0 ? '#6F7378' : '#EEBC1D',
                 ...styles.trackerText,
               }}>
               {dailyScore} Coins Earned Today
@@ -158,7 +151,7 @@ const styles = StyleSheet.create({
   trackerText: {
     marginBottom: 17,
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontWeight: '800',
     fontSize: 15,
     // color: dailyScore === 0 ? 'red' : 'green',
   },
