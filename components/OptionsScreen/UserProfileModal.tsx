@@ -9,6 +9,13 @@ import {
   TouchableOpacity,
   Pressable,
 } from 'react-native';
+import {
+  Avatar,
+  Stack,
+  TextInput,
+  VStack,
+  HStack,
+} from '@react-native-material/core';
 
 import {ListItem} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -33,29 +40,16 @@ const UserProfileModal = props => {
           <View style={styles.centeredView}>
             <View style={styles.mainModal}>
               <Text style={styles.modalTitle}>User Profile</Text>
-              <>
-                <ListItem
-                  title="User Profile"
-                  leading={<Icon name="account" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                  onPress={() => setUserProfileModalVisible(true)}
+
+              <VStack style={styles.contentStack} spacing={20}>
+                <Avatar label="Doug Perez" style={styles.avatar} />
+                <TextInput
+                  style={styles.input}
+                  label="Username"
+                  variant="standard"
                 />
-                <ListItem
-                  title="Hall of Fame"
-                  leading={<Icon name="trophy-award" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                />
-                <ListItem
-                  title="Publish Scene"
-                  leading={<Icon name="publish" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                />
-                <ListItem
-                  title="Reset Scene"
-                  leading={<Icon name="lock-reset" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                />
-              </>
+              </VStack>
+
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setUserProfileModalVisible(false)}>
@@ -120,5 +114,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingTop: 1,
   },
+  avatar: {
+    // marginHorizontal: 110,
+  },
+  contentStack: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  input: {width: '90%'},
 });
 export default UserProfileModal;

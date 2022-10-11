@@ -24,7 +24,7 @@ const HallOfFameModal = props => {
           style={styles.goalModal}
           onBack
           animationType="fade"
-          transparent={true}
+          transparent={false}
           visible={true}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
@@ -33,33 +33,11 @@ const HallOfFameModal = props => {
           <View style={styles.centeredView}>
             <View style={styles.mainModal}>
               <Text style={styles.modalTitle}>Hall of Fame</Text>
-              <>
-                <ListItem
-                  title="User Profile"
-                  leading={<Icon name="account" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                  onPress={() => setUserProfileModalVisible(true)}
-                />
-                <ListItem
-                  title="Hall of Fame"
-                  leading={<Icon name="trophy-award" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                />
-                <ListItem
-                  title="Publish Scene"
-                  leading={<Icon name="publish" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                />
-                <ListItem
-                  title="Reset Scene"
-                  leading={<Icon name="lock-reset" size={24} />}
-                  trailing={props => <Icon name="chevron-right" {...props} />}
-                />
-              </>
+              <></>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setHallofFameModalVisible(false)}>
-                <Text style={styles.textStyle}>Save</Text>
+                <Text style={styles.textStyle}>Back</Text>
               </Pressable>
             </View>
           </View>
@@ -73,7 +51,7 @@ const styles = StyleSheet.create({
   mainModal: {
     display: 'flex',
     justifyContent: 'flex-start',
-    height: 500,
+    height: 700,
     marginVertical: 100,
     backgroundColor: 'white',
     borderRadius: 20,
