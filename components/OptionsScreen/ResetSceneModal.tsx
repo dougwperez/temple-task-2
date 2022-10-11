@@ -41,7 +41,6 @@ const ResetSceneModal = props => {
                 <Text style={styles.modalTitle}>
                   Are you sure you want to reset your scene?
                 </Text>
-
                 <Image
                   style={styles.modalImage}
                   source={require('../Images/trash.png')}

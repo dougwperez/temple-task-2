@@ -8,9 +8,10 @@ import {
   Modal,
   TouchableOpacity,
   Pressable,
+  Image,
 } from 'react-native';
 
-import {ListItem} from '@react-native-material/core';
+import {ListItem, HStack} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconIon from 'react-native-vector-icons/Ionicons';
 
@@ -37,34 +38,30 @@ const PublishSceneModal = props => {
             }}>
             <View style={styles.centeredView}>
               <View style={styles.mainModal}>
-                <Text style={styles.modalTitle}>Publish Scene</Text>
-                <>
-                  <ListItem
-                    title="User Profile"
-                    leading={<Icon name="account" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
-                  <ListItem
-                    title="Hall of Fame"
-                    leading={<Icon name="trophy-award" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
-                  <ListItem
-                    title="Publish Scene"
-                    leading={<Icon name="publish" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
-                  <ListItem
-                    title="Reset Scene"
-                    leading={<Icon name="lock-reset" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
-                </>
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => setPublishSceneModalVisible(false)}>
-                  <Text style={styles.textStyle}>Save</Text>
-                </Pressable>
+                <Text style={styles.modalTitle}>
+                  Share your creation with the community!
+                </Text>
+                <Image
+                  style={styles.modalImage}
+                  source={require('../Images/trophy.png')}
+                />
+                <Text style={styles.modalText}>
+                  Only your scene will be published to the Hall of Fame. Your
+                  tasks are private.
+                </Text>
+
+                <HStack style={styles.buttonRow}>
+                  <Pressable
+                    style={[styles.confirmButton]}
+                    onPress={() => setPublishSceneModalVisible(false)}>
+                    <Text style={styles.textStyle}>Yes, Publish Scene</Text>
+                  </Pressable>
+                  <Pressable
+                    style={[styles.cancelButton]}
+                    onPress={() => setPublishSceneModalVisible(false)}>
+                    <Text style={styles.cancelText}>No, Cancel</Text>
+                  </Pressable>
+                </HStack>
               </View>
             </View>
           </TouchableOpacity>
@@ -96,9 +93,23 @@ const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: 'center',
-
     marginHorizontal: 20,
     marginTop: 10,
+  },
+  cancelButton: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    color: 'black',
+    marginLeft: 10,
+    marginTop: 'auto',
+  },
+  confirmButton: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    marginTop: 'auto',
+    backgroundColor: 'green',
   },
   button: {
     borderRadius: 20,
@@ -118,12 +129,35 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  cancelText: {
+    color: 'black',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   modalTitle: {
     marginBottom: 25,
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
     paddingTop: 1,
+    lineHeight: 25,
+  },
+  modalImage: {
+    resizeMode: 'contain',
+    height: 300,
+    width: 200,
+    marginHorizontal: 40,
+    marginTop: -40,
+  },
+  modalText: {
+    marginBottom: 25,
+    textAlign: 'center',
+    fontSize: 15,
+    paddingTop: 1,
+  },
+  buttonRow: {
+    marginTop: 'auto',
+    marginHorizontal: 15,
   },
 });
 export default PublishSceneModal;
