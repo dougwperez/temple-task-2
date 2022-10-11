@@ -42,11 +42,6 @@ const OptionsModal = props => {
             Alert.alert('Modal has been closed.');
             setOptionsModalVisible(!optionsModalVisible);
           }}>
-          {/* <TouchableWithoutFeedback
-            style={{flex: 1, justifyContent: 'center'}}
-            onPressOut={() => {
-              // setOptionsModalVisible(false);
-            }}> */}
           <View style={styles.centeredView}>
             <View style={styles.mainModal}>
               <Text style={styles.modalTitle}>Main Menu</Text>
@@ -98,7 +93,7 @@ const OptionsModal = props => {
               </>
             </View>
           </View>
-          {/* </TouchableWithoutFeedback> */}
+
           {userProfileModalVisible ? (
             <UserProfileModal
               setUserProfileModalVisible={setUserProfileModalVisible}

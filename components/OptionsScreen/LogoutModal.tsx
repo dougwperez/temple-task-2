@@ -31,37 +31,31 @@ const LogoutModal = props => {
             Alert.alert('Modal has been closed.');
             setLogoutModalVisible(!logoutModalVisible);
           }}>
-          <TouchableOpacity
-            style={{flex: 1}}
-            onPress={() => {
-              setLogoutModalVisible(false);
-            }}>
-            <View style={styles.centeredView}>
-              <View style={styles.mainModal}>
-                <Text style={styles.modalTitle}>
-                  Are you sure you want to Log Out from TempleTask?
-                </Text>
-                <>
-                  <Image
-                    style={styles.modalImage}
-                    source={require('../Images/logoNoBackground.png')}
-                  />
-                </>
-                <HStack style={styles.buttonRow}>
-                  <Pressable
-                    style={[styles.confirmButton]}
-                    onPress={() => setLogoutModalVisible(false)}>
-                    <Text style={styles.textStyle}>Yes, Log Out</Text>
-                  </Pressable>
-                  <Pressable
-                    style={[styles.cancelButton]}
-                    onPress={() => setLogoutModalVisible(false)}>
-                    <Text style={styles.cancelText}>No, Cancel</Text>
-                  </Pressable>
-                </HStack>
-              </View>
+          <View style={styles.centeredView}>
+            <View style={styles.mainModal}>
+              <Text style={styles.modalTitle}>
+                Are you sure you want to Log Out from TempleTask?
+              </Text>
+              <>
+                <Image
+                  style={styles.modalImage}
+                  source={require('../Images/logoNoBackground.png')}
+                />
+              </>
+              <HStack style={styles.buttonRow}>
+                <Pressable
+                  style={[styles.confirmButton]}
+                  onPress={() => setLogoutModalVisible(false)}>
+                  <Text style={styles.textStyle}>Yes, Log Out</Text>
+                </Pressable>
+                <Pressable
+                  style={[styles.cancelButton]}
+                  onPress={() => setLogoutModalVisible(false)}>
+                  <Text style={styles.cancelText}>No, Cancel</Text>
+                </Pressable>
+              </HStack>
             </View>
-          </TouchableOpacity>
+          </View>
         </Modal>
       </View>
     </>

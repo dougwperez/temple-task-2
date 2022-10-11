@@ -31,39 +31,33 @@ const ResetSceneModal = props => {
             Alert.alert('Modal has been closed.');
             setResetSceneModalVisible(!resetSceneModalVisible);
           }}>
-          <TouchableOpacity
-            style={{flex: 1}}
-            onPress={() => {
-              setResetSceneModalVisible(false);
-            }}>
-            <View style={styles.centeredView}>
-              <View style={styles.mainModal}>
-                <Text style={styles.modalTitle}>
-                  Are you sure you want to reset your scene?
-                </Text>
-                <Image
-                  style={styles.modalImage}
-                  source={require('../Images/trash.png')}
-                />
-                <Text style={styles.modalText}>
-                  This action cannot be undone.
-                </Text>
+          <View style={styles.centeredView}>
+            <View style={styles.mainModal}>
+              <Text style={styles.modalTitle}>
+                Are you sure you want to reset your scene?
+              </Text>
+              <Image
+                style={styles.modalImage}
+                source={require('../Images/trash.png')}
+              />
+              <Text style={styles.modalText}>
+                This action cannot be undone.
+              </Text>
 
-                <HStack style={styles.buttonRow}>
-                  <Pressable
-                    style={[styles.confirmButton]}
-                    onPress={() => setResetSceneModalVisible(false)}>
-                    <Text style={styles.textStyle}>Yes, Reset Scene</Text>
-                  </Pressable>
-                  <Pressable
-                    style={[styles.cancelButton]}
-                    onPress={() => setResetSceneModalVisible(false)}>
-                    <Text style={styles.cancelText}>No, Cancel</Text>
-                  </Pressable>
-                </HStack>
-              </View>
+              <HStack style={styles.buttonRow}>
+                <Pressable
+                  style={[styles.confirmButton]}
+                  onPress={() => setResetSceneModalVisible(false)}>
+                  <Text style={styles.textStyle}>Yes, Reset Scene</Text>
+                </Pressable>
+                <Pressable
+                  style={[styles.cancelButton]}
+                  onPress={() => setResetSceneModalVisible(false)}>
+                  <Text style={styles.cancelText}>No, Cancel</Text>
+                </Pressable>
+              </HStack>
             </View>
-          </TouchableOpacity>
+          </View>
         </Modal>
       </View>
     </>

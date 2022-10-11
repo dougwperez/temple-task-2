@@ -31,45 +31,39 @@ const PublishSceneModal = props => {
             Alert.alert('Modal has been closed.');
             setPublishSceneModalVisible(!publishSceneModalVisible);
           }}>
-          <TouchableOpacity
-            style={{flex: 1}}
-            onPress={() => {
-              setPublishSceneModalVisible(false);
-            }}>
-            <View style={styles.centeredView}>
-              <View style={styles.mainModal}>
-                <Text style={styles.modalTitle}>
-                  Publish Scene to Hall of Fame
-                </Text>
-                <TextInput
-                  style={styles.input}
-                  // onChangeText={setName}
-                  value={'Enter Title Here'}
-                />
-                <Image
-                  style={styles.modalImage}
-                  source={require('../Images/trophy.png')}
-                />
-                <Text style={styles.modalText}>
-                  Only your scene will be published to the Hall of Fame. Your
-                  tasks are private.
-                </Text>
+          <View style={styles.centeredView}>
+            <View style={styles.mainModal}>
+              <Text style={styles.modalTitle}>
+                Publish Scene to Hall of Fame
+              </Text>
+              <TextInput
+                style={styles.input}
+                // onChangeText={setName}
+                value={'Enter Title Here'}
+              />
+              <Image
+                style={styles.modalImage}
+                source={require('../Images/trophy.png')}
+              />
+              <Text style={styles.modalText}>
+                Only your scene will be published to the Hall of Fame. Your
+                tasks are private.
+              </Text>
 
-                <HStack style={styles.buttonRow}>
-                  <Pressable
-                    style={[styles.confirmButton]}
-                    onPress={() => setPublishSceneModalVisible(false)}>
-                    <Text style={styles.textStyle}>Yes, Publish Scene</Text>
-                  </Pressable>
-                  <Pressable
-                    style={[styles.cancelButton]}
-                    onPress={() => setPublishSceneModalVisible(false)}>
-                    <Text style={styles.cancelText}>No, Cancel</Text>
-                  </Pressable>
-                </HStack>
-              </View>
+              <HStack style={styles.buttonRow}>
+                <Pressable
+                  style={[styles.confirmButton]}
+                  onPress={() => setPublishSceneModalVisible(false)}>
+                  <Text style={styles.textStyle}>Yes, Publish Scene</Text>
+                </Pressable>
+                <Pressable
+                  style={[styles.cancelButton]}
+                  onPress={() => setPublishSceneModalVisible(false)}>
+                  <Text style={styles.cancelText}>No, Cancel</Text>
+                </Pressable>
+              </HStack>
             </View>
-          </TouchableOpacity>
+          </View>
         </Modal>
       </View>
     </>

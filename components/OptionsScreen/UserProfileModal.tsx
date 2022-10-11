@@ -30,45 +30,39 @@ const UserProfileModal = props => {
             Alert.alert('Modal has been closed.');
             setUserProfileModalVisible(!userProfileModalVisible);
           }}>
-          <TouchableOpacity
-            style={{flex: 1}}
-            onPress={() => {
-              setUserProfileModalVisible(false);
-            }}>
-            <View style={styles.centeredView}>
-              <View style={styles.mainModal}>
-                <Text style={styles.modalTitle}>User Profile</Text>
-                <>
-                  <ListItem
-                    title="User Profile"
-                    leading={<Icon name="account" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                    onPress={() => setUserProfileModalVisible(true)}
-                  />
-                  <ListItem
-                    title="Hall of Fame"
-                    leading={<Icon name="trophy-award" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
-                  <ListItem
-                    title="Publish Scene"
-                    leading={<Icon name="publish" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
-                  <ListItem
-                    title="Reset Scene"
-                    leading={<Icon name="lock-reset" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
-                </>
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => setUserProfileModalVisible(false)}>
-                  <Text style={styles.textStyle}>Save</Text>
-                </Pressable>
-              </View>
+          <View style={styles.centeredView}>
+            <View style={styles.mainModal}>
+              <Text style={styles.modalTitle}>User Profile</Text>
+              <>
+                <ListItem
+                  title="User Profile"
+                  leading={<Icon name="account" size={24} />}
+                  trailing={props => <Icon name="chevron-right" {...props} />}
+                  onPress={() => setUserProfileModalVisible(true)}
+                />
+                <ListItem
+                  title="Hall of Fame"
+                  leading={<Icon name="trophy-award" size={24} />}
+                  trailing={props => <Icon name="chevron-right" {...props} />}
+                />
+                <ListItem
+                  title="Publish Scene"
+                  leading={<Icon name="publish" size={24} />}
+                  trailing={props => <Icon name="chevron-right" {...props} />}
+                />
+                <ListItem
+                  title="Reset Scene"
+                  leading={<Icon name="lock-reset" size={24} />}
+                  trailing={props => <Icon name="chevron-right" {...props} />}
+                />
+              </>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setUserProfileModalVisible(false)}>
+                <Text style={styles.textStyle}>Save</Text>
+              </Pressable>
             </View>
-          </TouchableOpacity>
+          </View>
         </Modal>
       </View>
     </>
