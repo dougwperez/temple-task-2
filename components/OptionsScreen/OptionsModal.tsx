@@ -34,7 +34,6 @@ const OptionsModal = props => {
       <View>
         <Modal
           style={styles.goalModal}
-          onBack
           animationType="fade"
           transparent={true}
           visible={true}
@@ -45,7 +44,7 @@ const OptionsModal = props => {
           <TouchableOpacity
             style={{flex: 1}}
             onPress={() => {
-              setOptionsModalVisible(false);
+              // setOptionsModalVisible(false);
             }}>
             <View style={styles.centeredView}>
               <View style={styles.mainModal}>

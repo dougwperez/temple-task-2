@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Pressable,
   Image,
+  TextInput,
 } from 'react-native';
 
 import {ListItem, HStack} from '@react-native-material/core';
@@ -23,13 +24,12 @@ const PublishSceneModal = props => {
       <View>
         <Modal
           style={styles.goalModal}
-          onBack
           animationType="fade"
           transparent={true}
           visible={true}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
-            setPublishSceneModalVisible(!hallofFameModalVisible);
+            setPublishSceneModalVisible(!publishSceneModalVisible);
           }}>
           <TouchableOpacity
             style={{flex: 1}}
@@ -41,6 +41,11 @@ const PublishSceneModal = props => {
                 <Text style={styles.modalTitle}>
                   Share your creation with the community!
                 </Text>
+                <TextInput
+                  style={styles.input}
+                  // onChangeText={setName}
+                  value={'Enter Title Here'}
+                />
                 <Image
                   style={styles.modalImage}
                   source={require('../Images/trophy.png')}
@@ -135,25 +140,39 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   modalTitle: {
-    marginBottom: 25,
+    marginBottom: -25,
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
     paddingTop: 1,
     lineHeight: 25,
   },
+  input: {
+    height: 40,
+    // margin: 12,
+    borderWidth: 0.1,
+    padding: 10,
+    width: 205,
+    marginTop: 50,
+    marginHorizontal: 40,
+    marginVertical: 20,
+    backgroundColor: '#e4f6f8',
+    borderRadius: 10,
+  },
   modalImage: {
     resizeMode: 'contain',
     height: 300,
     width: 200,
     marginHorizontal: 40,
-    marginTop: -40,
+    marginTop: -70,
   },
   modalText: {
     marginBottom: 25,
     textAlign: 'center',
     fontSize: 15,
     paddingTop: 1,
+    lineHeight: 20,
+    marginTop: -50,
   },
   buttonRow: {
     marginTop: 'auto',
