@@ -8,9 +8,10 @@ import {
   Modal,
   TouchableOpacity,
   Pressable,
+  Image,
 } from 'react-native';
 
-import {ListItem} from '@react-native-material/core';
+import {HStack, ListItem} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconIon from 'react-native-vector-icons/Ionicons';
 
@@ -37,19 +38,30 @@ const LogoutModal = props => {
             }}>
             <View style={styles.centeredView}>
               <View style={styles.mainModal}>
-                <Text style={styles.modalTitle}>Logout</Text>
+                <Text style={styles.modalTitle}>
+                  Are you sure you want to Log Out from TempleTask?
+                </Text>
                 <>
-                  <ListItem
-                    title="User Profile"
-                    leading={<Icon name="account" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
+                  <Image
+                    style={styles.modalImage}
+                    source={require('../Images/logoNoBackground.png')}
                   />
+                  {/* <Text style={styles.modalText}>
+                    Are you sure you want to logout?
+                  </Text> */}
                 </>
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => setLogoutModalVisible(false)}>
-                  <Text style={styles.textStyle}>Save</Text>
-                </Pressable>
+                <HStack style={styles.buttonRow}>
+                  <Pressable
+                    style={[styles.button, styles.buttonClose]}
+                    onPress={() => setLogoutModalVisible(false)}>
+                    <Text style={styles.textStyle}>Yes, Log Out</Text>
+                  </Pressable>
+                  <Pressable
+                    style={[styles.cancelButton]}
+                    onPress={() => setLogoutModalVisible(false)}>
+                    <Text style={styles.cancelText}>No, Cancel</Text>
+                  </Pressable>
+                </HStack>
               </View>
             </View>
           </TouchableOpacity>
@@ -85,11 +97,22 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginTop: 10,
   },
+  cancelButton: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    // marginHorizontal: 100,
+    color: 'black',
+    marginLeft: 10,
+
+    marginTop: 'auto',
+  },
   button: {
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-    marginHorizontal: 100,
+    // marginHorizontal: 100,
+
     marginTop: 'auto',
   },
   buttonOpen: {
@@ -103,12 +126,36 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  cancelText: {
+    color: 'black',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   modalTitle: {
     marginBottom: 25,
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
     paddingTop: 1,
+    lineHeight: 25,
+  },
+  modalImage: {
+    width: 336,
+    height: 280,
+    // margin: 3,
+    marginLeft: -10,
+    // marginTop: 7,
+  },
+  modalText: {
+    marginBottom: 25,
+    textAlign: 'center',
+    fontSize: 18,
+    // fontWeight: 'bold',
+    paddingTop: 1,
+  },
+  buttonRow: {
+    marginTop: 'auto',
+    marginHorizontal: 35,
   },
 });
 export default LogoutModal;
