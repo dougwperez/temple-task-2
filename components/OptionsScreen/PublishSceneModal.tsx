@@ -25,7 +25,7 @@ const PublishSceneModal = props => {
         <Modal
           style={styles.goalModal}
           animationType="fade"
-          transparent={true}
+          transparent={false}
           visible={true}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
@@ -39,7 +39,7 @@ const PublishSceneModal = props => {
             <View style={styles.centeredView}>
               <View style={styles.mainModal}>
                 <Text style={styles.modalTitle}>
-                  Share your creation with the community!
+                  Publish Scene to Hall of Fame
                 </Text>
                 <TextInput
                   style={styles.input}
@@ -153,9 +153,9 @@ const styles = StyleSheet.create({
     borderWidth: 0.1,
     padding: 10,
     width: 205,
-    marginTop: 50,
+    marginTop: 60,
     marginHorizontal: 40,
-    marginVertical: 20,
+    marginVertical: 30,
     backgroundColor: '#e4f6f8',
     borderRadius: 10,
   },
