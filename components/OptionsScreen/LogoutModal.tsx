@@ -46,13 +46,10 @@ const LogoutModal = props => {
                     style={styles.modalImage}
                     source={require('../Images/logoNoBackground.png')}
                   />
-                  {/* <Text style={styles.modalText}>
-                    Are you sure you want to logout?
-                  </Text> */}
                 </>
                 <HStack style={styles.buttonRow}>
                   <Pressable
-                    style={[styles.button, styles.buttonClose]}
+                    style={[styles.confirmButton]}
                     onPress={() => setLogoutModalVisible(false)}>
                     <Text style={styles.textStyle}>Yes, Log Out</Text>
                   </Pressable>
@@ -93,7 +90,6 @@ const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: 'center',
-
     marginHorizontal: 20,
     marginTop: 10,
   },
@@ -101,26 +97,21 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-    // marginHorizontal: 100,
     color: 'black',
     marginLeft: 10,
-
     marginTop: 'auto',
   },
-  button: {
+  confirmButton: {
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-    // marginHorizontal: 100,
-
     marginTop: 'auto',
+    backgroundColor: 'green',
   },
   buttonOpen: {
     backgroundColor: '#F194FF',
   },
-  buttonClose: {
-    backgroundColor: 'green',
-  },
+
   textStyle: {
     color: 'white',
     fontWeight: 'bold',
@@ -142,15 +133,12 @@ const styles = StyleSheet.create({
   modalImage: {
     width: 336,
     height: 280,
-    // margin: 3,
-    marginLeft: -10,
-    // marginTop: 7,
+    marginLeft: -15,
   },
   modalText: {
     marginBottom: 25,
     textAlign: 'center',
     fontSize: 18,
-    // fontWeight: 'bold',
     paddingTop: 1,
   },
   buttonRow: {

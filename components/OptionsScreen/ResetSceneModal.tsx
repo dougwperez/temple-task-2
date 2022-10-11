@@ -8,9 +8,10 @@ import {
   Modal,
   TouchableOpacity,
   Pressable,
+  Image,
 } from 'react-native';
 
-import {ListItem} from '@react-native-material/core';
+import {ListItem, HStack} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconIon from 'react-native-vector-icons/Ionicons';
 
@@ -24,7 +25,7 @@ const ResetSceneModal = props => {
           style={styles.goalModal}
           onBack
           animationType="fade"
-          transparent={true}
+          transparent={false}
           visible={true}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
@@ -37,34 +38,30 @@ const ResetSceneModal = props => {
             }}>
             <View style={styles.centeredView}>
               <View style={styles.mainModal}>
-                <Text style={styles.modalTitle}>Reset Scene</Text>
-                <>
-                  <ListItem
-                    title="User Profile"
-                    leading={<Icon name="account" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
-                  <ListItem
-                    title="Hall of Fame"
-                    leading={<Icon name="trophy-award" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
-                  <ListItem
-                    title="Publish Scene"
-                    leading={<Icon name="publish" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
-                  <ListItem
-                    title="Reset Scene"
-                    leading={<Icon name="lock-reset" size={24} />}
-                    trailing={props => <Icon name="chevron-right" {...props} />}
-                  />
-                </>
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => setResetSceneModalVisible(false)}>
-                  <Text style={styles.textStyle}>Save</Text>
-                </Pressable>
+                <Text style={styles.modalTitle}>
+                  Are you sure you want to reset your scene?
+                </Text>
+
+                <Image
+                  style={styles.modalImage}
+                  source={require('../Images/trash.png')}
+                />
+                <Text style={styles.modalText}>
+                  This action cannot be undone.
+                </Text>
+
+                <HStack style={styles.buttonRow}>
+                  <Pressable
+                    style={[styles.confirmButton]}
+                    onPress={() => setResetSceneModalVisible(false)}>
+                    <Text style={styles.textStyle}>Yes, Reset Scene</Text>
+                  </Pressable>
+                  <Pressable
+                    style={[styles.cancelButton]}
+                    onPress={() => setResetSceneModalVisible(false)}>
+                    <Text style={styles.cancelText}>No, Cancel</Text>
+                  </Pressable>
+                </HStack>
               </View>
             </View>
           </TouchableOpacity>
@@ -100,12 +97,20 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginTop: 10,
   },
-  button: {
+  cancelButton: {
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-    marginHorizontal: 100,
+    color: 'black',
+    marginLeft: 10,
     marginTop: 'auto',
+  },
+  confirmButton: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    marginTop: 'auto',
+    backgroundColor: 'red',
   },
   buttonOpen: {
     backgroundColor: '#F194FF',
@@ -118,12 +123,35 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  cancelText: {
+    color: 'black',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   modalTitle: {
     marginBottom: 25,
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold',
     paddingTop: 1,
+    lineHeight: 25,
+  },
+  modalImage: {
+    resizeMode: 'contain',
+    height: 300,
+    width: 200,
+    marginHorizontal: 40,
+    marginTop: -40,
+  },
+  modalText: {
+    marginBottom: 25,
+    textAlign: 'center',
+    fontSize: 15,
+    paddingTop: 1,
+  },
+  buttonRow: {
+    marginTop: 'auto',
+    marginHorizontal: 23,
   },
 });
 export default ResetSceneModal;
