@@ -26,6 +26,14 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+// import {Amplify} from 'aws-amplify';
+
+// import {withAuthenticator} from '@aws-amplify/ui-react';
+// import '@aws-amplify/ui-react/styles.css';
+
+// import awsExports from './aws-exports';
+// Amplify.configure(awsExports);
+
 import TaskToolbar from './components/BottomBar/TaskToolbar';
 import BuilderToolbar from './components/TopBar/BuilderToolbar';
 import Playground from './components/Playground';
@@ -64,6 +72,10 @@ const App: () => Node = () => {
           selectBrick={selectBrick}
           selectedBrick={selectedBrick}
         />
+        {/* <>
+          <h1>Hello {user.username}</h1>
+          <button onClick={signOut}>Sign out</button>
+        </> */}
         <Playground
           gridStatus={gridStatus}
           selectedColor={selectedColor}

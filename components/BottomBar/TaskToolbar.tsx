@@ -19,6 +19,7 @@ const TaskToolbar = () => {
     const subscription = DataStore.observeQuery(TaskCounter).subscribe(
       snapshot => {
         const {items, isSynced} = snapshot;
+        console.log('items tasktoolbar', items);
         setCoins(items[0].count);
       },
     );

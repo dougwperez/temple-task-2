@@ -3,7 +3,6 @@ import {WebView} from 'react-native-webview';
 import {View, TouchableWithoutFeedback} from 'react-native';
 import {DataStore} from 'aws-amplify';
 import {TaskCounter} from '.././src/models';
-import {even} from '@react-native-material/core';
 
 const Playground = props => {
   const {gridStatus, selectedColor, selectedBrick} = props;
@@ -35,7 +34,7 @@ const Playground = props => {
     const subscription = DataStore.observeQuery(TaskCounter).subscribe(
       snapshot => {
         const {items, isSynced} = snapshot;
-        console.log('Koca: items in Playground ', items[0].count);
+        console.log('items in Playground', items);
 
         SetCoins(items[0].count);
       },
@@ -97,9 +96,7 @@ const Playground = props => {
           style={{flex: 1}}
           onMessage={event => {
             // setBrickCount(event.nativeEvent.data);
-            console.log('event.nativeEvent.data PG', event.nativeEvent.data);
 
-            console.log('brickCount PG', brickCount);
             // setBrickCount(event.nativeEvent.data);
             if (event.nativeEvent.data > brickCount) {
               decrementCoinCount();

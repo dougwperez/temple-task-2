@@ -20,14 +20,24 @@ const CompletionModal = props => {
 
   const [totalScore, setTotalScore] = React.useState(0);
 
+  // useEffect(() => {
+  //   DataStore.save(new TaskCounter({1}));
+  // }, []);
+
   async function updateCount() {
     setCompletionModalVisible(!completionModalVisible);
+
     const models = await DataStore.query(TaskCounter);
+    console.log('MODELS IN COMPLETION MODAL: models ', models);
 
     await DataStore.save(
       TaskCounter.copyOf(models[0], item => {
         item.count += dailyScore;
       }),
+      //SAVE LINE BELOW TO INIT NEW DB
+      // new TaskCounter({
+      //   count: 10,
+      // }),
     );
   }
 
@@ -35,6 +45,7 @@ const CompletionModal = props => {
     // setTotalScore(10);
     const subscription = DataStore.observeQuery(Todo).subscribe(snapshot => {
       const {items, isSynced} = snapshot;
+      console.log('Koca: items ', items);
 
       setTodos(items);
     });

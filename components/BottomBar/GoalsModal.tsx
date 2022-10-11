@@ -43,6 +43,7 @@ const GoalsModal = props => {
   useEffect(() => {
     const subscription = DataStore.observeQuery(Todo).subscribe(snapshot => {
       const {items, isSynced} = snapshot;
+      console.log('Koca: items in Goal Modal', items);
 
       setTodos(items);
     });
