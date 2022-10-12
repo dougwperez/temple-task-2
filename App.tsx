@@ -16,6 +16,8 @@ import {
   Text,
   useColorScheme,
   View,
+  Button,
+  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -26,9 +28,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-// import {Amplify} from 'aws-amplify';
+import {Amplify} from 'aws-amplify';
+import {withAuthenticator, Authenticator} from 'aws-amplify-react-native';
 
-// import {withAuthenticator} from '@aws-amplify/ui-react';
 // import '@aws-amplify/ui-react/styles.css';
 
 // import awsExports from './aws-exports';
@@ -38,7 +40,7 @@ import TaskToolbar from './components/BottomBar/TaskToolbar';
 import BuilderToolbar from './components/TopBar/BuilderToolbar';
 import Playground from './components/Playground';
 
-const App: () => Node = () => {
+const App: () => Node = ({signOut, user}) => {
   const isDarkMode = useColorScheme() === 'dark';
   const [gridStatus, setGridStatus] = useState(true);
   const [selectedColor, setSelectedColor] = useState('#ffbe0b');
@@ -72,16 +74,15 @@ const App: () => Node = () => {
           selectBrick={selectBrick}
           selectedBrick={selectedBrick}
         />
-        {/* <>
-          <h1>Hello {user.username}</h1>
-          <button onClick={signOut}>Sign out</button>
-        </> */}
+
         <Playground
           gridStatus={gridStatus}
           selectedColor={selectedColor}
           selectedBrick={selectedBrick}
         />
-
+        {/* <>
+          <TouchableOpacity onPress={signOut}>Sign out</TouchableOpacity>
+        </> */}
         <TaskToolbar />
       </SafeAreaView>
     </>
