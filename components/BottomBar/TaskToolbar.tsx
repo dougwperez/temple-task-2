@@ -7,7 +7,7 @@ import IconFont from 'react-native-vector-icons/FontAwesome';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 import GoalsModal from './GoalsModal';
 import CompletionModal from './CompletionModal';
-import {DataStore} from 'aws-amplify';
+import {DataStore, Auth} from 'aws-amplify';
 import {TaskCounter} from '../.././src/models';
 
 const TaskToolbar = () => {
@@ -16,13 +16,13 @@ const TaskToolbar = () => {
   const [coins, setCoins] = useState(Number);
 
   useEffect(() => {
-    const subscription = DataStore.observeQuery(TaskCounter).subscribe(
-      snapshot => {
-        const {items, isSynced} = snapshot;
-        console.log('items tasktoolbar', items);
-        setCoins(items[0].count);
-      },
-    );
+    const subscription = DataStore.observeQuery(TaskCounter, t =>
+      t.userId('contains', `${Auth.user.attributes.sub}`),
+    ).subscribe(snapshot => {
+      const {items, isSynced} = snapshot;
+      console.log('items tasktoolbar', items);
+      setCoins(items[0].count);
+    });
     //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak. Need to remove this line
     return function cleanup() {
       subscription.unsubscribe();

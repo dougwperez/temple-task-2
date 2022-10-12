@@ -17,6 +17,7 @@ const CompletionModal = props => {
   const {setCompletionModalVisible, completionModalVisible} = props;
   const [todos, setTodos] = useState([]);
   const [dailyScore, setDailyScore] = React.useState(0);
+  console.log('Koca: dailyScore ', dailyScore);
 
   const [totalScore, setTotalScore] = React.useState(0);
 
@@ -26,37 +27,41 @@ const CompletionModal = props => {
 
   async function updateCount() {
     setCompletionModalVisible(!completionModalVisible);
+    const models = await DataStore.query(TaskCounter, t =>
+      t.userId('contains', `${Auth.user.attributes.sub}`),
+    );
+    console.log('MODELS IN COMPLETION MODAL: models !!!!!', models);
 
     await DataStore.save(
-      // TaskCounter.copyOf(models[0], item => {
-      //   item.count += dailyScore;
-      // }),
-      //SAVE LINE BELOW TO INIT NEW DB
-      new TaskCounter({
-        count: 2,
-        userId: Auth.user.attributes.sub,
+      TaskCounter.copyOf(models[0], item => {
+        item.count += dailyScore;
       }),
+      //SAVE LINE BELOW TO INIT NEW DB
+      // new TaskCounter({
+      //   count: 69,
+      //   userId: Auth.user.attributes.sub,
+      // }),
     );
-
-    const models = await DataStore.query(TaskCounter);
-    console.log('MODELS IN COMPLETION MODAL: models ', models);
   }
 
-  useEffect(() => {
-    // setTotalScore(10);
-    const subscription = DataStore.observeQuery(TaskCounter).subscribe(
-      snapshot => {
-        const {items, isSynced} = snapshot;
-        console.log('Koca: countObjs in Completion Modal', items);
+  // useEffect(() => {
+  //   // setTotalScore(10);
+  //   const subscription = DataStore.observeQuery(TaskCounter, t =>
+  //     t.userId('contains', `${Auth.user.attributes.sub}`),
+  //   ).subscribe(snapshot => {
+  //     const {items, isSynced} = snapshot;
+  //     console.log(
+  //       'Koca: countObjs in Completion Modal in observeQUery',
+  //       items[0].count,
+  //     );
 
-        // setTodos(items);
-      },
-    );
-    //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
-    return function cleanup() {
-      subscription.unsubscribe();
-    };
-  }, []);
+  //     setTotalScore(items[0].count);
+  //   });
+  //   //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
+  //   return function cleanup() {
+  //     subscription.unsubscribe();
+  //   };
+  // }, []);
 
   useEffect(() => {
     // setTotalScore(10);
