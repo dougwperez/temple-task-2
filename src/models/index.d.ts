@@ -11,6 +11,7 @@ type TodoMetaData = {
 export declare class TaskCounter {
   readonly id: string;
   readonly count?: number | null;
+  readonly userId: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<TaskCounter, TaskCounterMetaData>);
@@ -22,6 +23,7 @@ export declare class Todo {
   readonly name: string;
   readonly description?: string | null;
   readonly isComplete?: boolean | null;
+  readonly userId: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Todo, TodoMetaData>);

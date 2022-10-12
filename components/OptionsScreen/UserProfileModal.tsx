@@ -20,9 +20,11 @@ import {
 import {ListItem} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconIon from 'react-native-vector-icons/Ionicons';
+import {Auth} from 'aws-amplify';
 
 const UserProfileModal = props => {
   const {userProfileModalVisible, setUserProfileModalVisible} = props;
+  console.log('auth', Auth.user.attributes);
 
   return (
     <>
@@ -39,13 +41,15 @@ const UserProfileModal = props => {
           }}>
           <View style={styles.centeredView}>
             <View style={styles.mainModal}>
-              <Text style={styles.modalTitle}>User Profile</Text>
+              <Text style={styles.modalTitle}>
+                {Auth.user.attributes.email}
+              </Text>
 
               <VStack style={styles.contentStack} spacing={20}>
                 <Avatar label="Doug Perez" style={styles.avatar} />
                 <TextInput
                   style={styles.input}
-                  label="Username"
+                  label={'Username'}
                   variant="standard"
                 />
               </VStack>
