@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import {IconButton, HStack} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {DataStore} from 'aws-amplify';
+import {DataStore, Auth} from 'aws-amplify';
 import {Todo} from '../.././src/models';
 
 const GoalsModal = props => {
@@ -22,12 +22,24 @@ const GoalsModal = props => {
   const [selectedId, setSelectedId] = useState(null);
   const [text, onChangeText] = React.useState('Add your task..');
 
+  console.log('auth', Auth.user.attributes);
+
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  // const [user]
   const [todos, setTodos] = useState([]);
 
+  console.log('AUTHHH', Auth.user.attributes.sub);
+
   async function addTodo() {
-    await DataStore.save(new Todo({name, description, isComplete: false}));
+    await DataStore.save(
+      new Todo({
+        name,
+        description,
+        isComplete: false,
+        userId: Auth.user.attributes.sub,
+      }),
+    );
     setName('');
     setDescription('');
   }

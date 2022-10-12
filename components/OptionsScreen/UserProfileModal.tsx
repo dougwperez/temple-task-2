@@ -24,7 +24,6 @@ import {Auth} from 'aws-amplify';
 
 const UserProfileModal = props => {
   const {userProfileModalVisible, setUserProfileModalVisible} = props;
-  console.log('auth', Auth.user.attributes);
 
   return (
     <>

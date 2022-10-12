@@ -9,7 +9,7 @@ import {
   FlatList,
 } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import {DataStore} from 'aws-amplify';
+import {DataStore, Auth} from 'aws-amplify';
 import {Todo} from '../.././src/models';
 import {TaskCounter} from '../.././src/models';
 
@@ -43,9 +43,11 @@ const CompletionModal = props => {
 
   useEffect(() => {
     // setTotalScore(10);
-    const subscription = DataStore.observeQuery(Todo).subscribe(snapshot => {
+    const subscription = DataStore.observeQuery(Todo, t =>
+      t.userId('contains', `${Auth.user.attributes.sub}`),
+    ).subscribe(snapshot => {
       const {items, isSynced} = snapshot;
-      console.log('Koca: items ', items);
+      console.log('Koca: items in Completion Modal', items);
 
       setTodos(items);
     });
