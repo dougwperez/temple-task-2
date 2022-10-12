@@ -27,19 +27,36 @@ const CompletionModal = props => {
   async function updateCount() {
     setCompletionModalVisible(!completionModalVisible);
 
+    await DataStore.save(
+      // TaskCounter.copyOf(models[0], item => {
+      //   item.count += dailyScore;
+      // }),
+      //SAVE LINE BELOW TO INIT NEW DB
+      new TaskCounter({
+        count: 2,
+        userId: Auth.user.attributes.sub,
+      }),
+    );
+
     const models = await DataStore.query(TaskCounter);
     console.log('MODELS IN COMPLETION MODAL: models ', models);
-
-    await DataStore.save(
-      TaskCounter.copyOf(models[0], item => {
-        item.count += dailyScore;
-      }),
-      //SAVE LINE BELOW TO INIT NEW DB
-      // new TaskCounter({
-      //   count: 10,
-      // }),
-    );
   }
+
+  useEffect(() => {
+    // setTotalScore(10);
+    const subscription = DataStore.observeQuery(TaskCounter).subscribe(
+      snapshot => {
+        const {items, isSynced} = snapshot;
+        console.log('Koca: countObjs in Completion Modal', items);
+
+        // setTodos(items);
+      },
+    );
+    //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
+    return function cleanup() {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   useEffect(() => {
     // setTotalScore(10);
