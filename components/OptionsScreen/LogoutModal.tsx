@@ -14,6 +14,7 @@ import {
 import {HStack, ListItem} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconIon from 'react-native-vector-icons/Ionicons';
+import {Auth} from 'aws-amplify';
 
 const LogoutModal = props => {
   const {logoutModalVisible, setLogoutModalVisible} = props;
@@ -45,7 +46,7 @@ const LogoutModal = props => {
               <HStack style={styles.buttonRow}>
                 <Pressable
                   style={[styles.confirmButton]}
-                  onPress={() => setLogoutModalVisible(false)}>
+                  onPress={() => Auth.signOut()}>
                   <Text style={styles.textStyle}>Yes, Log Out</Text>
                 </Pressable>
                 <Pressable
