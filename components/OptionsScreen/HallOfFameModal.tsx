@@ -47,10 +47,11 @@ const styles = StyleSheet.create({
   mainModal: {
     display: 'flex',
     justifyContent: 'flex-start',
-    height: 700,
+    height: '100%',
+    width: '100%',
     marginVertical: 100,
     backgroundColor: 'white',
-    borderRadius: 20,
+    // borderRadius: 20,
     padding: 35,
     shadowColor: '#000',
     shadowOffset: {
@@ -66,8 +67,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
 
-    marginHorizontal: 20,
-    marginTop: 10,
+    // marginHorizontal: 20,
+    marginTop: '10%',
   },
   button: {
     borderRadius: 20,
