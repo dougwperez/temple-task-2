@@ -47,11 +47,6 @@ const Playground = props => {
   }, []);
 
   useEffect(() => {
-    // decrementCoinCount();
-    // webViewRef.current.injectJavaScript(checkBrickCount);
-  }, [brickCount]);
-
-  useEffect(() => {
     webViewRef.current.injectJavaScript(toggleGridString);
   }, [gridStatus]);
 
@@ -92,14 +87,11 @@ const Playground = props => {
         <WebView
           ref={webViewRef}
           source={{uri: 'https://dougwperez.github.io/brick-playground/'}}
-          pointerEvents={coins === 0 ? 'none' : null}
+          // pointerEvents={coins === 0 ? 'none' : null}
           style={{flex: 1}}
           onMessage={event => {
-            // setBrickCount(event.nativeEvent.data);
-
-            // setBrickCount(event.nativeEvent.data);
             if (event.nativeEvent.data > brickCount) {
-              decrementCoinCount();
+              // decrementCoinCount();
               setBrickCount(event.nativeEvent.data);
             }
           }}
