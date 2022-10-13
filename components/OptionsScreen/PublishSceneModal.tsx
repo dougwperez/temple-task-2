@@ -13,8 +13,6 @@ import {
 } from 'react-native';
 
 import {ListItem, HStack} from '@react-native-material/core';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import IconIon from 'react-native-vector-icons/Ionicons';
 
 const PublishSceneModal = props => {
   const {publishSceneModalVisible, setPublishSceneModalVisible} = props;
@@ -143,7 +141,6 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    // margin: 12,
     borderWidth: 0.1,
     padding: 10,
     width: 205,

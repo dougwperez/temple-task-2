@@ -117,9 +117,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingTop: 1,
   },
-  avatar: {
-    // marginHorizontal: 110,
-  },
+  avatar: {},
   contentStack: {
     display: 'flex',
     alignItems: 'center',

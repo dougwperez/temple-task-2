@@ -20,16 +20,9 @@ import {Todo} from '../.././src/models';
 const GoalsModal = props => {
   const {setGoalModalVisible, goalModalVisible} = props;
   const [selectedId, setSelectedId] = useState(null);
-  const [text, onChangeText] = React.useState('Add your task..');
-
-  console.log('auth', Auth.user.attributes);
-
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  // const [user]
   const [todos, setTodos] = useState([]);
-
-  console.log('AUTHHH', Auth.user.attributes.sub);
 
   async function addTodo() {
     await DataStore.save(
@@ -205,7 +198,6 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     marginHorizontal: 0,
     height: 40,
-    // margin: 2,
     padding: 10,
     width: 170,
   },

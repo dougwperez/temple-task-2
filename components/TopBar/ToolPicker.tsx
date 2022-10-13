@@ -72,8 +72,6 @@ const styles = StyleSheet.create({
   colorBoxContainer: {
     justifyContent: 'center',
     marginTop: -45,
-    // borderTopColor: '#6F7378',
-    // borderTopWidth: 0.5,
   },
 });
 export default ColorPicker;

@@ -55,10 +55,8 @@ const TaskToolbar = () => {
         trailing={props => (
           <HStack spacing={8}>
             <Button
-              // variant="outlined"
               title="Goals"
               color="white"
-              // tintColor="#6226ee"
               tintColor={goalModalVisible ? '#6226ee' : '#6F7378'}
               style={{
                 borderWidth: 0.6,
@@ -69,7 +67,6 @@ const TaskToolbar = () => {
               onPress={() => setGoalModalVisible(true)}
             />
             <Button
-              // variant="outlined"
               title="Done!"
               color="white"
               tintColor={completionModalVisible ? 'green' : '#6F7378'}

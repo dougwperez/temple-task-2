@@ -10,10 +10,6 @@ import {
   Pressable,
 } from 'react-native';
 
-import {ListItem} from '@react-native-material/core';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import IconIon from 'react-native-vector-icons/Ionicons';
-
 const HallOfFameModal = props => {
   const {hallofFameModalVisible, setHallofFameModalVisible} = props;
 

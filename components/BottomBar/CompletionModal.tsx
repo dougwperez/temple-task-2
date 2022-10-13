@@ -17,13 +17,6 @@ const CompletionModal = props => {
   const {setCompletionModalVisible, completionModalVisible} = props;
   const [todos, setTodos] = useState([]);
   const [dailyScore, setDailyScore] = React.useState(0);
-  console.log('Koca: dailyScore ', dailyScore);
-
-  const [totalScore, setTotalScore] = React.useState(0);
-
-  // useEffect(() => {
-  //   DataStore.save(new TaskCounter({1}));
-  // }, []);
 
   async function updateCount() {
     setCompletionModalVisible(!completionModalVisible);
@@ -43,25 +36,6 @@ const CompletionModal = props => {
       // }),
     );
   }
-
-  // useEffect(() => {
-  //   // setTotalScore(10);
-  //   const subscription = DataStore.observeQuery(TaskCounter, t =>
-  //     t.userId('contains', `${Auth.user.attributes.sub}`),
-  //   ).subscribe(snapshot => {
-  //     const {items, isSynced} = snapshot;
-  //     console.log(
-  //       'Koca: countObjs in Completion Modal in observeQUery',
-  //       items[0].count,
-  //     );
-
-  //     setTotalScore(items[0].count);
-  //   });
-  //   //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
-  //   return function cleanup() {
-  //     subscription.unsubscribe();
-  //   };
-  // }, []);
 
   useEffect(() => {
     // setTotalScore(10);
@@ -143,7 +117,6 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   modalView: {
-    // marginHorizontal: 10,
     marginVertical: 100,
     backgroundColor: 'white',
     borderRadius: 20,
@@ -188,7 +161,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: '800',
     fontSize: 15,
-    // color: dailyScore === 0 ? 'red' : 'green',
   },
 });
 export default CompletionModal;

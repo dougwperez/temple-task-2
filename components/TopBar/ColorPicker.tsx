@@ -9,10 +9,6 @@ import {
   Animated,
 } from 'react-native';
 import {AppBar, HStack, IconButton} from '@react-native-material/core';
-import Modal from 'react-native-modal';
-import {ListItem} from '@react-native-material/core';
-import Icon from '@expo/vector-icons/MaterialCommunityIcons';
-import {Hidden} from 'native-base';
 
 const ColorPicker = props => {
   const {
@@ -91,9 +87,6 @@ const styles = StyleSheet.create({
   colorBoxContainer: {
     justifyContent: 'center',
     marginTop: -46,
-    // borderTopColor: 'gray',
-    // borderTopWidth: 1,
-    // borderStyle: 'dashed',
   },
 });
 export default ColorPicker;

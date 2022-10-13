@@ -16,7 +16,6 @@ import Svg1x4 from '../Images/1x4svg';
 import Svg2x2 from '../Images/2x2svg';
 import Svg2x3 from '../Images/2x3svg';
 import Svg2x4 from '../Images/2x4svg';
-// import Hammer from '../Images/Icon8-hammer-48';
 
 import {
   Provider,
@@ -26,7 +25,6 @@ import {
   DialogActions,
   Text,
 } from '@react-native-material/core';
-// import TestPicker from './TestPicker';
 
 const BuilderToolbar = props => {
   const {toggleGrid, selectColor, selectedColor, selectBrick, selectedBrick} =
@@ -68,8 +66,6 @@ const BuilderToolbar = props => {
   };
 
   const toggleColorPicker = () => {
-    // setColorPickerVisible(!colorPickerVisible);
-
     if (colorPickerVisible) {
       slideOut();
       setTimeout(() => {
@@ -148,7 +144,6 @@ const BuilderToolbar = props => {
     } else {
       setToolPickerVisible(true);
     }
-    // setToolPickerVisible(!toolPickerVisible);
   };
 
   return (
@@ -179,8 +174,6 @@ const BuilderToolbar = props => {
           <HStack>
             <IconButton
               icon={props => <IconIon name="hammer" {...props} />}
-              // icon={props => <Image source={require('./images/hammerTime.png')} />}
-
               onPress={() => toggleToolPicker()}
               {...props}
               color="#6F7378"
@@ -191,7 +184,6 @@ const BuilderToolbar = props => {
                   name="md-color-palette"
                   {...props}
                   color={selectedColor}
-                  // style={{borderWidth: 1}}
                 />
               )}
               onPress={() => toggleColorPicker()}
