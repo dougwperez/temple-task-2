@@ -30,7 +30,6 @@ const ColorPicker = props => {
         position: 'relative',
         width: '100%',
         marginBottom: -40,
-        // top: 91,
         backgroundColor: 'white',
 
         transform: [{translateX: animation}],

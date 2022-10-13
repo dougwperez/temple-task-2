@@ -22,7 +22,6 @@ const ColorPicker = props => {
       style={{
         position: 'relative',
         width: '100%',
-        // top: 91,
         marginBottom: -45,
         height: 45,
         backgroundColor: 'white',
