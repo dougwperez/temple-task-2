@@ -20,9 +20,10 @@ const ColorPicker = props => {
   return (
     <AppBar
       style={{
-        position: 'absolute',
+        position: 'relative',
         width: '100%',
-        top: 91,
+        // top: 91,
+        marginBottom: -45,
         height: 45,
         backgroundColor: 'white',
 
