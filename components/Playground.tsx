@@ -56,7 +56,6 @@ const Playground = props => {
 
   useEffect(() => {
     webViewRef.current.injectJavaScript(selectBrickString);
-    // console.log('use effect for brick called');
   }, [selectedBrick]);
 
   useEffect(() => {
