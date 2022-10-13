@@ -232,6 +232,7 @@ const BuilderToolbar = props => {
           colorPickerVisible={colorPickerVisible}
           animation={animation}
           slideIn={slideIn}
+          style={{top: 1000}}
         />
       ) : null}
 
