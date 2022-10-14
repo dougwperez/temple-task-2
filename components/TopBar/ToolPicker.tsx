@@ -35,12 +35,24 @@ const ColorPicker = props => {
             <Icon name="drag-variant" {...props} color="#6F7378" />
           )}
           {...props}
+          onPress={() => {
+            setSelectedTool('');
+          }}
         />
         <IconButton
           icon={props => (
-            <Icon name="cursor-default-click" {...props} color="#6F7378" />
+            <Icon
+              name="cursor-default-click"
+              {...props}
+              color={selectedTool === 'drag' ? '#ffbe0b' : '#6F7378'}
+            />
           )}
           {...props}
+          onPress={() =>
+            selectedTool === 'drag'
+              ? setSelectedTool('')
+              : setSelectedTool('drag')
+          }
         />
         <IconButton
           icon={props => (
