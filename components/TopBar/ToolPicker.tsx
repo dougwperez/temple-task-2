@@ -1,9 +1,10 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {AppBar, HStack, IconButton} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const ColorPicker = props => {
+  const [selectedTool, setSelectedTool] = useState('#ffbe0b');
   const {
     toggleGrid,
     selectBrick,
@@ -43,24 +44,40 @@ const ColorPicker = props => {
         />
         <IconButton
           icon={props => (
-            <Icon name="rotate-right" {...props} color="#6F7378" />
+            <Icon
+              name="rotate-right"
+              {...props}
+              color={selectedTool === 'rotate' ? '#ffbe0b' : '#6F7378'}
+            />
           )}
           {...props}
+          onPress={() =>
+            selectedTool === 'rotate'
+              ? setSelectedTool('')
+              : setSelectedTool('rotate')
+          }
         />
         <IconButton
           icon={props => <Icon name="grid" {...props} color="#6F7378" />}
           {...props}
-          onPress={() => toggleGrid()}
+          onPress={() => {
+            toggleGrid();
+            setSelectedTool('');
+          }}
         />
         <IconButton
           icon={props => (
             <Icon
               name="trash-can"
               {...props}
-              color="#6F7378"
-              // onPress={() => toggleBrickPicker()}
+              color={selectedTool === 'delete' ? '#ffbe0b' : '#6F7378'}
             />
           )}
+          onPress={() =>
+            selectedTool === 'delete'
+              ? setSelectedTool('')
+              : setSelectedTool('delete')
+          }
           {...props}
         />
       </HStack>
