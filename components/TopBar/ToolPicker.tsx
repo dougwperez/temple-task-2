@@ -2,6 +2,7 @@ import React, {useRef, useEffect, useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {AppBar, HStack, IconButton} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import IconFont from 'react-native-vector-icons/Octicons';
 
 const ColorPicker = props => {
   const [selectedTool, setSelectedTool] = useState('#ffbe0b');
@@ -36,15 +37,6 @@ const ColorPicker = props => {
       <HStack style={styles.colorBoxContainer}>
         <IconButton
           icon={props => (
-            <Icon name="drag-variant" {...props} color="#6F7378" />
-          )}
-          {...props}
-          onPress={() => {
-            setSelectedTool('');
-          }}
-        />
-        <IconButton
-          icon={props => (
             <Icon
               name="cursor-default-click"
               {...props}
@@ -57,6 +49,21 @@ const ColorPicker = props => {
               ? setSelectedTool('')
               : setSelectedTool('drag')
           }
+        />
+        <IconButton
+          icon={props => (
+            <IconFont
+              name="paintbrush"
+              {...props}
+              color={selectedTool === 'brush' ? '#ffbe0b' : '#6F7378'}
+            />
+          )}
+          {...props}
+          onPress={() => {
+            selectedTool === 'brush'
+              ? setSelectedTool('')
+              : setSelectedTool('brush');
+          }}
         />
         <IconButton
           icon={props => (
