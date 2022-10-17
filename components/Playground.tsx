@@ -15,6 +15,14 @@ const Playground = props => {
   setTimeout(function() { document.querySelector(".ion-grid").click(); }, 1);
   true`;
 
+  const toggleDeleteString = `
+  setTimeout(function() { document.querySelector(".ion-close").click(); }, 1);
+  true`;
+
+  const toggleRotateString = `
+  setTimeout(function() { document.querySelector(".ion-nuclear").click(); }, 1);
+  true`;
+
   const selectColorString = `
   setTimeout(function() { document.querySelector('[title="${selectedColor}"]').click() }, 1);
   true`;
@@ -60,6 +68,8 @@ const Playground = props => {
 
   useEffect(() => {
     webViewRef.current.injectJavaScript(checkBrickCount);
+    webViewRef.current.injectJavaScript(toggleDeleteString);
+    // console.log('DELETE');
   });
 
   async function decrementCoinCount() {
