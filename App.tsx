@@ -43,11 +43,16 @@ import Playground from './components/Playground';
 const App: () => Node = ({signOut, user}) => {
   const isDarkMode = useColorScheme() === 'dark';
   const [gridStatus, setGridStatus] = useState(true);
+  const [deleteStatus, setDeleteStatus] = useState(false);
   const [selectedColor, setSelectedColor] = useState('#ffbe0b');
   const [selectedBrick, setSelectedBrick] = useState(0);
 
   const toggleGrid = () => {
     setGridStatus(!gridStatus);
+  };
+
+  const toggleDelete = () => {
+    setDeleteStatus(!deleteStatus);
   };
 
   const selectColor = (color: string) => {
@@ -69,6 +74,7 @@ const App: () => Node = ({signOut, user}) => {
       <SafeAreaView style={backgroundStyle}>
         <BuilderToolbar
           toggleGrid={toggleGrid}
+          toggleDelete={toggleDelete}
           selectColor={selectColor}
           selectedColor={selectedColor}
           selectBrick={selectBrick}
@@ -77,6 +83,7 @@ const App: () => Node = ({signOut, user}) => {
 
         <Playground
           gridStatus={gridStatus}
+          deleteStatus={deleteStatus}
           selectedColor={selectedColor}
           selectedBrick={selectedBrick}
         />

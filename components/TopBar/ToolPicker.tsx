@@ -7,6 +7,7 @@ const ColorPicker = props => {
   const [selectedTool, setSelectedTool] = useState('#ffbe0b');
   const {
     toggleGrid,
+    toggleDelete,
     selectBrick,
     toolPickerVisible,
     animation,
@@ -85,11 +86,12 @@ const ColorPicker = props => {
               color={selectedTool === 'delete' ? '#ffbe0b' : '#6F7378'}
             />
           )}
-          onPress={() =>
+          onPress={() => {
+            toggleDelete();
             selectedTool === 'delete'
               ? setSelectedTool('')
-              : setSelectedTool('delete')
-          }
+              : setSelectedTool('delete');
+          }}
           {...props}
         />
       </HStack>
