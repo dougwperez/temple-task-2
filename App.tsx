@@ -42,11 +42,21 @@ import Playground from './components/Playground';
 
 const App: () => Node = ({signOut, user}) => {
   const isDarkMode = useColorScheme() === 'dark';
+  const [buildStatus, setBuildStatus] = useState(true);
+  const [paintStatus, setPaintStatus] = useState(false);
   const [gridStatus, setGridStatus] = useState(true);
   const [deleteStatus, setDeleteStatus] = useState(false);
   const [rotateStatus, setRotateStatus] = useState(false);
   const [selectedColor, setSelectedColor] = useState('#ffbe0b');
   const [selectedBrick, setSelectedBrick] = useState(0);
+
+  const toggleBuild = () => {
+    setBuildStatus(!buildStatus);
+  };
+
+  const togglePaint = () => {
+    setPaintStatus(!paintStatus);
+  };
 
   const toggleGrid = () => {
     setGridStatus(!gridStatus);
@@ -78,6 +88,8 @@ const App: () => Node = ({signOut, user}) => {
       <StatusBar />
       <SafeAreaView style={backgroundStyle}>
         <BuilderToolbar
+          toggleBuild={toggleBuild}
+          togglePaint={togglePaint}
           toggleGrid={toggleGrid}
           toggleDelete={toggleDelete}
           toggleRotate={toggleRotate}
@@ -90,6 +102,8 @@ const App: () => Node = ({signOut, user}) => {
         />
 
         <Playground
+          buildStatus={buildStatus}
+          paintStatus={paintStatus}
           gridStatus={gridStatus}
           deleteStatus={deleteStatus}
           rotateStatus={rotateStatus}

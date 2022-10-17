@@ -5,12 +5,27 @@ import {DataStore} from 'aws-amplify';
 import {TaskCounter} from '.././src/models';
 
 const Playground = props => {
-  const {gridStatus, deleteStatus, rotateStatus, selectedColor, selectedBrick} =
-    props;
+  const {
+    buildStatus,
+    paintStatus,
+    gridStatus,
+    deleteStatus,
+    rotateStatus,
+    selectedColor,
+    selectedBrick,
+  } = props;
   const [brickCount, setBrickCount] = useState(Number);
   const [coins, SetCoins] = React.useState(0);
 
   const webViewRef = useRef(null);
+
+  const toggleBuildString = `
+  setTimeout(function() { document.querySelector(".ion-hammer").click(); }, 1);
+  true`;
+
+  const togglePaintString = `
+  setTimeout(function() { document.querySelector(".ion-paintbrush").click(); }, 1);
+  true`;
 
   const toggleGridString = `
   setTimeout(function() { document.querySelector(".ion-grid").click(); }, 1);
@@ -54,6 +69,14 @@ const Playground = props => {
       subscription.unsubscribe();
     };
   }, []);
+
+  useEffect(() => {
+    webViewRef.current.injectJavaScript(toggleBuildString);
+  }, [buildStatus]);
+
+  useEffect(() => {
+    webViewRef.current.injectJavaScript(togglePaintString);
+  }, [paintStatus]);
 
   useEffect(() => {
     webViewRef.current.injectJavaScript(toggleGridString);

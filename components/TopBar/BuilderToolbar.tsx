@@ -28,6 +28,8 @@ import {
 
 const BuilderToolbar = props => {
   const {
+    toggleBuild,
+    togglePaint,
     toggleGrid,
     toggleDelete,
     toggleRotate,
@@ -261,6 +263,8 @@ const BuilderToolbar = props => {
           toggleToolPicker={toggleToolPicker}
           setToolPickerVisible={setToolPickerVisible}
           toolPickerVisible={toolPickerVisible}
+          toggleBuild={toggleBuild}
+          togglePaint={togglePaint}
           toggleGrid={toggleGrid}
           toggleDelete={toggleDelete}
           toggleRotate={toggleRotate}
