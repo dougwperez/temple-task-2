@@ -8,6 +8,7 @@ const ColorPicker = props => {
   const {
     toggleGrid,
     toggleDelete,
+    toggleRotate,
     selectBrick,
     toolPickerVisible,
     animation,
@@ -18,6 +19,8 @@ const ColorPicker = props => {
   useEffect(() => {
     slideIn();
   }, [toolPickerVisible]);
+
+  const deleteContainerFunc = () => {};
 
   return (
     <AppBar
@@ -64,11 +67,12 @@ const ColorPicker = props => {
             />
           )}
           {...props}
-          onPress={() =>
+          onPress={() => {
+            toggleRotate();
             selectedTool === 'rotate'
               ? setSelectedTool('')
-              : setSelectedTool('rotate')
-          }
+              : setSelectedTool('rotate');
+          }}
         />
         <IconButton
           icon={props => <Icon name="grid" {...props} color="#6F7378" />}

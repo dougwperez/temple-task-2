@@ -5,7 +5,8 @@ import {DataStore} from 'aws-amplify';
 import {TaskCounter} from '.././src/models';
 
 const Playground = props => {
-  const {gridStatus, deleteStatus, selectedColor, selectedBrick} = props;
+  const {gridStatus, deleteStatus, rotateStatus, selectedColor, selectedBrick} =
+    props;
   const [brickCount, setBrickCount] = useState(Number);
   const [coins, SetCoins] = React.useState(0);
 
@@ -61,6 +62,10 @@ const Playground = props => {
   useEffect(() => {
     webViewRef.current.injectJavaScript(toggleDeleteString);
   }, [deleteStatus]);
+
+  useEffect(() => {
+    webViewRef.current.injectJavaScript(toggleRotateString);
+  }, [rotateStatus]);
 
   useEffect(() => {
     webViewRef.current.injectJavaScript(selectColorString);

@@ -44,6 +44,7 @@ const App: () => Node = ({signOut, user}) => {
   const isDarkMode = useColorScheme() === 'dark';
   const [gridStatus, setGridStatus] = useState(true);
   const [deleteStatus, setDeleteStatus] = useState(false);
+  const [rotateStatus, setRotateStatus] = useState(false);
   const [selectedColor, setSelectedColor] = useState('#ffbe0b');
   const [selectedBrick, setSelectedBrick] = useState(0);
 
@@ -53,6 +54,10 @@ const App: () => Node = ({signOut, user}) => {
 
   const toggleDelete = () => {
     setDeleteStatus(!deleteStatus);
+  };
+
+  const toggleRotate = () => {
+    setRotateStatus(!rotateStatus);
   };
 
   const selectColor = (color: string) => {
@@ -75,6 +80,9 @@ const App: () => Node = ({signOut, user}) => {
         <BuilderToolbar
           toggleGrid={toggleGrid}
           toggleDelete={toggleDelete}
+          toggleRotate={toggleRotate}
+          setDeleteStatus={setDeleteStatus}
+          setRotateStatus={setRotateStatus}
           selectColor={selectColor}
           selectedColor={selectedColor}
           selectBrick={selectBrick}
@@ -84,6 +92,7 @@ const App: () => Node = ({signOut, user}) => {
         <Playground
           gridStatus={gridStatus}
           deleteStatus={deleteStatus}
+          rotateStatus={rotateStatus}
           selectedColor={selectedColor}
           selectedBrick={selectedBrick}
         />

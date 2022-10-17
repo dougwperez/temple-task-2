@@ -30,6 +30,8 @@ const BuilderToolbar = props => {
   const {
     toggleGrid,
     toggleDelete,
+    toggleRotate,
+    setDeleteStatus,
     selectColor,
     selectedColor,
     selectBrick,
@@ -130,6 +132,7 @@ const BuilderToolbar = props => {
       slideOut();
       setTimeout(() => {
         setToolPickerVisible(false);
+        setDeleteStatus(false);
       }, 500);
     } else if (colorPickerVisible) {
       slideOut();
@@ -260,6 +263,7 @@ const BuilderToolbar = props => {
           toolPickerVisible={toolPickerVisible}
           toggleGrid={toggleGrid}
           toggleDelete={toggleDelete}
+          toggleRotate={toggleRotate}
           animation={animation}
           slideIn={slideIn}
         />
