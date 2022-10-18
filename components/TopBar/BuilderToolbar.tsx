@@ -193,7 +193,7 @@ const BuilderToolbar = props => {
             />
             <IconButton
               icon={props => (
-                <Palette fill="red" />
+                <Palette bgfill="#ffbe0b" selectedColor={selectedColor} />
                 // <IconIon
                 //   name="md-color-palette"
                 //   {...props}
