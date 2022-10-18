@@ -16,6 +16,7 @@ import Svg1x4 from '../Images/1x4svg';
 import Svg2x2 from '../Images/2x2svg';
 import Svg2x3 from '../Images/2x3svg';
 import Svg2x4 from '../Images/2x4svg';
+import Palette from '../Images/palettesvg';
 
 import {
   Provider,
@@ -192,11 +193,12 @@ const BuilderToolbar = props => {
             />
             <IconButton
               icon={props => (
-                <IconIon
-                  name="md-color-palette"
-                  {...props}
-                  color={selectedColor}
-                />
+                <Palette fill="red" />
+                // <IconIon
+                //   name="md-color-palette"
+                //   {...props}
+                //   color={selectedColor}
+                // />
               )}
               onPress={() => toggleColorPicker()}
               {...props}
