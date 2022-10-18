@@ -175,7 +175,7 @@ const BuilderToolbar = props => {
               {...props}
               style={{marginRight: -12}}
               onPress={() => toggleModal()}
-              color="#6F7378"
+              color={optionsModalVisible ? '#eea622' : '#6F7378'}
             />
             <Image
               style={styles.brickPicks}
@@ -212,19 +212,19 @@ const BuilderToolbar = props => {
                 selectedBrick === 0 ? (
                   <Svg1x1 bgfill={brickPickerVisible ? '#eea622' : '#6F7378'} />
                 ) : selectedBrick === 1 ? (
-                  <Svg1x2 />
+                  <Svg1x2 bgfill={brickPickerVisible ? '#eea622' : '#6F7378'} />
                 ) : selectedBrick === 3 ? (
-                  <Svg1x3 />
+                  <Svg1x3 bgfill={brickPickerVisible ? '#eea622' : '#6F7378'} />
                 ) : selectedBrick === 5 ? (
-                  <Svg1x4 />
+                  <Svg1x4 bgfill={brickPickerVisible ? '#eea622' : '#6F7378'} />
                 ) : selectedBrick === 2 ? (
-                  <Svg2x2 />
+                  <Svg2x2 bgfill={brickPickerVisible ? '#eea622' : '#6F7378'} />
                 ) : selectedBrick === 4 ? (
-                  <Svg2x3 />
+                  <Svg2x3 bgfill={brickPickerVisible ? '#eea622' : '#6F7378'} />
                 ) : selectedBrick === 6 ? (
-                  <Svg2x4 />
+                  <Svg2x4 bgfill={brickPickerVisible ? '#eea622' : '#6F7378'} />
                 ) : (
-                  <Svg1x1 />
+                  <Svg1x1 bgfill={brickPickerVisible ? '#eea622' : '#6F7378'} />
                 )
               }
               onPress={() => toggleBrickPicker()}

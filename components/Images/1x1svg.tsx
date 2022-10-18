@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Svg, {SvgProps, Path} from 'react-native-svg';
+import Svg, {Path} from 'react-native-svg';
 
 const Svg1x1 = props => {
-  const {SvgProps, bgfill} = props;
+  const {bgfill} = props;
 
   return (
     <Svg
