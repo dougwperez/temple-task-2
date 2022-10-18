@@ -6,7 +6,7 @@ import IconMaterial from 'react-native-vector-icons/MaterialIcons';
 import IconOcti from 'react-native-vector-icons/Octicons';
 
 const ColorPicker = props => {
-  const [selectedTool, setSelectedTool] = useState('#ffbe0b');
+  const [selectedTool, setSelectedTool] = useState('build');
   const {
     toggleBuild,
     togglePaint,
@@ -41,15 +41,15 @@ const ColorPicker = props => {
             <IconMaterial
               name="add-box"
               {...props}
-              color={selectedTool === 'drag' ? '#ffbe0b' : '#6F7378'}
+              color={selectedTool === 'build' ? '#ffbe0b' : '#6F7378'}
             />
           )}
           {...props}
           onPress={() => {
             toggleBuild();
-            selectedTool === 'drag'
+            selectedTool === 'build'
               ? setSelectedTool('')
-              : setSelectedTool('drag');
+              : setSelectedTool('build');
           }}
         />
         <IconButton
@@ -64,7 +64,7 @@ const ColorPicker = props => {
           onPress={() => {
             togglePaint();
             selectedTool === 'brush'
-              ? setSelectedTool('')
+              ? setSelectedTool('build')
               : setSelectedTool('brush');
           }}
         />
@@ -80,7 +80,7 @@ const ColorPicker = props => {
           onPress={() => {
             toggleRotate();
             selectedTool === 'rotate'
-              ? setSelectedTool('')
+              ? setSelectedTool('build')
               : setSelectedTool('rotate');
           }}
         />
@@ -103,7 +103,7 @@ const ColorPicker = props => {
           onPress={() => {
             toggleDelete();
             selectedTool === 'delete'
-              ? setSelectedTool('')
+              ? setSelectedTool('build')
               : setSelectedTool('delete');
           }}
           {...props}
