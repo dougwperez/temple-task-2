@@ -17,6 +17,7 @@ import Svg2x2 from '../Images/2x2svg';
 import Svg2x3 from '../Images/2x3svg';
 import Svg2x4 from '../Images/2x4svg';
 import Palette from '../Images/palettesvg';
+import PaintBucket from '../Images/paintbucketsvg';
 
 import {
   Provider,
@@ -189,14 +190,19 @@ const BuilderToolbar = props => {
               icon={props => <IconIon name="hammer" {...props} />}
               onPress={() => toggleToolPicker()}
               {...props}
-              color={toolPickerVisible ? '#eea622' : '#6F7378'}
+              color={toolPickerVisible ? '#EEBC1D' : '#6F7378'}
             />
             <IconButton
               icon={props => (
-                <Palette
-                  bgfill={colorPickerVisible ? '#ffbe0b' : '#d3d3d3'}
+                <PaintBucket
                   selectedColor={selectedColor}
+                  bgfill={colorPickerVisible ? '#4ad0ff' : '#6F7378'}
+                  bgfill2={colorPickerVisible ? '#99e5ff' : '#d3d3d3'}
                 />
+                // <Palette
+                //   bgfill={colorPickerVisible ? '#ffbe0b' : '#d3d3d3'}
+                //   selectedColor={selectedColor}
+                // />
                 // <IconIon
                 //   name="md-color-palette"
                 //   {...props}
