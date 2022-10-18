@@ -44,6 +44,7 @@ const BuilderToolbar = props => {
   const [colorPickerVisible, setColorPickerVisible] = useState(false);
   const [brickPickerVisible, setBrickPickerVisible] = useState(false);
   const [toolPickerVisible, setToolPickerVisible] = useState(false);
+  const [selectedTool, setSelectedTool] = useState('build');
 
   const animation = new Animated.Value(-350);
 
@@ -134,7 +135,6 @@ const BuilderToolbar = props => {
       slideOut();
       setTimeout(() => {
         setToolPickerVisible(false);
-        setDeleteStatus(false);
       }, 500);
     } else if (colorPickerVisible) {
       slideOut();
@@ -270,6 +270,8 @@ const BuilderToolbar = props => {
           toggleRotate={toggleRotate}
           animation={animation}
           slideIn={slideIn}
+          selectedTool={selectedTool}
+          setSelectedTool={setSelectedTool}
         />
       ) : null}
     </>

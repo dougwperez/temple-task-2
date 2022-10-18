@@ -6,7 +6,7 @@ import IconMaterial from 'react-native-vector-icons/MaterialIcons';
 import IconOcti from 'react-native-vector-icons/Octicons';
 
 const ColorPicker = props => {
-  const [selectedTool, setSelectedTool] = useState('build');
+  // const [selectedTool, setSelectedTool] = useState('build');
   const {
     toggleBuild,
     togglePaint,
@@ -18,6 +18,8 @@ const ColorPicker = props => {
     animation,
     slideIn,
     slideOut,
+    selectedTool,
+    setSelectedTool,
   } = props;
 
   useEffect(() => {
