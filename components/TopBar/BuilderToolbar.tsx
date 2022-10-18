@@ -189,11 +189,14 @@ const BuilderToolbar = props => {
               icon={props => <IconIon name="hammer" {...props} />}
               onPress={() => toggleToolPicker()}
               {...props}
-              color="#6F7378"
+              color={toolPickerVisible ? '#eea622' : '#6F7378'}
             />
             <IconButton
               icon={props => (
-                <Palette bgfill="#ffbe0b" selectedColor={selectedColor} />
+                <Palette
+                  bgfill={colorPickerVisible ? '#ffbe0b' : '#d3d3d3'}
+                  selectedColor={selectedColor}
+                />
                 // <IconIon
                 //   name="md-color-palette"
                 //   {...props}
@@ -207,7 +210,7 @@ const BuilderToolbar = props => {
             <IconButton
               icon={props =>
                 selectedBrick === 0 ? (
-                  <Svg1x1 />
+                  <Svg1x1 bgfill={brickPickerVisible ? '#eea622' : '#6F7378'} />
                 ) : selectedBrick === 1 ? (
                   <Svg1x2 />
                 ) : selectedBrick === 3 ? (

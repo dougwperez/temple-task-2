@@ -38,37 +38,37 @@ const ColorPicker = props => {
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(0)}>
-          <Svg1x1 style={styles.brickImg} />
+          <Svg1x1 bgfill="#eea622" style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(1)}>
-          <Svg1x2 style={styles.brickImg} />
+          <Svg1x2 bgfill="#eea622" style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(3)}>
-          <Svg1x3 style={styles.brickImg} />
+          <Svg1x3 bgfill="#eea622" style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(5)}>
-          <Svg1x4 style={styles.brickImg} />
+          <Svg1x4 bgfill="#eea622" style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(2)}>
-          <Svg2x2 style={styles.brickImg} />
+          <Svg2x2 bgfill="#eea622" style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(4)}>
-          <Svg2x3 style={styles.brickImg} />
+          <Svg2x3 bgfill="#eea622" style={styles.brickImg} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.brickPicks}
           onPress={() => selectBrick(6)}>
-          <Svg2x4 style={styles.brickImg} />
+          <Svg2x4 bgfill="#eea622" style={styles.brickImg} />
         </TouchableOpacity>
       </HStack>
     </AppBar>
