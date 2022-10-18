@@ -165,6 +165,7 @@ const BuilderToolbar = props => {
         titleStyle={{
           fontWeight: '700',
           color: 'green',
+          // color: '#EEBC1D',
         }}
         leading={props => (
           <HStack>

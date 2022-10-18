@@ -4,6 +4,7 @@ import {AppBar, HStack, IconButton} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
 import IconOcti from 'react-native-vector-icons/Octicons';
+import IconIon from 'react-native-vector-icons/Ionicons';
 
 const ColorPicker = props => {
   // const [selectedTool, setSelectedTool] = useState('build');
@@ -96,8 +97,8 @@ const ColorPicker = props => {
         />
         <IconButton
           icon={props => (
-            <Icon
-              name="trash-can"
+            <IconIon
+              name="trash"
               {...props}
               color={selectedTool === 'delete' ? '#ffbe0b' : '#6F7378'}
             />
