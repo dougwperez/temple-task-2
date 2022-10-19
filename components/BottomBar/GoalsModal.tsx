@@ -14,8 +14,14 @@ import {
 } from 'react-native';
 import {IconButton, HStack} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {DataStore, Auth} from 'aws-amplify';
+import {DataStore, Auth, API, graphqlOperation} from 'aws-amplify';
 import {Todo} from '../.././src/models';
+// import * as mutations from './graphql/mutations';
+import {
+  createTodo,
+  updateTodo,
+  deleteTodo,
+} from '../.././src/graphql/mutations';
 
 const GoalsModal = props => {
   const {setGoalModalVisible, goalModalVisible} = props;
@@ -25,6 +31,13 @@ const GoalsModal = props => {
   const [todos, setTodos] = useState([]);
 
   async function addTodo() {
+    const todoVar = {
+      name: 'TestingTodo',
+      description: 'Stay calm',
+      isComplete: false,
+      userId: Auth.user.attributes.sub,
+    };
+    await API.graphql(graphqlOperation(createTodo, {input: todoVar}));
     await DataStore.save(
       new Todo({
         name,

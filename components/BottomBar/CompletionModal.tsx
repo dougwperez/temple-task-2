@@ -9,7 +9,7 @@ import {
   FlatList,
 } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import {DataStore, Auth} from 'aws-amplify';
+import {DataStore, Auth, API, graphqlOperation} from 'aws-amplify';
 import {Todo} from '../.././src/models';
 import {TaskCounter} from '../.././src/models';
 
@@ -17,6 +17,15 @@ const CompletionModal = props => {
   const {setCompletionModalVisible, completionModalVisible} = props;
   const [todos, setTodos] = useState([]);
   const [dailyScore, setDailyScore] = React.useState(0);
+
+  // async function testAPI() {
+  //   const something = await API.graphql(graphqlOperation(listTodos));
+  //   console.log('Koca: something ');
+  // }
+  // testAPI();
+  console.log('WTF');
+  // const something = API.graphql(graphqlOperation(listTodos));
+  // console.log('Koca: something ', something);
 
   async function updateCount() {
     setCompletionModalVisible(!completionModalVisible);
