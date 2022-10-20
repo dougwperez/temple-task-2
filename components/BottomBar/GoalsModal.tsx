@@ -22,6 +22,9 @@ import {
   updateTodo,
   deleteTodo,
 } from '../.././src/graphql/mutations';
+import * as queries from '../.././src/graphql/queries';
+import * as mutations from '../.././src/graphql/mutations';
+import * as subscriptions from '../.././src/graphql/subscriptions';
 
 const GoalsModal = props => {
   const {setGoalModalVisible, goalModalVisible} = props;
@@ -32,20 +35,20 @@ const GoalsModal = props => {
 
   async function addTodo() {
     const todoVar = {
-      name: 'TestingTodo',
-      description: 'Stay calm',
+      name,
+      description,
       isComplete: false,
       userId: Auth.user.attributes.sub,
     };
     await API.graphql(graphqlOperation(createTodo, {input: todoVar}));
-    await DataStore.save(
-      new Todo({
-        name,
-        description,
-        isComplete: false,
-        userId: Auth.user.attributes.sub,
-      }),
-    );
+    // await DataStore.save(
+    //   new Todo({
+    //     name,
+    //     description,
+    //     isComplete: false,
+    //     userId: Auth.user.attributes.sub,
+    //   }),
+    // );
     setName('');
     setDescription('');
   }
@@ -57,6 +60,20 @@ const GoalsModal = props => {
       console.log('Delete failed: $e');
     }
   }
+
+  async function getTodos() {
+    console.log('STUCK');
+    const allTodos = await (API.graphql({
+      query: queries.ListTodos,
+    }) as Promise<ListTodoResult>);
+    console.log('allTodos', allTodos);
+  }
+
+  useEffect(() => {
+    getTodos();
+
+    console.log('use effect called');
+  }, []);
 
   useEffect(() => {
     const subscription = DataStore.observeQuery(Todo, t =>

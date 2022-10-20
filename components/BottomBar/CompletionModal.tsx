@@ -12,18 +12,39 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {DataStore, Auth, API, graphqlOperation} from 'aws-amplify';
 import {Todo} from '../.././src/models';
 import {TaskCounter} from '../.././src/models';
+import * as queries from '../.././src/graphql/queries';
+import * as mutations from '../.././src/graphql/mutations';
+import * as subscriptions from '../.././src/graphql/subscriptions';
 
 const CompletionModal = props => {
   const {setCompletionModalVisible, completionModalVisible} = props;
   const [todos, setTodos] = useState([]);
   const [dailyScore, setDailyScore] = React.useState(0);
 
-  // async function testAPI() {
-  //   const something = await API.graphql(graphqlOperation(listTodos));
-  //   console.log('Koca: something ');
-  // }
-  // testAPI();
-  console.log('WTF');
+  async function testAPI() {
+    try {
+      const allTodos = await API.graphql({query: queries.listTodos});
+      console.log('allTodos', allTodos);
+    } catch (err) {
+      console.log('error checking data:', err);
+    }
+  }
+  testAPI();
+
+  const checkData = async () => {
+    try {
+      const oneTodo = await API.graphql({
+        query: queries.getTodo,
+        variables: {id: 'a9270869-9bea-4a5f-8714-0ad9d98ea15a'},
+      });
+      console.log('oneTodo', oneTodo);
+    } catch (err) {
+      console.log('error checking data:', err);
+    }
+  };
+
+  checkData();
+
   // const something = API.graphql(graphqlOperation(listTodos));
   // console.log('Koca: something ', something);
 
@@ -40,10 +61,18 @@ const CompletionModal = props => {
       }),
       //SAVE LINE BELOW TO INIT NEW DB
       // new TaskCounter({
-      //   count: 69,
-      //   userId: Auth.user.attributes.sub,
+      // count: 15,
+      // userId: Auth.user.attributes.sub,
       // }),
     );
+    // GRAPHQL POST
+    // const taskVar = {
+    //   count: 15,
+    //   userId: Auth.user.attributes.sub,
+    // };
+    // await API.graphql(
+    //   graphqlOperation(mutations.createTaskCounter, {input: taskVar}),
+    // );
   }
 
   useEffect(() => {
@@ -52,6 +81,7 @@ const CompletionModal = props => {
       t.userId('contains', `${Auth.user.attributes.sub}`),
     ).subscribe(snapshot => {
       const {items, isSynced} = snapshot;
+      console.log('Koca: isSynced ', isSynced);
       console.log('Koca: items in Completion Modal', items);
 
       setTodos(items);
