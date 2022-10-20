@@ -35,7 +35,6 @@ const CompletionModal = props => {
     try {
       const oneTodo = await API.graphql({
         query: queries.getTodo,
-        variables: {id: 'a9270869-9bea-4a5f-8714-0ad9d98ea15a'},
       });
       console.log('oneTodo', oneTodo);
     } catch (err) {
@@ -76,6 +75,7 @@ const CompletionModal = props => {
   }
 
   useEffect(() => {
+    console.log('Auth.user.attributes.sub', Auth.user.attributes.sub);
     // setTotalScore(10);
     const subscription = DataStore.observeQuery(Todo, t =>
       t.userId('contains', `${Auth.user.attributes.sub}`),

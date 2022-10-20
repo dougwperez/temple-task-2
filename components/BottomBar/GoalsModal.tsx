@@ -75,6 +75,7 @@ const GoalsModal = props => {
     console.log('use effect called');
   }, []);
 
+  //DATA STORE GET ALL TASKS
   useEffect(() => {
     const subscription = DataStore.observeQuery(Todo, t =>
       t.userId('contains', `${Auth.user.attributes.sub}`),
@@ -82,13 +83,37 @@ const GoalsModal = props => {
       const {items, isSynced} = snapshot;
       console.log('Koca: items in Goal Modal', items);
 
-      setTodos(items);
+      // setTodos(items);
     });
 
     //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
     return function cleanup() {
       subscription.unsubscribe();
     };
+  }, []);
+
+  //GRAPHQL GET ALL TASKS
+
+  async function testAPI() {
+    try {
+      let filterQ = {
+        userId: {
+          eq: 'b5a8ff0d-711a-4dd4-9988-7bfa16cdbc82', // filter priority = 1
+        },
+      };
+
+      const allTodos = await API.graphql({
+        query: queries.listTodos,
+        variables: {filter: filterQ},
+      });
+      console.log('allTodos', allTodos.data?.listTodos?.items);
+      await setTodos(allTodos.data.listTodos.items);
+    } catch (err) {
+      console.log('error checking data:', err);
+    }
+  }
+  useEffect(() => {
+    testAPI();
   }, []);
 
   const renderItem = ({item}) => {

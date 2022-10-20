@@ -82,8 +82,12 @@ export const getTodo = /* GraphQL */ `
   }
 `;
 export const listTodos = /* GraphQL */ `
-  query ListTodos($limit: Int, $nextToken: String) {
-    listTodos(limit: $limit, nextToken: $nextToken) {
+  query ListTodos(
+    $filter: ModelTodoFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
