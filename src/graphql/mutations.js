@@ -65,9 +65,6 @@ export const createTodo = /* GraphQL */ `
       userId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -103,9 +100,6 @@ export const deleteTodo = /* GraphQL */ `
       userId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;

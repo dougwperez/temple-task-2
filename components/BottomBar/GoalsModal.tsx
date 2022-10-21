@@ -33,16 +33,21 @@ const GoalsModal = props => {
   const [description, setDescription] = useState('');
 
   async function addTodo() {
-    const todoVar = {
-      name,
-      description,
-      isComplete: false,
-      userId: Auth.user.attributes.sub,
-    };
-    await API.graphql(graphqlOperation(createTodo, {input: todoVar}));
-    setName('');
-    setDescription('');
-    getAllTodos();
+    try {
+      const todoVar = {
+        name,
+        description,
+        isComplete: false,
+        userId: Auth.user.attributes.sub,
+      };
+
+      await API.graphql(graphqlOperation(createTodo, {input: todoVar}));
+      setName('');
+      setDescription('');
+      getAllTodos();
+    } catch (e) {
+      console.log('create failed: $e', e);
+    }
   }
 
   async function deleteTodo(todo) {

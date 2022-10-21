@@ -28,12 +28,8 @@ export const listTaskCounters = /* GraphQL */ `
         userId
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
   }
 `;
@@ -96,12 +92,8 @@ export const listTodos = /* GraphQL */ `
         userId
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
   }
 `;
@@ -131,7 +123,6 @@ export const syncTodos = /* GraphQL */ `
         _lastChangedAt
       }
       nextToken
-      startedAt
     }
   }
 `;

@@ -32,17 +32,17 @@ const TaskToolbar = () => {
       });
 
       const todoList = allTodos.data?.listTodos?.items;
+      console.log('Koca: todoList ', todoList);
 
       const notDeletedTodos = todoList.filter(todo => todo._deleted === null);
 
-      await setAllTodos(notDeletedTodos);
+      await setAllTodos(todoList);
     } catch (err) {
       console.log('error checking data:', err);
     }
   }
 
   async function getTaskCounter() {
-    console.log('WIF');
     try {
       let filterByUserID = {
         userId: {
@@ -56,6 +56,7 @@ const TaskToolbar = () => {
       });
 
       const counterList = allTaskCounters.data?.listTaskCounters.items[0].count;
+      console.log('Koca: counterList ', counterList);
       setCoins(counterList);
 
       // const notDeletedTodos = todoList.filter(todo => todo._deleted === null);
