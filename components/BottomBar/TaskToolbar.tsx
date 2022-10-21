@@ -20,7 +20,7 @@ const TaskToolbar = () => {
 
   async function getAllTodos() {
     try {
-      let filterQ = {
+      let filterByUserID = {
         userId: {
           eq: Auth.user.attributes.sub, // filter priority = 1
         },
@@ -28,7 +28,7 @@ const TaskToolbar = () => {
 
       const allTodos = await API.graphql({
         query: queries.listTodos,
-        variables: {filter: filterQ},
+        variables: {filter: filterByUserID},
       });
 
       const todoList = allTodos.data?.listTodos?.items;
@@ -41,22 +41,34 @@ const TaskToolbar = () => {
     }
   }
 
-  useEffect(() => {
-    getAllTodos();
-  }, []);
+  async function getTaskCounter() {
+    console.log('WIF');
+    try {
+      let filterByUserID = {
+        userId: {
+          eq: Auth.user.attributes.sub, // filter priority = 1
+        },
+      };
+
+      const allTaskCounters = await API.graphql({
+        query: queries.listTaskCounters,
+        variables: {filter: filterByUserID},
+      });
+
+      const counterList = allTaskCounters.data?.listTaskCounters.items[0].count;
+      setCoins(counterList);
+
+      // const notDeletedTodos = todoList.filter(todo => todo._deleted === null);
+
+      // await setAllTodos(notDeletedTodos);
+    } catch (err) {
+      console.log('error checking data:', err);
+    }
+  }
 
   useEffect(() => {
-    const subscription = DataStore.observeQuery(TaskCounter, t =>
-      t.userId('contains', `${Auth.user.attributes.sub}`),
-    ).subscribe(snapshot => {
-      const {items, isSynced} = snapshot;
-      console.log('items tasktoolbar', items);
-      setCoins(items[0].count);
-    });
-    //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak. Need to remove this line
-    return function cleanup() {
-      subscription.unsubscribe();
-    };
+    getAllTodos();
+    getTaskCounter();
   }, []);
 
   return (

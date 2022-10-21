@@ -34,9 +34,6 @@ const CompletionModal = props => {
 
   checkData();
 
-  // const something = API.graphql(graphqlOperation(listTodos));
-  // console.log('Koca: something ', something);
-
   async function updateCount() {
     setCompletionModalVisible(!completionModalVisible);
     const models = await DataStore.query(TaskCounter, t =>
