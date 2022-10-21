@@ -17,19 +17,19 @@ import * as mutations from '../.././src/graphql/mutations';
 import * as subscriptions from '../.././src/graphql/subscriptions';
 
 const CompletionModal = props => {
-  const {setCompletionModalVisible, completionModalVisible} = props;
+  const {setCompletionModalVisible, completionModalVisible, allTodos} = props;
   const [todos, setTodos] = useState([]);
   const [dailyScore, setDailyScore] = React.useState(0);
 
-  async function testAPI() {
-    try {
-      const allTodos = await API.graphql({query: queries.listTodos});
-      console.log('allTodos', allTodos);
-    } catch (err) {
-      console.log('error checking data:', err);
-    }
-  }
-  testAPI();
+  // async function testAPI() {
+  //   try {
+  //     const allTodos = await API.graphql({query: queries.listTodos});
+  //     console.log('allTodos', allTodos);
+  //   } catch (err) {
+  //     console.log('error checking data:', err);
+  //   }
+  // }
+  // testAPI();
 
   const checkData = async () => {
     try {
@@ -125,7 +125,7 @@ const CompletionModal = props => {
             <Text style={styles.modalTitle}>Daily Check In</Text>
 
             <FlatList
-              data={todos}
+              data={allTodos}
               renderItem={renderItem}
               keyExtractor={item => item.id}
             />

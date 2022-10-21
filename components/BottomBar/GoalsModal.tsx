@@ -22,7 +22,7 @@ import {
   updateTodo,
   deleteTodo,
 } from '../.././src/graphql/mutations';
-import * as queries from '../.././src/graphql/queries';
+
 import * as mutations from '../.././src/graphql/mutations';
 import * as subscriptions from '../.././src/graphql/subscriptions';
 
@@ -55,10 +55,18 @@ const GoalsModal = props => {
   }
 
   async function deleteTodo(todo) {
+    console.log('Koca: todo ', todo);
     try {
-      await DataStore.delete(todo);
+      const todoDetails = {
+        id: todo.id,
+      };
+
+      await API.graphql({
+        query: mutations.deleteTodo,
+        variables: {input: todoDetails},
+      });
     } catch (e) {
-      console.log('Delete failed: $e');
+      console.log('Delete failed: $e', e);
     }
   }
 

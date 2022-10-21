@@ -117,6 +117,7 @@ const TaskToolbar = () => {
         <CompletionModal
           setCompletionModalVisible={setCompletionModalVisible}
           completionModalVisible={completionModalVisible}
+          allTodos={allTodos}
         />
       ) : null}
     </>
