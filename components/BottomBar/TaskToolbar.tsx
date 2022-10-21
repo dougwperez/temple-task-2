@@ -21,24 +21,19 @@ const TaskToolbar = () => {
   async function getAllTodos() {
     try {
       let filterQ = {
-        // userId: {
-        //   eq: Auth.user.attributes.sub, // filter priority = 1
-        // },
-        and: [
-          {userId: {eq: Auth.user.attributes.sub}},
-          // {name: {eq: 'Testing'}},Testin
-        ],
+        userId: {
+          eq: Auth.user.attributes.sub, // filter priority = 1
+        },
       };
 
       const allTodos = await API.graphql({
         query: queries.listTodos,
         variables: {filter: filterQ},
       });
-      console.log('allTodos in TASKTOOLBAR', allTodos.data?.listTodos?.items);
+
       const todoList = allTodos.data?.listTodos?.items;
-      console.log('Koca: todoList ', todoList);
+
       const notDeletedTodos = todoList.filter(todo => todo._deleted === null);
-      console.log('Koca: notDeletedTodos ', notDeletedTodos);
 
       await setAllTodos(notDeletedTodos);
     } catch (err) {
@@ -48,7 +43,6 @@ const TaskToolbar = () => {
 
   useEffect(() => {
     getAllTodos();
-    console.log('testing sjsfdljdskkjl');
   }, []);
 
   useEffect(() => {

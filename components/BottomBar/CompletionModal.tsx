@@ -21,16 +21,6 @@ const CompletionModal = props => {
   const [todos, setTodos] = useState([]);
   const [dailyScore, setDailyScore] = React.useState(0);
 
-  // async function testAPI() {
-  //   try {
-  //     const allTodos = await API.graphql({query: queries.listTodos});
-  //     console.log('allTodos', allTodos);
-  //   } catch (err) {
-  //     console.log('error checking data:', err);
-  //   }
-  // }
-  // testAPI();
-
   const checkData = async () => {
     try {
       const oneTodo = await API.graphql({
@@ -54,44 +44,25 @@ const CompletionModal = props => {
     );
     console.log('MODELS IN COMPLETION MODAL: models !!!!!', models);
 
-    await DataStore.save(
-      TaskCounter.copyOf(models[0], item => {
-        item.count += dailyScore;
-      }),
-      //SAVE LINE BELOW TO INIT NEW DB
-      // new TaskCounter({
-      // count: 15,
-      // userId: Auth.user.attributes.sub,
-      // }),
-    );
-    // GRAPHQL POST
-    // const taskVar = {
-    //   count: 15,
-    //   userId: Auth.user.attributes.sub,
-    // };
-    // await API.graphql(
-    //   graphqlOperation(mutations.createTaskCounter, {input: taskVar}),
+    // await DataStore.save(
+    //   TaskCounter.copyOf(models[0], item => {
+    //     item.count += dailyScore;
+    //   }),
+    //   //SAVE LINE BELOW TO INIT NEW DB
+    //   // new TaskCounter({
+    //   // count: 15,
+    //   // userId: Auth.user.attributes.sub,
+    //   // }),
     // );
-  }
-
-  useEffect(() => {
-    console.log('Auth.user.attributes.sub', Auth.user.attributes.sub);
-    // setTotalScore(10);
-    const subscription = DataStore.observeQuery(Todo, t =>
-      t.userId('contains', `${Auth.user.attributes.sub}`),
-    ).subscribe(snapshot => {
-      const {items, isSynced} = snapshot;
-      console.log('Koca: isSynced ', isSynced);
-      console.log('Koca: items in Completion Modal', items);
-
-      setTodos(items);
-    });
-
-    //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
-    return function cleanup() {
-      subscription.unsubscribe();
+    // GRAPHQL POST
+    const taskVar = {
+      count: 7,
+      userId: Auth.user.attributes.sub,
     };
-  }, []);
+    await API.graphql(
+      graphqlOperation(mutations.createTaskCounter, {input: taskVar}),
+    );
+  }
 
   const renderItem = ({item}) => (
     <BouncyCheckbox

@@ -31,7 +31,6 @@ const GoalsModal = props => {
   const [selectedId, setSelectedId] = useState(null);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [todos, setTodos] = useState([]);
 
   async function addTodo() {
     const todoVar = {
@@ -41,14 +40,6 @@ const GoalsModal = props => {
       userId: Auth.user.attributes.sub,
     };
     await API.graphql(graphqlOperation(createTodo, {input: todoVar}));
-    // await DataStore.save(
-    //   new Todo({
-    //     name,
-    //     description,
-    //     isComplete: false,
-    //     userId: Auth.user.attributes.sub,
-    //   }),
-    // );
     setName('');
     setDescription('');
     getAllTodos();
@@ -71,47 +62,6 @@ const GoalsModal = props => {
       console.log('Delete failed: $e', e);
     }
   }
-
-  //DATA STORE GET ALL TASKS
-  // useEffect(() => {
-  //   const subscription = DataStore.observeQuery(Todo, t =>
-  //     t.userId('contains', `${Auth.user.attributes.sub}`),
-  //   ).subscribe(snapshot => {
-  //     const {items, isSynced} = snapshot;
-  //     console.log('Koca: items in Goal Modal', items);
-
-  //     // setTodos(items);
-  //   });
-
-  //   //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
-  //   return function cleanup() {
-  //     subscription.unsubscribe();
-  //   };
-  // }, []);
-
-  //GRAPHQL GET ALL TASKS
-
-  // async function testAPI() {
-  //   try {
-  //     let filterQ = {
-  //       userId: {
-  //         eq: Auth.user.attributes.sub, // filter priority = 1
-  //       },
-  //     };
-
-  //     const allTodos = await API.graphql({
-  //       query: queries.listTodos,
-  //       variables: {filter: filterQ},
-  //     });
-  //     console.log('allTodos', allTodos.data?.listTodos?.items);
-  //     await setTodos(allTodos.data.listTodos.items);
-  //   } catch (err) {
-  //     console.log('error checking data:', err);
-  //   }
-  // }
-  // useEffect(() => {
-  //   testAPI();
-  // }, []);
 
   const renderItem = ({item}) => {
     const backgroundColor = item.id === selectedId ? '#6e3b6e' : 'white';
