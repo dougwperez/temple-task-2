@@ -39,6 +39,7 @@ const GoalsModal = props => {
       description,
       isComplete: false,
       userId: Auth.user.attributes.sub,
+      deletedBool: false,
     };
     await API.graphql(graphqlOperation(createTodo, {input: todoVar}));
     // await DataStore.save(
@@ -59,12 +60,14 @@ const GoalsModal = props => {
     try {
       const todoDetails = {
         id: todo.id,
+        _version: todo._version,
       };
 
       await API.graphql({
         query: mutations.deleteTodo,
         variables: {input: todoDetails},
       });
+      getAllTodos();
     } catch (e) {
       console.log('Delete failed: $e', e);
     }

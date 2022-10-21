@@ -7,11 +7,7 @@
       "keyDescription": "api key description",
       "expirationTime": 30
     },
-    "conflictResolution": {
-      "defaultResolutionStrategy": {
-        "type": "AUTOMERGE"
-      }
-    },
+    "conflictResolution": {},
     "apiName": "amplifyDatasource",
     "additionalAuthTypes": [
       {
