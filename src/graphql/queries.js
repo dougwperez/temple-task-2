@@ -9,9 +9,6 @@ export const getTaskCounter = /* GraphQL */ `
       userId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;

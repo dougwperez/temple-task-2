@@ -12,9 +12,6 @@ export const createTaskCounter = /* GraphQL */ `
       userId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -29,9 +26,6 @@ export const updateTaskCounter = /* GraphQL */ `
       userId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;

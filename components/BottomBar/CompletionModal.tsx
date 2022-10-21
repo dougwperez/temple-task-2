@@ -17,48 +17,47 @@ import * as mutations from '../.././src/graphql/mutations';
 import * as subscriptions from '../.././src/graphql/subscriptions';
 
 const CompletionModal = props => {
-  const {setCompletionModalVisible, completionModalVisible, allTodos} = props;
+  const {
+    setCompletionModalVisible,
+    completionModalVisible,
+    allTodos,
+    getTaskCounter,
+    coins,
+    counterId,
+  } = props;
   const [todos, setTodos] = useState([]);
   const [dailyScore, setDailyScore] = React.useState(0);
-
-  const checkData = async () => {
-    try {
-      const oneTodo = await API.graphql({
-        query: queries.getTodo,
-      });
-      console.log('oneTodo', oneTodo);
-    } catch (err) {
-      console.log('error checking data:', err);
-    }
-  };
-
-  checkData();
+  console.log('Koca: dailyScore ', dailyScore);
 
   async function updateCount() {
     setCompletionModalVisible(!completionModalVisible);
-    const models = await DataStore.query(TaskCounter, t =>
-      t.userId('contains', `${Auth.user.attributes.sub}`),
-    );
-    console.log('MODELS IN COMPLETION MODAL: models !!!!!', models);
 
-    // await DataStore.save(
-    //   TaskCounter.copyOf(models[0], item => {
-    //     item.count += dailyScore;
-    //   }),
-    //   //SAVE LINE BELOW TO INIT NEW DB
-    //   // new TaskCounter({
-    //   // count: 15,
-    //   // userId: Auth.user.attributes.sub,
-    //   // }),
-    // );
-    // GRAPHQL POST
-    const taskVar = {
-      count: 7,
-      userId: Auth.user.attributes.sub,
-    };
-    await API.graphql(
-      graphqlOperation(mutations.createTaskCounter, {input: taskVar}),
-    );
+    try {
+      const taskCounterDetails = {
+        id: counterId,
+        count: coins + dailyScore,
+      };
+      await API.graphql({
+        query: mutations.updateTaskCounter,
+        variables: {input: taskCounterDetails},
+      });
+      await getTaskCounter();
+    } catch (e) {
+      console.log('error on update', e);
+    }
+
+    // CREATE NEW COUNT INSTANCE
+    // try {
+    //   const taskVar = {
+    //     count: 7,
+    //     userId: Auth.user.attributes.sub,
+    //   };
+    //   await API.graphql(
+    //     graphqlOperation(mutations.createTaskCounter, {input: taskVar}),
+    //   );
+    // } catch (e) {
+    //   console.log('error on creation', e);
+    // }
   }
 
   const renderItem = ({item}) => (

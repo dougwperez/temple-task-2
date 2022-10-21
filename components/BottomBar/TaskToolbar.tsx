@@ -15,6 +15,7 @@ const TaskToolbar = () => {
   const [goalModalVisible, setGoalModalVisible] = useState(false);
   const [completionModalVisible, setCompletionModalVisible] = useState(false);
   const [coins, setCoins] = useState(Number);
+  const [counterId, setCounterId] = useState('');
   const [allTodos, setAllTodos] = useState('');
   console.log('Koca: allTodos!!!!!! ', allTodos);
 
@@ -32,9 +33,9 @@ const TaskToolbar = () => {
       });
 
       const todoList = allTodos.data?.listTodos?.items;
-      console.log('Koca: todoList ', todoList);
+      // console.log('Koca: todoList ', todoList);
 
-      const notDeletedTodos = todoList.filter(todo => todo._deleted === null);
+      // const notDeletedTodos = todoList.filter(todo => todo._deleted === null);
 
       await setAllTodos(todoList);
     } catch (err) {
@@ -55,9 +56,12 @@ const TaskToolbar = () => {
         variables: {filter: filterByUserID},
       });
 
-      const counterList = allTaskCounters.data?.listTaskCounters.items[0].count;
-      console.log('Koca: counterList ', counterList);
-      setCoins(counterList);
+      const counterCount =
+        allTaskCounters.data?.listTaskCounters.items[0].count;
+      const counterIdValue = allTaskCounters.data?.listTaskCounters.items[0].id;
+      console.log('Koca: counterIdValue ', counterIdValue);
+      setCounterId(counterIdValue);
+      setCoins(counterCount);
 
       // const notDeletedTodos = todoList.filter(todo => todo._deleted === null);
 
@@ -134,6 +138,9 @@ const TaskToolbar = () => {
           setCompletionModalVisible={setCompletionModalVisible}
           completionModalVisible={completionModalVisible}
           allTodos={allTodos}
+          getTaskCounter={getTaskCounter}
+          coins={coins}
+          counterId={counterId}
         />
       ) : null}
     </>
