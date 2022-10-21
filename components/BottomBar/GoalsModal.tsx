@@ -39,7 +39,6 @@ const GoalsModal = props => {
       description,
       isComplete: false,
       userId: Auth.user.attributes.sub,
-      deletedBool: false,
     };
     await API.graphql(graphqlOperation(createTodo, {input: todoVar}));
     // await DataStore.save(
