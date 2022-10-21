@@ -27,7 +27,7 @@ import * as mutations from '../.././src/graphql/mutations';
 import * as subscriptions from '../.././src/graphql/subscriptions';
 
 const GoalsModal = props => {
-  const {setGoalModalVisible, goalModalVisible} = props;
+  const {setGoalModalVisible, goalModalVisible, allTodos, getAllTodos} = props;
   const [selectedId, setSelectedId] = useState(null);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -51,7 +51,7 @@ const GoalsModal = props => {
     // );
     setName('');
     setDescription('');
-    testAPI();
+    getAllTodos();
   }
 
   async function deleteTodo(todo) {
@@ -61,20 +61,6 @@ const GoalsModal = props => {
       console.log('Delete failed: $e');
     }
   }
-
-  async function getTodos() {
-    console.log('STUCK');
-    const allTodos = await (API.graphql({
-      query: queries.ListTodos,
-    }) as Promise<ListTodoResult>);
-    console.log('allTodos', allTodos);
-  }
-
-  useEffect(() => {
-    getTodos();
-
-    console.log('use effect called');
-  }, []);
 
   //DATA STORE GET ALL TASKS
   // useEffect(() => {
@@ -95,27 +81,27 @@ const GoalsModal = props => {
 
   //GRAPHQL GET ALL TASKS
 
-  async function testAPI() {
-    try {
-      let filterQ = {
-        userId: {
-          eq: Auth.user.attributes.sub, // filter priority = 1
-        },
-      };
+  // async function testAPI() {
+  //   try {
+  //     let filterQ = {
+  //       userId: {
+  //         eq: Auth.user.attributes.sub, // filter priority = 1
+  //       },
+  //     };
 
-      const allTodos = await API.graphql({
-        query: queries.listTodos,
-        variables: {filter: filterQ},
-      });
-      console.log('allTodos', allTodos.data?.listTodos?.items);
-      await setTodos(allTodos.data.listTodos.items);
-    } catch (err) {
-      console.log('error checking data:', err);
-    }
-  }
-  useEffect(() => {
-    testAPI();
-  }, []);
+  //     const allTodos = await API.graphql({
+  //       query: queries.listTodos,
+  //       variables: {filter: filterQ},
+  //     });
+  //     console.log('allTodos', allTodos.data?.listTodos?.items);
+  //     await setTodos(allTodos.data.listTodos.items);
+  //   } catch (err) {
+  //     console.log('error checking data:', err);
+  //   }
+  // }
+  // useEffect(() => {
+  //   testAPI();
+  // }, []);
 
   const renderItem = ({item}) => {
     const backgroundColor = item.id === selectedId ? '#6e3b6e' : 'white';
@@ -178,7 +164,7 @@ const GoalsModal = props => {
                 />
               </HStack>
               <FlatList
-                data={todos}
+                data={allTodos}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
                 extraData={selectedId}

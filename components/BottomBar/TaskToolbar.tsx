@@ -7,13 +7,40 @@ import IconFont from 'react-native-vector-icons/FontAwesome';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 import GoalsModal from './GoalsModal';
 import CompletionModal from './CompletionModal';
-import {DataStore, Auth} from 'aws-amplify';
+import {DataStore, Auth, API, graphqlOperation} from 'aws-amplify';
 import {TaskCounter} from '../.././src/models';
+import * as queries from '../.././src/graphql/queries';
 
 const TaskToolbar = () => {
   const [goalModalVisible, setGoalModalVisible] = useState(false);
   const [completionModalVisible, setCompletionModalVisible] = useState(false);
   const [coins, setCoins] = useState(Number);
+  const [allTodos, setAllTodos] = useState('');
+  console.log('Koca: allTodos!!!!!! ', allTodos);
+
+  async function getAllTodos() {
+    try {
+      let filterQ = {
+        userId: {
+          eq: Auth.user.attributes.sub, // filter priority = 1
+        },
+      };
+
+      const allTodos = await API.graphql({
+        query: queries.listTodos,
+        variables: {filter: filterQ},
+      });
+      // console.log('allTodos in TASKTOOLBAR', allTodos.data?.listTodos?.items);
+      await setAllTodos(allTodos.data.listTodos.items);
+    } catch (err) {
+      console.log('error checking data:', err);
+    }
+  }
+
+  useEffect(() => {
+    getAllTodos();
+    console.log('testing sjsfdljdskkjl');
+  }, []);
 
   useEffect(() => {
     const subscription = DataStore.observeQuery(TaskCounter, t =>
@@ -82,6 +109,8 @@ const TaskToolbar = () => {
         <GoalsModal
           setGoalModalVisible={setGoalModalVisible}
           goalModalVisible={goalModalVisible}
+          allTodos={allTodos}
+          getAllTodos={getAllTodos}
         />
       ) : null}
       {completionModalVisible ? (
