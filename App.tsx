@@ -155,7 +155,10 @@ const App: () => Node = ({signOut, user}) => {
         {/* <>
           <TouchableOpacity onPress={signOut}>Sign out</TouchableOpacity>
         </> */}
-        <TaskToolbar coinCount={coinCount} />
+        <TaskToolbar
+          coinCount={coinCount}
+          getTaskCounterApp={getTaskCounterApp}
+        />
       </SafeAreaView>
     </>
   );

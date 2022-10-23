@@ -12,7 +12,7 @@ import {TaskCounter} from '../.././src/models';
 import * as queries from '../.././src/graphql/queries';
 
 const TaskToolbar = props => {
-  const {coinCount} = props;
+  const {coinCount, getTaskCounterApp} = props;
   const [goalModalVisible, setGoalModalVisible] = useState(false);
   const [completionModalVisible, setCompletionModalVisible] = useState(false);
   const [coins, setCoins] = useState(Number);
@@ -142,6 +142,7 @@ const TaskToolbar = props => {
           getTaskCounter={getTaskCounter}
           coins={coins}
           counterId={counterId}
+          getTaskCounterApp={getTaskCounterApp}
         />
       ) : null}
     </>

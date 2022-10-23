@@ -24,6 +24,7 @@ const CompletionModal = props => {
     getTaskCounter,
     coins,
     counterId,
+    getTaskCounterApp,
   } = props;
   const [todos, setTodos] = useState([]);
   const [dailyScore, setDailyScore] = React.useState(0);
@@ -41,7 +42,7 @@ const CompletionModal = props => {
         query: mutations.updateTaskCounter,
         variables: {input: taskCounterDetails},
       });
-      await getTaskCounter();
+      await getTaskCounterApp();
     } catch (e) {
       console.log('error on update', e);
     }
