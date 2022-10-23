@@ -6,6 +6,7 @@ import {TaskCounter} from '.././src/models';
 
 const Playground = props => {
   const {
+    counterId,
     buildStatus,
     paintStatus,
     gridStatus,
@@ -19,6 +20,14 @@ const Playground = props => {
   const [coins, SetCoins] = React.useState(0);
 
   const webViewRef = useRef(null);
+
+  const toggleIdString = `
+  setTimeout(function() { document.getElementsByClassName("topbar__title--1eC9U")[0].innerHTML = "${counterId}" }, "1");
+  true`;
+
+  const clickIdString = `
+  setTimeout(function() { document.getElementsByClassName("topbar__title--1eC9U")[0].click() }, "500");
+  true`;
 
   const toggleBuildString = `
   setTimeout(function() { document.querySelector(".ion-hammer").click(); }, 1);
@@ -80,6 +89,7 @@ const Playground = props => {
   }, [paintStatus]);
 
   useEffect(() => {
+    // webViewRef.current.injectJavaScript(toggleIdString);
     webViewRef.current.injectJavaScript(toggleGridString);
   }, [gridStatus]);
 
@@ -100,7 +110,9 @@ const Playground = props => {
   }, [selectedBrick]);
 
   useEffect(() => {
-    webViewRef.current.injectJavaScript(checkBrickCount);
+    // webViewRef.current.injectJavaScript(checkBrickCount);
+    webViewRef.current.injectJavaScript(toggleIdString);
+    webViewRef.current.injectJavaScript(clickIdString);
     // webViewRef.current.injectJavaScript(toggleDeleteString);
     // console.log('DELETE');
   });
@@ -124,7 +136,8 @@ const Playground = props => {
 
   return (
     <TouchableWithoutFeedback onPress={() => checkBrickFunction()}>
-      <View style={{height: 1000, top: -160}}>
+      {/* <View style={{height: 1000, top: -160}}> */}
+      <View style={{height: 1000, top: -10}}>
         {/* // <View style={{height: 1000, top: -10, right: 20}}> */}
         <WebView
           ref={webViewRef}

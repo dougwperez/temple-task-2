@@ -51,10 +51,10 @@ const App: () => Node = ({signOut, user}) => {
   const [selectedColor, setSelectedColor] = useState('#ffbe0b');
   const [selectedBrick, setSelectedBrick] = useState(0);
   const [coinCount, setCoinCount] = useState(Number);
-  const [counterIdApp, setCounterIdApp] = useState('');
+  const [counterId, setCounterId] = useState('');
 
   console.log('Koca: coinCount ', coinCount);
-  console.log('Koca: counterIdApp ', counterIdApp);
+  console.log('Koca: counterIdApp ', counterId);
 
   const toggleBuild = () => {
     setBuildStatus(!buildStatus);
@@ -102,7 +102,7 @@ const App: () => Node = ({signOut, user}) => {
         allTaskCounters.data?.listTaskCounters.items[0].count;
       const counterIdValue = allTaskCounters.data?.listTaskCounters.items[0].id;
       console.log('Koca: counterIdValue ', counterIdValue);
-      setCounterIdApp(counterIdValue);
+      setCounterId(counterIdValue);
       setCoinCount(counterCount);
 
       // const notDeletedTodos = todoList.filter(todo => todo._deleted === null);
@@ -141,6 +141,7 @@ const App: () => Node = ({signOut, user}) => {
         />
 
         <Playground
+          counterId={counterId}
           buildStatus={buildStatus}
           paintStatus={paintStatus}
           gridStatus={gridStatus}
