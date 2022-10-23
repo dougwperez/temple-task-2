@@ -85,9 +85,9 @@ const TaskToolbar = props => {
           fontWeight: '700',
           marginLeft: -5,
           marginRight: -10,
-          color: '#EEBC1D',
+          color: coinCount === 65 ? 'red' : '#EEBC1D',
         }}
-        tintColor="#EEBC1D"
+        tintColor={coinCount === 65 ? 'red' : '#EEBC1D'}
         leading={props => <IconFont5 name="coins" {...props} />}
         variant="bottom"
         style={{
