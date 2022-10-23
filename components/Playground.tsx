@@ -26,7 +26,7 @@ const Playground = props => {
   true`;
 
   const clickIdString = `
-  setTimeout(function() { document.getElementsByClassName("topbar__title--1eC9U")[0].click() }, "500");
+  setTimeout(function() { document.getElementsByClassName("topbar__title--1eC9U")[0].click() }, "2");
   true`;
 
   const toggleBuildString = `
@@ -136,9 +136,10 @@ const Playground = props => {
 
   return (
     <TouchableWithoutFeedback onPress={() => checkBrickFunction()}>
-      {/* <View style={{height: 1000, top: -160}}> */}
-      <View style={{height: 1000, top: -10}}>
-        {/* // <View style={{height: 1000, top: -10, right: 20}}> */}
+      <View style={{height: 1000, top: -160}}>
+        {/* DEBUG CONTROLS MODE BELOW: */}
+        {/* <View style={{height: 1000, top: -10}}>  */}
+
         <WebView
           ref={webViewRef}
           source={{uri: 'https://dougwperez.github.io/brick-playground/'}}
