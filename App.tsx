@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -28,8 +28,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import {Amplify} from 'aws-amplify';
+import {Amplify, Auth, API} from 'aws-amplify';
 import {withAuthenticator, Authenticator} from 'aws-amplify-react-native';
+import * as queries from './src/graphql/queries';
 
 // import '@aws-amplify/ui-react/styles.css';
 
@@ -49,6 +50,11 @@ const App: () => Node = ({signOut, user}) => {
   const [rotateStatus, setRotateStatus] = useState(false);
   const [selectedColor, setSelectedColor] = useState('#ffbe0b');
   const [selectedBrick, setSelectedBrick] = useState(0);
+  const [coinCount, setCoinCount] = useState(Number);
+  const [counterIdApp, setCounterIdApp] = useState('');
+
+  console.log('Koca: coinCount ', coinCount);
+  console.log('Koca: counterIdApp ', counterIdApp);
 
   const toggleBuild = () => {
     setBuildStatus(!buildStatus);
@@ -77,6 +83,39 @@ const App: () => Node = ({signOut, user}) => {
   const selectBrick = (brickNum: number) => {
     setSelectedBrick(brickNum);
   };
+
+  async function getTaskCounterApp() {
+    try {
+      let filterByUserID = {
+        userId: {
+          eq: Auth.user.attributes.sub, // filter priority = 1
+        },
+      };
+
+      const allTaskCounters = await API.graphql({
+        query: queries.listTaskCounters,
+        variables: {filter: filterByUserID},
+      });
+      console.log('Koca: allTaskCounters ', allTaskCounters);
+
+      const counterCount =
+        allTaskCounters.data?.listTaskCounters.items[0].count;
+      const counterIdValue = allTaskCounters.data?.listTaskCounters.items[0].id;
+      console.log('Koca: counterIdValue ', counterIdValue);
+      setCounterIdApp(counterIdValue);
+      setCoinCount(counterCount);
+
+      // const notDeletedTodos = todoList.filter(todo => todo._deleted === null);
+
+      // await setAllTodos(notDeletedTodos);
+    } catch (err) {
+      console.log('error checking data:', err);
+    }
+  }
+
+  useEffect(() => {
+    getTaskCounterApp();
+  }, []);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -109,11 +148,12 @@ const App: () => Node = ({signOut, user}) => {
           rotateStatus={rotateStatus}
           selectedColor={selectedColor}
           selectedBrick={selectedBrick}
+          getTaskCounterApp={getTaskCounterApp}
         />
         {/* <>
           <TouchableOpacity onPress={signOut}>Sign out</TouchableOpacity>
         </> */}
-        <TaskToolbar />
+        <TaskToolbar coinCount={coinCount} />
       </SafeAreaView>
     </>
   );

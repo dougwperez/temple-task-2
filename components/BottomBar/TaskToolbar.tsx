@@ -11,7 +11,8 @@ import {DataStore, Auth, API, graphqlOperation} from 'aws-amplify';
 import {TaskCounter} from '../.././src/models';
 import * as queries from '../.././src/graphql/queries';
 
-const TaskToolbar = () => {
+const TaskToolbar = props => {
+  const {coinCount} = props;
   const [goalModalVisible, setGoalModalVisible] = useState(false);
   const [completionModalVisible, setCompletionModalVisible] = useState(false);
   const [coins, setCoins] = useState(Number);
@@ -79,7 +80,7 @@ const TaskToolbar = () => {
   return (
     <>
       <AppBar
-        title={`Coins ${coins}`}
+        title={`Coins ${coinCount}`}
         titleStyle={{
           fontWeight: '700',
           marginLeft: -5,

@@ -13,6 +13,7 @@ const Playground = props => {
     rotateStatus,
     selectedColor,
     selectedBrick,
+    getTaskCounterApp,
   } = props;
   const [brickCount, setBrickCount] = useState(Number);
   const [coins, SetCoins] = React.useState(0);
@@ -131,10 +132,7 @@ const Playground = props => {
           // pointerEvents={coins === 0 ? 'none' : null}
           style={{flex: 1}}
           onMessage={event => {
-            if (event.nativeEvent.data > brickCount) {
-              // decrementCoinCount();
-              setBrickCount(event.nativeEvent.data);
-            }
+            getTaskCounterApp();
           }}
         />
       </View>
