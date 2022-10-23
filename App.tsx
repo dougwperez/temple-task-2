@@ -150,6 +150,7 @@ const App: () => Node = ({signOut, user}) => {
           selectedColor={selectedColor}
           selectedBrick={selectedBrick}
           getTaskCounterApp={getTaskCounterApp}
+          coinCount={coinCount}
         />
         {/* <>
           <TouchableOpacity onPress={signOut}>Sign out</TouchableOpacity>

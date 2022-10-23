@@ -15,9 +15,11 @@ const Playground = props => {
     selectedColor,
     selectedBrick,
     getTaskCounterApp,
+    coinCount,
   } = props;
   const [brickCount, setBrickCount] = useState(Number);
   const [coins, SetCoins] = React.useState(0);
+  console.log('Koca: coinCount ', coinCount);
 
   const webViewRef = useRef(null);
 
@@ -143,7 +145,7 @@ const Playground = props => {
         <WebView
           ref={webViewRef}
           source={{uri: 'https://dougwperez.github.io/brick-playground/'}}
-          // pointerEvents={coins === 0 ? 'none' : null}
+          pointerEvents={coinCount === 0 ? 'none' : null}
           style={{flex: 1}}
           onMessage={event => {
             getTaskCounterApp();
