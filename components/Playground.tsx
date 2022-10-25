@@ -66,21 +66,21 @@ const Playground = props => {
   }, 1);
   true`;
 
-  useEffect(() => {
-    const subscription = DataStore.observeQuery(TaskCounter).subscribe(
-      snapshot => {
-        const {items, isSynced} = snapshot;
-        console.log('items in Playground', items);
+  // useEffect(() => {
+  //   const subscription = DataStore.observeQuery(TaskCounter).subscribe(
+  //     snapshot => {
+  //       const {items, isSynced} = snapshot;
+  //       console.log('items in Playground', items);
 
-        SetCoins(items[0].count);
-      },
-    );
+  //       SetCoins(items[0].count);
+  //     },
+  //   );
 
-    //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
-    return function cleanup() {
-      subscription.unsubscribe();
-    };
-  }, []);
+  //   //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
+  //   return function cleanup() {
+  //     subscription.unsubscribe();
+  //   };
+  // }, []);
 
   useEffect(() => {
     webViewRef.current.injectJavaScript(toggleBuildString);
@@ -119,15 +119,15 @@ const Playground = props => {
     // console.log('DELETE');
   });
 
-  async function decrementCoinCount() {
-    const models = await DataStore.query(TaskCounter);
+  // async function decrementCoinCount() {
+  //   const models = await DataStore.query(TaskCounter);
 
-    await DataStore.save(
-      TaskCounter.copyOf(models[0], item => {
-        item.count -= 1;
-      }),
-    );
-  }
+  //   await DataStore.save(
+  //     TaskCounter.copyOf(models[0], item => {
+  //       item.count -= 1;
+  //     }),
+  //   );
+  // }
 
   const checkBrickFunction = () => {
     // decrementCoinCount();

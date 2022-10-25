@@ -99,8 +99,9 @@ const App: () => Node = ({signOut, user}) => {
       console.log('Koca: allTaskCounters ', allTaskCounters);
 
       const counterCount =
-        allTaskCounters.data?.listTaskCounters.items[0].count;
-      const counterIdValue = allTaskCounters.data?.listTaskCounters.items[0].id;
+        allTaskCounters.data?.listTaskCounters.items[0]?.count;
+      const counterIdValue =
+        allTaskCounters.data?.listTaskCounters.items[0]?.id;
       console.log('Koca: counterIdValue ', counterIdValue);
       setCounterId(counterIdValue);
       setCoinCount(counterCount);
