@@ -158,6 +158,7 @@ const App: () => Node = ({signOut, user}) => {
         <TaskToolbar
           coinCount={coinCount}
           getTaskCounterApp={getTaskCounterApp}
+          counterId={counterId}
         />
       </SafeAreaView>
     </>

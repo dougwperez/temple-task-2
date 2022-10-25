@@ -12,12 +12,14 @@ import {TaskCounter} from '../.././src/models';
 import * as queries from '../.././src/graphql/queries';
 
 const TaskToolbar = props => {
-  const {coinCount, getTaskCounterApp} = props;
+  const {coinCount, getTaskCounterApp, counterId} = props;
   const [goalModalVisible, setGoalModalVisible] = useState(false);
   const [completionModalVisible, setCompletionModalVisible] = useState(false);
   const [coins, setCoins] = useState(Number);
-  const [counterId, setCounterId] = useState('');
+  // const [counterId, setCounterId] = useState('');
   const [allTodos, setAllTodos] = useState('');
+
+  console.log('coins', coins);
   console.log('Koca: allTodos!!!!!! ', allTodos);
 
   async function getAllTodos() {
@@ -44,37 +46,9 @@ const TaskToolbar = props => {
     }
   }
 
-  async function getTaskCounter() {
-    try {
-      let filterByUserID = {
-        userId: {
-          eq: Auth.user.attributes.sub, // filter priority = 1
-        },
-      };
-
-      const allTaskCounters = await API.graphql({
-        query: queries.listTaskCounters,
-        variables: {filter: filterByUserID},
-      });
-
-      const counterCount =
-        allTaskCounters.data?.listTaskCounters.items[0].count;
-      const counterIdValue = allTaskCounters.data?.listTaskCounters.items[0].id;
-      console.log('Koca: counterIdValue ', counterIdValue);
-      setCounterId(counterIdValue);
-      setCoins(counterCount);
-
-      // const notDeletedTodos = todoList.filter(todo => todo._deleted === null);
-
-      // await setAllTodos(notDeletedTodos);
-    } catch (err) {
-      console.log('error checking data:', err);
-    }
-  }
-
   useEffect(() => {
     getAllTodos();
-    getTaskCounter();
+    getTaskCounterApp();
   }, []);
 
   return (
@@ -139,10 +113,12 @@ const TaskToolbar = props => {
           setCompletionModalVisible={setCompletionModalVisible}
           completionModalVisible={completionModalVisible}
           allTodos={allTodos}
-          getTaskCounter={getTaskCounter}
+          getTaskCounterApp={getTaskCounterApp}
           coins={coins}
           counterId={counterId}
           getTaskCounterApp={getTaskCounterApp}
+          coinCount={coinCount}
+          counterId={counterId}
         />
       ) : null}
     </>

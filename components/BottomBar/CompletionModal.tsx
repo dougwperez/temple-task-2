@@ -23,6 +23,7 @@ const CompletionModal = props => {
     allTodos,
     getTaskCounter,
     coins,
+    coinCount,
     counterId,
     getTaskCounterApp,
   } = props;
@@ -36,7 +37,7 @@ const CompletionModal = props => {
     try {
       const taskCounterDetails = {
         id: counterId,
-        count: coins + dailyScore,
+        count: coinCount + dailyScore,
       };
       await API.graphql({
         query: mutations.updateTaskCounter,
