@@ -79,6 +79,7 @@ const TaskToolbar = props => {
               color="white"
               tintColor={goalModalVisible ? '#6226ee' : '#6F7378'}
               style={{
+                color: 'red',
                 borderWidth: 0.6,
                 borderColor: '#b6b6b6',
               }}
