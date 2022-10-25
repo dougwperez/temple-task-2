@@ -18,6 +18,8 @@ import Svg2x3 from '../Images/2x3svg';
 import Svg2x4 from '../Images/2x4svg';
 import Palette from '../Images/palettesvg';
 import PaintBucket from '../Images/paintbucketsvg';
+import Hammer from '../Images/hammersvg';
+import Hammer2 from '../Images/hammer2svg';
 
 import {
   Provider,
@@ -187,7 +189,11 @@ const BuilderToolbar = props => {
         trailing={props => (
           <HStack>
             <IconButton
-              icon={props => <IconIon name="hammer" {...props} />}
+              icon={props => (
+                //  <IconIon name="hammer" {...props} />
+                // <Hammer />
+                <Hammer2 />
+              )}
               onPress={() => toggleToolPicker()}
               {...props}
               color={toolPickerVisible ? '#EEBC1D' : '#6F7378'}
