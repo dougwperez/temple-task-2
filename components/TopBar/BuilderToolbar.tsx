@@ -190,9 +190,14 @@ const BuilderToolbar = props => {
           <HStack>
             <IconButton
               icon={props => (
-                //  <IconIon name="hammer" {...props} />
+                // <IconIon name="hammer" {...props} />
                 // <Hammer />
-                <Hammer2 />
+                <Hammer2
+                  bgfill={toolPickerVisible ? '#b66d38' : '#d3d3d3'}
+                  bgfill2={toolPickerVisible ? '#aa3827' : '#6F7378'}
+                  bgfill3={toolPickerVisible ? '#7ac0de' : '#6F7378'}
+                  bgfill4={toolPickerVisible ? '#5192c9' : '#6F7378'}
+                />
               )}
               onPress={() => toggleToolPicker()}
               {...props}
