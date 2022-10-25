@@ -38,8 +38,6 @@ const TaskToolbar = props => {
       const todoList = allTodos.data?.listTodos?.items;
       // console.log('Koca: todoList ', todoList);
 
-      // const notDeletedTodos = todoList.filter(todo => todo._deleted === null);
-
       await setAllTodos(todoList);
     } catch (err) {
       console.log('error checking data:', err);
@@ -114,11 +112,8 @@ const TaskToolbar = props => {
           completionModalVisible={completionModalVisible}
           allTodos={allTodos}
           getTaskCounterApp={getTaskCounterApp}
-          coins={coins}
           counterId={counterId}
-          getTaskCounterApp={getTaskCounterApp}
           coinCount={coinCount}
-          counterId={counterId}
         />
       ) : null}
     </>

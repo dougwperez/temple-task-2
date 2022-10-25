@@ -21,15 +21,11 @@ const CompletionModal = props => {
     setCompletionModalVisible,
     completionModalVisible,
     allTodos,
-    getTaskCounter,
-    coins,
     coinCount,
     counterId,
     getTaskCounterApp,
   } = props;
-  const [todos, setTodos] = useState([]);
   const [dailyScore, setDailyScore] = React.useState(0);
-  console.log('Koca: dailyScore ', dailyScore);
 
   async function updateCount() {
     setCompletionModalVisible(!completionModalVisible);
