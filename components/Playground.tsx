@@ -20,6 +20,7 @@ const Playground = props => {
   const [brickCount, setBrickCount] = useState(Number);
   const [coins, SetCoins] = React.useState(0);
   console.log('Koca: coinCount ', coinCount);
+  console.log('selectedColor', selectedColor);
 
   const webViewRef = useRef(null);
 
@@ -117,7 +118,7 @@ const Playground = props => {
     webViewRef.current.injectJavaScript(clickIdString);
     // webViewRef.current.injectJavaScript(toggleDeleteString);
     // console.log('DELETE');
-  });
+  }, [counterId]);
 
   // async function decrementCoinCount() {
   //   const models = await DataStore.query(TaskCounter);
