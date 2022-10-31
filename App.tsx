@@ -27,6 +27,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import {AppBar} from '@react-native-material/core';
 
 import {Amplify, Auth, API} from 'aws-amplify';
 import {withAuthenticator, Authenticator} from 'aws-amplify-react-native';
@@ -127,6 +128,17 @@ const App: () => Node = ({signOut, user}) => {
     <>
       <StatusBar />
       <SafeAreaView style={backgroundStyle}>
+        <View
+          style={{
+            height: 50,
+            width: '100%',
+            backgroundColor: 'white',
+            zIndex: 3,
+            position: 'absolute',
+            top: 0,
+            left: 0,
+          }}
+        />
         <BuilderToolbar
           toggleBuild={toggleBuild}
           togglePaint={togglePaint}
@@ -183,6 +195,7 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
+  statusBarStyle: {},
 });
 
 export default withAuthenticator(App);
