@@ -52,7 +52,7 @@ const TaskToolbar = props => {
   return (
     <>
       <AppBar
-        title={`Coins ${coinCount}`}
+        title={`${coinCount}`}
         titleStyle={{
           fontWeight: '700',
           marginLeft: -5,
@@ -68,12 +68,12 @@ const TaskToolbar = props => {
           end: 0,
           bottom: 0,
           height: 75,
-          paddingHorizontal: 13,
+          paddingHorizontal: 20,
           paddingTop: 10,
           backgroundColor: 'white',
         }}
         trailing={props => (
-          <HStack spacing={8}>
+          <HStack spacing={20}>
             <Button
               title="Goals"
               color="white"
