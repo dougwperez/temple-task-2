@@ -23,7 +23,7 @@ const PublishSceneModal = props => {
         <Modal
           style={styles.goalModal}
           animationType="fade"
-          transparent={false}
+          transparent={true}
           visible={true}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');

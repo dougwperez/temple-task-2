@@ -10,6 +10,8 @@ import CompletionModal from './CompletionModal';
 import {DataStore, Auth, API, graphqlOperation} from 'aws-amplify';
 import {TaskCounter} from '../.././src/models';
 import * as queries from '../.././src/graphql/queries';
+import Coins from '../Images/coinssvg';
+import Palette from '../Images/palettesvg';
 
 const TaskToolbar = props => {
   const {coinCount, getTaskCounterApp, counterId} = props;
@@ -55,12 +57,19 @@ const TaskToolbar = props => {
         title={`${coinCount}`}
         titleStyle={{
           fontWeight: '700',
-          marginLeft: -5,
+          marginLeft: -6,
           marginRight: -10,
           color: coinCount === 0 ? 'red' : '#EEBC1D',
         }}
-        tintColor={coinCount === 0 ? 'red' : '#EEBC1D'}
-        leading={props => <IconFont5 name="coins" {...props} />}
+        // tintColor={coinCount === 0 ? 'red' : '#EEBC1D'}
+        leading={props => (
+          // <IconFont5
+          //   name="coins"
+          //   {...props}
+          // />
+
+          <Coins />
+        )}
         variant="bottom"
         style={{
           position: 'absolute',
@@ -68,7 +77,7 @@ const TaskToolbar = props => {
           end: 0,
           bottom: 0,
           height: 75,
-          paddingHorizontal: 20,
+          paddingHorizontal: 22,
           paddingTop: 10,
           backgroundColor: 'white',
         }}
@@ -77,7 +86,7 @@ const TaskToolbar = props => {
             <Button
               title="Goals"
               color="white"
-              tintColor={goalModalVisible ? '#6226ee' : '#6F7378'}
+              tintColor={goalModalVisible ? '#EEBC1D' : '#6F7378'}
               style={{
                 color: 'red',
                 borderWidth: 0.6,

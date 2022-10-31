@@ -35,7 +35,7 @@ const OptionsModal = props => {
         <Modal
           style={styles.goalModal}
           animationType="fade"
-          transparent={true}
+          transparent={false}
           visible={true}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');

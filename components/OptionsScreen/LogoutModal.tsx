@@ -26,7 +26,7 @@ const LogoutModal = props => {
           style={styles.goalModal}
           onBack
           animationType="fade"
-          transparent={false}
+          transparent={true}
           visible={true}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
