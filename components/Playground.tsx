@@ -113,9 +113,13 @@ const Playground = props => {
   }, [selectedBrick]);
 
   useEffect(() => {
-    // webViewRef.current.injectJavaScript(checkBrickCount);
-    webViewRef.current.injectJavaScript(toggleIdString);
-    webViewRef.current.injectJavaScript(clickIdString);
+    const toggleAndClick = async () => {
+      const toggle = await webViewRef.current.injectJavaScript(toggleIdString);
+      const click = await webViewRef.current.injectJavaScript(clickIdString);
+    };
+    toggleAndClick();
+    // webViewRef.current.injectJavaScript(toggleIdString);
+    // webViewRef.current.injectJavaScript(clickIdString);
     // webViewRef.current.injectJavaScript(toggleDeleteString);
     // console.log('DELETE');
   }, [counterId]);
