@@ -113,11 +113,16 @@ const Playground = props => {
   }, [selectedBrick]);
 
   useEffect(() => {
-    const toggleAndClick = async () => {
-      const toggle = await webViewRef.current.injectJavaScript(toggleIdString);
-      const click = await webViewRef.current.injectJavaScript(clickIdString);
-    };
-    toggleAndClick();
+    // const toggleAndClick = async () => {
+    //   const toggle = await webViewRef.current.injectJavaScript(toggleIdString);
+    //   const click = await webViewRef.current.injectJavaScript(clickIdString);
+    // };
+    // toggleAndClick();
+
+    webViewRef.current.injectJavaScript(toggleIdString);
+    setTimeout(function () {
+      webViewRef.current.injectJavaScript(clickIdString);
+    }, 500);
     // webViewRef.current.injectJavaScript(toggleIdString);
     // webViewRef.current.injectJavaScript(clickIdString);
     // webViewRef.current.injectJavaScript(toggleDeleteString);

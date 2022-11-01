@@ -38,7 +38,6 @@ const TaskToolbar = props => {
       });
 
       const todoList = allTodos.data?.listTodos?.items;
-      // console.log('Koca: todoList ', todoList);
 
       await setAllTodos(todoList);
     } catch (err) {
