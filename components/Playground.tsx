@@ -121,12 +121,16 @@ const Playground = props => {
 
     webViewRef.current.injectJavaScript(toggleIdString);
     setTimeout(function () {
-      webViewRef.current.injectJavaScript(clickIdString);
+      // webViewRef.current.injectJavaScript(clickIdString);
     }, 500);
     // webViewRef.current.injectJavaScript(toggleIdString);
     // webViewRef.current.injectJavaScript(clickIdString);
     // webViewRef.current.injectJavaScript(toggleDeleteString);
     // console.log('DELETE');
+  });
+
+  useEffect(() => {
+    webViewRef.current.injectJavaScript(clickIdString);
   }, [counterId]);
 
   // async function decrementCoinCount() {
@@ -148,10 +152,9 @@ const Playground = props => {
 
   return (
     <TouchableWithoutFeedback onPress={() => checkBrickFunction()}>
-      <View style={{height: 1000, top: -160}}>
-        {/* DEBUG CONTROLS MODE BELOW: */}
-        {/* <View style={{height: 1000, top: -10}}>  */}
-
+      {/* <View style={{height: 1000, top: -160}}> */}
+      {/* DEBUG CONTROLS MODE BELOW: */}
+      <View style={{height: 1000, top: -10}}>
         <WebView
           ref={webViewRef}
           source={{uri: 'https://dougwperez.github.io/brick-playground/'}}
