@@ -165,7 +165,7 @@ const BuilderToolbar = props => {
     <>
       <AppBar
         style={{backgroundColor: 'white'}}
-        title="TempleTask"
+        title="Brick It!"
         titleStyle={{
           fontWeight: '700',
           color: 'green',

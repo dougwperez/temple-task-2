@@ -14,6 +14,7 @@ const Playground = props => {
     rotateStatus,
     selectedColor,
     selectedBrick,
+
     getTaskCounterApp,
     coinCount,
   } = props;
@@ -21,6 +22,9 @@ const Playground = props => {
   const [coins, SetCoins] = React.useState(0);
   console.log('Koca: coinCount ', coinCount);
   console.log('selectedColor', selectedColor);
+  console.log('Koca: selectedBrick ', selectedBrick);
+
+  console.log('Koca: buildStatus ', buildStatus);
 
   const webViewRef = useRef(null);
 
@@ -120,9 +124,14 @@ const Playground = props => {
     // toggleAndClick();
 
     webViewRef.current.injectJavaScript(toggleIdString);
-    setTimeout(function () {
-      // webViewRef.current.injectJavaScript(clickIdString);
-    }, 500);
+
+    webViewRef.current.injectJavaScript(clickIdString);
+
+    console.log('idString Length', toggleIdString.length);
+
+    // setTimeout(function () {
+    //   webViewRef.current.injectJavaScript(clickIdString);
+    // }, 500);
     // webViewRef.current.injectJavaScript(toggleIdString);
     // webViewRef.current.injectJavaScript(clickIdString);
     // webViewRef.current.injectJavaScript(toggleDeleteString);
@@ -130,8 +139,8 @@ const Playground = props => {
   });
 
   useEffect(() => {
-    webViewRef.current.injectJavaScript(clickIdString);
-  }, [counterId]);
+    // webViewRef.current.injectJavaScript(clickIdString);
+  }, []);
 
   // async function decrementCoinCount() {
   //   const models = await DataStore.query(TaskCounter);
