@@ -20,6 +20,8 @@ const Playground = props => {
   } = props;
   const [brickCount, setBrickCount] = useState(Number);
   const [coins, SetCoins] = React.useState(0);
+  const [isFirstRender, setIsFirstRender] = useState(true);
+  console.log('Koca: isFirstRender ', isFirstRender);
   console.log('Koca: coinCount ', coinCount);
   console.log('selectedColor', selectedColor);
   console.log('Koca: selectedBrick ', selectedBrick);
@@ -124,8 +126,11 @@ const Playground = props => {
     // toggleAndClick();
 
     webViewRef.current.injectJavaScript(toggleIdString);
-
     webViewRef.current.injectJavaScript(clickIdString);
+    // if (isFirstRender) {
+    //   webViewRef.current.injectJavaScript(clickIdString);
+    //   setIsFirstRender(false);
+    // }
 
     console.log('idString Length', toggleIdString.length);
 

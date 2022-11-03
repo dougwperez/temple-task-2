@@ -85,8 +85,8 @@ const GoalsModal = props => {
         <Item
           item={item}
           onPress={() => setSelectedId(item.id)}
-          backgroundColor={{backgroundColor}}
-          textColor={{color}}
+          // backgroundColor={{backgroundColor}}
+          textColor="black"
         />
         <IconButton
           icon={props => <Icon name="lead-pencil" {...props} />}
