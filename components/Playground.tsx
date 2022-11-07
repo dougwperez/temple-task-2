@@ -126,7 +126,11 @@ const Playground = props => {
     // toggleAndClick();
 
     webViewRef.current.injectJavaScript(toggleIdString);
+    console.log('idString selectBrickString', selectBrickString);
     webViewRef.current.injectJavaScript(clickIdString);
+    // if (selectBrickString === 0) {
+    //   webViewRef.current.injectJavaScript(clickIdString);
+    // }
     // if (isFirstRender) {
     //   webViewRef.current.injectJavaScript(clickIdString);
     //   setIsFirstRender(false);
@@ -166,9 +170,9 @@ const Playground = props => {
 
   return (
     <TouchableWithoutFeedback onPress={() => checkBrickFunction()}>
-      {/* <View style={{height: 1000, top: -160}}> */}
-      {/* DEBUG CONTROLS MODE BELOW: */}
-      <View style={{height: 1000, top: -10}}>
+      <View style={{height: 1000, top: -160}}>
+        {/* DEBUG CONTROLS MODE BELOW: */}
+        {/* <View style={{height: 1000, top: -10}}> */}
         <WebView
           ref={webViewRef}
           source={{uri: 'https://dougwperez.github.io/brick-playground/'}}
