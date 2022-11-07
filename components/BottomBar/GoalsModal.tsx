@@ -36,6 +36,7 @@ const GoalsModal = props => {
 
   async function addTodo() {
     try {
+      // setName('');
       Keyboard.dismiss();
       const todoVar = {
         name,
@@ -124,7 +125,7 @@ const GoalsModal = props => {
                 <TextInput
                   style={styles.input}
                   onChangeText={setName}
-                  // value={text}
+                  value={name}
                 />
                 <IconButton
                   icon={props => <Icon name="plus" {...props} />}
