@@ -76,9 +76,6 @@ export const updateTodo = /* GraphQL */ `
       userId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;

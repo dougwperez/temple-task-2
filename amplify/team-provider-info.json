@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "templetask2": {}
+      },
+      "api": {
+        "amplifyDatasource": {}
       }
     }
   }

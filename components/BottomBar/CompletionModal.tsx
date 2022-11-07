@@ -58,6 +58,24 @@ const CompletionModal = props => {
     // }
   }
 
+  async function markTodo(todo, bool: boolean) {
+    console.log('Koca: todo ', todo);
+    try {
+      const todoDetails = {
+        id: todo.id,
+        // _version: todo._version,
+        isComplete: bool,
+      };
+
+      await API.graphql({
+        query: mutations.updateTodo,
+        variables: {input: todoDetails},
+      });
+    } catch (e) {
+      console.log('update failed: $e', e);
+    }
+  }
+
   const renderItem = ({item}) => (
     <BouncyCheckbox
       size={25}
@@ -68,8 +86,8 @@ const CompletionModal = props => {
       innerIconStyle={{borderWidth: 2}}
       onPress={(isChecked: boolean) => {
         isChecked
-          ? setDailyScore(dailyScore + 1)
-          : setDailyScore(dailyScore - 1);
+          ? (setDailyScore(dailyScore + 1), markTodo(item, true))
+          : (setDailyScore(dailyScore - 1), markTodo(item, false));
       }}
       style={{marginBottom: 10}}
     />
