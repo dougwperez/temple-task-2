@@ -11,6 +11,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   TextInput,
+  Keyboard,
 } from 'react-native';
 import {IconButton, HStack} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -25,6 +26,7 @@ import {
 
 import * as mutations from '../.././src/graphql/mutations';
 import * as subscriptions from '../.././src/graphql/subscriptions';
+import {keyboardDismissHandlerManager} from 'native-base';
 
 const GoalsModal = props => {
   const {setGoalModalVisible, goalModalVisible, allTodos, getAllTodos} = props;
@@ -34,6 +36,7 @@ const GoalsModal = props => {
 
   async function addTodo() {
     try {
+      Keyboard.dismiss();
       const todoVar = {
         name,
         description,
