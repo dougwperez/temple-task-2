@@ -116,6 +116,7 @@ const TaskToolbar = props => {
           getTaskCounterApp={getTaskCounterApp}
           counterId={counterId}
           coinCount={coinCount}
+          getAllTodos={getAllTodos}
         />
       ) : null}
     </>

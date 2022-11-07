@@ -24,8 +24,13 @@ const CompletionModal = props => {
     coinCount,
     counterId,
     getTaskCounterApp,
+    getAllTodos,
   } = props;
   const [dailyScore, setDailyScore] = React.useState(0);
+
+  useEffect(() => {
+    getAllTodos();
+  });
 
   async function updateCount() {
     setCompletionModalVisible(!completionModalVisible);
@@ -78,12 +83,15 @@ const CompletionModal = props => {
 
   const renderItem = ({item}) => (
     <BouncyCheckbox
+      {...console.log('item in CHECKLIST', item.isComplete)}
       size={25}
       fillColor="green"
       unfillColor="#FFFFFF"
       text={item.name}
       iconStyle={{borderColor: 'red'}}
       innerIconStyle={{borderWidth: 2}}
+      // disableBuiltInState
+      isChecked={item.isComplete ? true : false}
       onPress={(isChecked: boolean) => {
         isChecked
           ? (setDailyScore(dailyScore + 1), markTodo(item, true))
@@ -117,7 +125,7 @@ const CompletionModal = props => {
                 color: dailyScore === 0 ? '#6F7378' : '#EEBC1D',
                 ...styles.trackerText,
               }}>
-              {dailyScore} Coins Earned Today
+              {dailyScore} Coins Earned
             </Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
