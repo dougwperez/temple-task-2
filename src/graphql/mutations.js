@@ -59,6 +59,7 @@ export const createTodo = /* GraphQL */ `
       userId
       createdAt
       updatedAt
+      isLocked
     }
   }
 `;
