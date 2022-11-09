@@ -93,11 +93,12 @@ const GoalsModal = props => {
           // backgroundColor={{backgroundColor}}
           textColor="black"
         />
-        <IconButton
+        {/* <IconButton
           icon={props => <Icon name="lead-pencil" {...props} />}
           color="primary"
-        />
+        /> */}
         <IconButton
+          style={styles.deleteButton}
           icon={props => <Icon name="delete" {...props} />}
           color="primary"
           onPress={() => deleteTodo(item)}
@@ -189,6 +190,9 @@ const styles = StyleSheet.create({
   },
   buttonClose: {
     backgroundColor: 'green',
+  },
+  deleteButton: {
+    marginLeft: 45,
   },
   textStyle: {
     color: 'white',
