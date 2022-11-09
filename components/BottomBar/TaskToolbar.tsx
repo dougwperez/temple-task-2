@@ -12,6 +12,7 @@ import {TaskCounter} from '../.././src/models';
 import * as queries from '../.././src/graphql/queries';
 import Coins from '../Images/coinssvg';
 import Palette from '../Images/palettesvg';
+// import {onUpdateTodo} from '../../src/graphql/subscriptions';
 
 const TaskToolbar = props => {
   const {coinCount, getTaskCounterApp, counterId} = props;
@@ -48,6 +49,13 @@ const TaskToolbar = props => {
   useEffect(() => {
     getAllTodos();
     getTaskCounterApp();
+
+    const interval = setInterval(() => {
+      console.log('This will be called every 5 seconds REFACTOR THIS');
+      getAllTodos();
+    }, 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
